@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // Import des styles ODS
-import '@ovhcloud/ods-react/normalize-css'
-import '@ovhcloud/ods-react/style'
+import '@ovhcloud/ods-react/src/style/normalize.css'
+import '@ovhcloud/ods-react/src/style/index.scss'
 import './index.css'
 import App from './App.tsx'
 

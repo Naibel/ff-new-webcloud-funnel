@@ -102,7 +102,7 @@ export default function Questionnaire() {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <Text size="heading-m" className="mb-8">
+            <Text preset="heading-3" className="mb-8">
               {questions[currentQuestion].question}
             </Text>
 
@@ -110,7 +110,8 @@ export default function Questionnaire() {
               {questions[currentQuestion].options.map((option) => (
                 <Button
                   key={option.value}
-                  variant={answers[questions[currentQuestion].id] === option.value ? 'primary' : 'secondary'}
+                  variant={answers[questions[currentQuestion].id] === option.value ? 'default' : 'outline'}
+                  color={answers[questions[currentQuestion].id] === option.value ? 'primary' : undefined}
                   className="w-full text-left justify-start"
                   onClick={() => handleAnswer(option.value)}
                 >
@@ -124,7 +125,7 @@ export default function Questionnaire() {
         {/* Navigation */}
         <div className="flex justify-between">
           <Button
-            variant="secondary"
+            variant="outline"
             onClick={handlePrevious}
             disabled={currentQuestion === 0}
           >
@@ -132,7 +133,7 @@ export default function Questionnaire() {
           </Button>
           <Button
             variant="ghost"
-            size="s"
+            size="sm"
             onClick={handleSkip}
           >
             Passer le questionnaire

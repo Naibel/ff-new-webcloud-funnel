@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@ovhcloud/ods-react';
@@ -126,10 +126,10 @@ export default function DomainSelection() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <Card className="mb-6">
-          <Text size="heading-l" className="mb-2">
+          <Text preset="heading-2" className="mb-2">
             Recherchez votre nom de domaine
           </Text>
-          <Text size="body-m">
+          <Text preset="paragraph">
             Recherchez et sélectionnez un ou plusieurs domaines pour votre projet
           </Text>
         </Card>
@@ -146,11 +146,12 @@ export default function DomainSelection() {
               className="flex-1"
             />
             <Button 
-              variant="primary"
+              variant="default"
+              color="primary"
               onClick={handleSearch}
               disabled={!searchTerm.trim() || isSearching}
             >
-              {isSearching ? <Spinner size="s" /> : 'Rechercher'}
+              {isSearching ? <Spinner size="sm" /> : 'Rechercher'}
             </Button>
           </div>
 
@@ -161,7 +162,7 @@ export default function DomainSelection() {
               animate={{ opacity: 1, y: 0 }}
               className="mt-6"
             >
-              <Text size="body-s" className="mb-4">
+              <Text preset="small" className="mb-4">
                 Résultats de recherche ({searchResults.length} domaines trouvés)
               </Text>
               <div className="space-y-3 max-h-96 overflow-y-auto">
@@ -190,23 +191,23 @@ export default function DomainSelection() {
                             onClick={(e) => e.stopPropagation()}
                           />
                           <div>
-                            <Text size="body-m" className="font-semibold">
+                            <Text preset="paragraph" className="font-semibold">
                               {result.name}
                               <span className="text-primary">{result.extension}</span>
                             </Text>
                             <div className="flex gap-2 mt-1">
                               {result.available ? (
-                                <Badge variant="success">Disponible</Badge>
+                                <Badge color="success">Disponible</Badge>
                               ) : (
-                                <Badge variant="error">Indisponible</Badge>
+                                <Badge color="critical">Indisponible</Badge>
                               )}
                               {availableExtensions.find(e => e.ext === result.extension)?.popular && (
-                                <Badge variant="warning">Populaire</Badge>
+                                <Badge color="warning">Populaire</Badge>
                               )}
                             </div>
                           </div>
                         </div>
-                        <Text size="body-m" className="font-semibold">
+                        <Text preset="paragraph" className="font-semibold">
                           {result.price.toFixed(2)} €/an HT
                         </Text>
                       </div>
@@ -220,7 +221,7 @@ export default function DomainSelection() {
           {/* Message si pas de recherche */}
           {searchResults.length === 0 && !isSearching && (
             <div className="text-center py-8 text-gray-500">
-              <Text size="body-m">Entrez un nom de domaine dans le champ ci-dessus et cliquez sur "Rechercher"</Text>
+              <Text preset="paragraph">Entrez un nom de domaine dans le champ ci-dessus et cliquez sur "Rechercher"</Text>
             </div>
           )}
         </Card>
@@ -235,18 +236,19 @@ export default function DomainSelection() {
             <Card>
               <div className="flex justify-between items-center">
                 <div>
-                  <Text size="body-s" className="mb-1">Domaines sélectionnés ({selectedDomains.size})</Text>
+                  <Text preset="small" className="mb-1">Domaines sélectionnés ({selectedDomains.size})</Text>
                   <div className="flex flex-wrap gap-2">
                     {Array.from(selectedDomains).slice(0, 3).map((domain) => (
-                      <Badge key={domain} variant="primary">{domain}</Badge>
+                      <Badge key={domain} color="primary">{domain}</Badge>
                     ))}
                     {selectedDomains.size > 3 && (
-                      <Text size="body-s">+{selectedDomains.size - 3} autres</Text>
+                      <Text preset="small">+{selectedDomains.size - 3} autres</Text>
                     )}
                   </div>
                 </div>
                 <Button
-                  variant="primary"
+                  variant="default"
+                  color="primary"
                   onClick={handleContinue}
                 >
                   Suivant

@@ -35,10 +35,10 @@ export default function Summary() {
       <div className="max-w-4xl mx-auto">
         <Card>
           <div className="text-center mb-8">
-            <Text size="heading-l" className="mb-2">
+            <Text preset="heading-2" className="mb-2">
               Récapitulatif de votre commande
             </Text>
-            <Text size="body-m">
+            <Text preset="paragraph">
               Vérifiez les détails avant de finaliser votre commande
             </Text>
           </div>
@@ -49,12 +49,12 @@ export default function Summary() {
             <div className="bg-gray-50 p-6 border-b border-gray-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <Text size="heading-m" className="mb-2">OVHcloud</Text>
-                  <Text size="body-s">Facture de commande</Text>
+                  <Text preset="heading-3" className="mb-2">OVHcloud</Text>
+                  <Text preset="small">Facture de commande</Text>
                 </div>
                 <div className="text-right">
-                  <Text size="body-s">Date</Text>
-                  <Text size="body-m" className="font-semibold">{new Date().toLocaleDateString('fr-FR')}</Text>
+                  <Text preset="small">Date</Text>
+                  <Text preset="paragraph" className="font-semibold">{new Date().toLocaleDateString('fr-FR')}</Text>
                 </div>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Summary() {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Informations complémentaires */}
           <div className="bg-blue-50 rounded-lg p-4 mb-6">
@@ -178,14 +178,15 @@ export default function Summary() {
           {/* Boutons d'action */}
           <div className="flex gap-4">
             <Button
-              variant="secondary"
+              variant="outline"
               className="flex-1"
               onClick={() => navigate('/funnel/hosting')}
             >
               Retour
             </Button>
             <Button
-              variant="primary"
+              variant="default"
+              color="primary"
               className="flex-1"
               onClick={() => alert('Fonctionnalité de paiement à implémenter')}
             >

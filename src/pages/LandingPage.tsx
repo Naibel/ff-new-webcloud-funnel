@@ -20,10 +20,10 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full">
         <div className="text-center mb-12">
-          <Text size="heading-xl" className="mb-4">
+          <Text preset="heading-1" className="mb-4">
             Développez votre présence en ligne
           </Text>
-          <Text size="body-l">
+          <Text preset="paragraph">
             Choisissez votre parcours de commande
           </Text>
         </div>
@@ -41,15 +41,15 @@ export default function LandingPage() {
               onClick={handleGuidedMode}
             >
               <div className="absolute top-4 right-4">
-                <Badge variant="primary">Recommandé</Badge>
+                <Badge color="primary">Recommandé</Badge>
               </div>
               
               <div className="text-center mb-6">
                 <div className="text-5xl mb-4">🧭</div>
-                <Text size="heading-m" className="mb-2">
+                <Text preset="heading-3" className="mb-2">
                   Laissez-vous guider
                 </Text>
-                <Text size="body-m">
+                <Text preset="paragraph">
                   Recommandation personnalisée en 30 secondes
                 </Text>
               </div>
@@ -69,7 +69,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <Button variant="primary" className="w-full" onClick={handleGuidedMode}>
+              <Button variant="default" color="primary" className="w-full" onClick={handleGuidedMode}>
                 Commencer
               </Button>
             </Card>
@@ -87,10 +87,10 @@ export default function LandingPage() {
             >
               <div className="text-center mb-6">
                 <div className="text-5xl mb-4">📋</div>
-                <Text size="heading-m" className="mb-2">
+                <Text preset="heading-3" className="mb-2">
                   Accès direct au catalogue
                 </Text>
-                <Text size="body-m">
+                <Text preset="paragraph">
                   Je connais mes besoins
                 </Text>
               </div>
@@ -110,7 +110,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <Button variant="secondary" className="w-full" onClick={handleDirectAccess}>
+              <Button variant="outline" className="w-full" onClick={handleDirectAccess}>
                 Accéder au catalogue
               </Button>
             </Card>

@@ -136,10 +136,10 @@ export default function HostingSelection() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <Card className="mb-6">
-          <Text size="heading-l" className="mb-2">
+          <Text preset="heading-2" className="mb-2">
             Choisissez votre pack d'hébergement
           </Text>
-          <Text size="body-m">
+          <Text preset="paragraph">
             Nous avons sélectionné le pack le plus adapté à vos besoins
           </Text>
         </Card>
@@ -153,19 +153,19 @@ export default function HostingSelection() {
               animate={{ height: 'auto' }}
             >
               <Card className="border-2 border-primary border-l-4 bg-blue-50">
-                <Badge variant="primary" className="mb-3">
+                <Badge color="primary" className="mb-3">
                   Recommandé pour vous
                 </Badge>
-                <Text size="heading-m" className="mb-1">
+                <Text preset="heading-3" className="mb-1">
                   {recommendedPack.name}
                 </Text>
-                <Text size="body-m" className="mb-4">{recommendedPack.tagline}</Text>
+                <Text preset="paragraph" className="mb-4">{recommendedPack.tagline}</Text>
                 
                 <div className="mt-4">
-                  <Text size="heading-xl" className="mb-1">
+                  <Text preset="heading-1" className="mb-1">
                     {totalPrice.toFixed(2)} €/mois HT
                   </Text>
-                  <Text size="body-s" className="mb-4">
+                  <Text preset="small" className="mb-4">
                     soit {(totalPrice * 12).toFixed(2)} €/an HT
                   </Text>
                   
@@ -173,19 +173,19 @@ export default function HostingSelection() {
                     {recommendedPack.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center text-gray-700">
                         <span className="text-primary mr-2">✓</span>
-                        <Text size="body-m">{feature}</Text>
+                        <Text preset="paragraph">{feature}</Text>
                       </li>
                     ))}
                   </ul>
 
                   {/* Options de configuration */}
                   <Card className="mb-4">
-                    <Text size="body-m" className="font-semibold mb-3">Personnaliser les ressources</Text>
+                    <Text preset="paragraph" className="font-semibold mb-3">Personnaliser les ressources</Text>
                     
                     {recommendedPack.configurable && (
                       <div className="space-y-4">
                         <div>
-                          <Text size="body-s" className="mb-2">
+                          <Text preset="small" className="mb-2">
                             Stockage : {selectedConfig.storage} {recommendedPack.configurable.storage.unit}
                           </Text>
                           <Range
@@ -203,7 +203,7 @@ export default function HostingSelection() {
                         </div>
 
                         <div>
-                          <Text size="body-s" className="mb-2">
+                          <Text preset="small" className="mb-2">
                             Adresses email : {selectedConfig.emails}
                           </Text>
                           <Range
@@ -224,7 +224,8 @@ export default function HostingSelection() {
                   </Card>
 
                   <Button
-                    variant="primary"
+                    variant="default"
+                    color="primary"
                     className="w-full"
                     onClick={handleContinue}
                   >
@@ -253,16 +254,16 @@ export default function HostingSelection() {
                   <Card className="border-2 border-gray-200">
                     <div className="flex justify-between items-start">
                       <div className="flex-1">
-                        <Text size="heading-s" className="mb-1">
+                        <Text preset="heading-5" className="mb-1">
                           {pack.name}
                         </Text>
-                        <Text size="body-s">{pack.tagline}</Text>
+                        <Text preset="small">{pack.tagline}</Text>
                         {isExpanded && (
                           <div className="mt-4">
-                            <Text size="heading-m" className="mb-1">
+                            <Text preset="heading-3" className="mb-1">
                               {calculatePackPrice(pack.id).toFixed(2)} €/mois HT
                             </Text>
-                            <Text size="body-s" className="mb-4">
+                            <Text preset="small" className="mb-4">
                               soit {(calculatePackPrice(pack.id) * 12).toFixed(2)} €/an HT
                             </Text>
                             
@@ -270,7 +271,7 @@ export default function HostingSelection() {
                               {pack.features.map((feature, idx) => (
                                 <li key={idx} className="flex items-center text-gray-700">
                                   <span className="text-primary mr-2">✓</span>
-                                  <Text size="body-s">{feature}</Text>
+                                  <Text preset="small">{feature}</Text>
                                 </li>
                               ))}
                             </ul>
@@ -278,11 +279,11 @@ export default function HostingSelection() {
                             {/* Options de configuration */}
                             {pack.configurable && (
                               <Card className="mb-4 bg-gray-50">
-                                <Text size="body-s" className="font-semibold mb-3">Personnaliser les ressources</Text>
+                                <Text preset="small" className="font-semibold mb-3">Personnaliser les ressources</Text>
                                 
                                 <div className="space-y-3">
                                   <div>
-                                    <Text size="body-xs" className="mb-1">
+                                    <Text preset="small" className="mb-1">
                                       Stockage : {packConfig.storage} {pack.configurable.storage.unit}
                                     </Text>
                                     <Range
@@ -300,7 +301,7 @@ export default function HostingSelection() {
                                   </div>
 
                                   <div>
-                                    <Text size="body-xs" className="mb-1">
+                                    <Text preset="small" className="mb-1">
                                       Adresses email : {packConfig.emails}
                                     </Text>
                                     <Range
@@ -321,8 +322,9 @@ export default function HostingSelection() {
                             )}
 
                             <Button
-                              variant="primary"
-                              size="s"
+                              variant="default"
+                              color="primary"
+                              size="sm"
                               className="w-full"
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -336,7 +338,7 @@ export default function HostingSelection() {
                       </div>
                       {!isExpanded && (
                         <div className="flex items-center gap-4">
-                          <Text size="body-m" className="font-semibold">
+                          <Text preset="paragraph" className="font-semibold">
                             {calculatePackPrice(pack.id).toFixed(2)} €/mois
                           </Text>
                           <span className="text-gray-400 text-xl">▼</span>
@@ -353,14 +355,14 @@ export default function HostingSelection() {
           <div className="space-y-6">
             {/* Options complémentaires */}
             <Card>
-              <Text size="body-m" className="font-semibold mb-4">
+              <Text preset="paragraph" className="font-semibold mb-4">
                 Options recommandées pour vous
               </Text>
               <div className="space-y-4">
                 <label className="flex items-center justify-between cursor-pointer">
                   <div>
-                    <Text size="body-m" className="font-medium">Base de données SQL Privée</Text>
-                    <Text size="body-s">+4,99 €/mois</Text>
+                    <Text preset="paragraph" className="font-medium">Base de données SQL Privée</Text>
+                    <Text preset="small">+4,99 €/mois</Text>
                   </div>
                   <Checkbox
                     checked={options.sqlDatabase}
@@ -369,8 +371,8 @@ export default function HostingSelection() {
                 </label>
                 <label className="flex items-center justify-between cursor-pointer">
                   <div>
-                    <Text size="body-m" className="font-medium">CDN Premium</Text>
-                    <Text size="body-s">+9,99 €/mois</Text>
+                    <Text preset="paragraph" className="font-medium">CDN Premium</Text>
+                    <Text preset="small">+9,99 €/mois</Text>
                   </div>
                   <Checkbox
                     checked={options.cdnPremium}
@@ -379,8 +381,8 @@ export default function HostingSelection() {
                 </label>
                 <label className="flex items-center justify-between cursor-pointer">
                   <div>
-                    <Text size="body-m" className="font-medium">Sauvegarde Cloud supplémentaire</Text>
-                    <Text size="body-s">+2,99 €/mois</Text>
+                    <Text preset="paragraph" className="font-medium">Sauvegarde Cloud supplémentaire</Text>
+                    <Text preset="small">+2,99 €/mois</Text>
                   </div>
                   <Checkbox
                     checked={options.extraBackup}
@@ -392,7 +394,7 @@ export default function HostingSelection() {
 
             {/* Récapitulatif */}
             <Card className="sticky top-4">
-              <Text size="body-m" className="font-semibold mb-4">Votre sélection</Text>
+              <Text preset="paragraph" className="font-semibold mb-4">Votre sélection</Text>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Domaines</span>
@@ -422,7 +424,8 @@ export default function HostingSelection() {
                 </div>
               </div>
               <Button
-                variant="primary"
+                variant="default"
+                color="primary"
                 className="w-full mt-6"
                 onClick={handleContinue}
               >
