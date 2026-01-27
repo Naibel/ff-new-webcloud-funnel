@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Button } from '@ovhcloud/ods-react';
+import { Card } from '@ovhcloud/ods-react';
+import { Input } from '@ovhcloud/ods-react';
+import { Badge } from '@ovhcloud/ods-react';
+import { Checkbox } from '@ovhcloud/ods-react';
+import { Text } from '@ovhcloud/ods-react';
+import { Spinner } from '@ovhcloud/ods-react';
 
 interface DomainResult {
   name: string;
@@ -118,33 +125,33 @@ export default function DomainSelection() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-xl shadow-xl p-8 mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <Card className="mb-6">
+          <Text size="heading-l" className="mb-2">
             Recherchez votre nom de domaine
-          </h1>
-          <p className="text-gray-600">
+          </Text>
+          <Text size="body-m">
             Recherchez et sélectionnez un ou plusieurs domaines pour votre projet
-          </p>
-        </div>
+          </Text>
+        </Card>
 
         {/* Champ de recherche */}
-        <div className="bg-white rounded-xl shadow-xl p-8 mb-6">
+        <Card className="mb-6">
           <div className="flex gap-4 mb-4">
-            <input
+            <Input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Recherchez votre domaine (ex: votre-entreprise)"
-              className="flex-1 h-16 px-4 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none text-lg"
+              className="flex-1"
             />
-            <button 
+            <Button 
+              variant="primary"
               onClick={handleSearch}
               disabled={!searchTerm.trim() || isSearching}
-              className="px-8 bg-primary text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSearching ? 'Recherche...' : 'Rechercher'}
-            </button>
+              {isSearching ? <Spinner size="s" /> : 'Rechercher'}
+            </Button>
           </div>
 
           {/* Résultats de recherche */}
@@ -154,18 +161,18 @@ export default function DomainSelection() {
               animate={{ opacity: 1, y: 0 }}
               className="mt-6"
             >
-              <p className="text-sm font-semibold text-gray-700 mb-4">
+              <Text size="body-s" className="mb-4">
                 Résultats de recherche ({searchResults.length} domaines trouvés)
-              </p>
+              </Text>
               <div className="space-y-3 max-h-96 overflow-y-auto">
                 {searchResults.map((result, idx) => {
                   const domainFull = `${result.name}${result.extension}`;
                   const isSelected = selectedDomains.has(domainFull);
                   
                   return (
-                    <div
+                    <Card
                       key={`${result.name}-${result.extension}-${idx}`}
-                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                      className={`cursor-pointer transition-all ${
                         isSelected
                           ? 'border-primary bg-blue-50'
                           : result.available
@@ -176,40 +183,34 @@ export default function DomainSelection() {
                     >
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-3">
-                          <input
-                            type="checkbox"
+                          <Checkbox
                             checked={isSelected}
                             onChange={() => result.available && handleDomainToggle(domainFull)}
                             disabled={!result.available}
-                            className="w-5 h-5 text-primary rounded cursor-pointer"
                             onClick={(e) => e.stopPropagation()}
                           />
                           <div>
-                            <span className="font-semibold text-gray-900">
+                            <Text size="body-m" className="font-semibold">
                               {result.name}
                               <span className="text-primary">{result.extension}</span>
-                            </span>
-                            {result.available ? (
-                              <span className="ml-3 px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">
-                                Disponible
-                              </span>
-                            ) : (
-                              <span className="ml-3 px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded">
-                                Indisponible
-                              </span>
-                            )}
-                            {availableExtensions.find(e => e.ext === result.extension)?.popular && (
-                              <span className="ml-2 px-2 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded">
-                                Populaire
-                              </span>
-                            )}
+                            </Text>
+                            <div className="flex gap-2 mt-1">
+                              {result.available ? (
+                                <Badge variant="success">Disponible</Badge>
+                              ) : (
+                                <Badge variant="error">Indisponible</Badge>
+                              )}
+                              {availableExtensions.find(e => e.ext === result.extension)?.popular && (
+                                <Badge variant="warning">Populaire</Badge>
+                              )}
+                            </div>
                           </div>
                         </div>
-                        <span className="text-gray-700 font-semibold">
+                        <Text size="body-m" className="font-semibold">
                           {result.price.toFixed(2)} €/an HT
-                        </span>
+                        </Text>
                       </div>
-                    </div>
+                    </Card>
                   );
                 })}
               </div>
@@ -219,39 +220,39 @@ export default function DomainSelection() {
           {/* Message si pas de recherche */}
           {searchResults.length === 0 && !isSearching && (
             <div className="text-center py-8 text-gray-500">
-              <p>Entrez un nom de domaine dans le champ ci-dessus et cliquez sur "Rechercher"</p>
+              <Text size="body-m">Entrez un nom de domaine dans le champ ci-dessus et cliquez sur "Rechercher"</Text>
             </div>
           )}
-        </div>
+        </Card>
 
         {/* Récapitulatif sticky */}
         {selectedDomains.size > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-xl shadow-xl p-6 sticky bottom-4"
+            className="sticky bottom-4"
           >
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="text-sm text-gray-600 mb-1">Domaines sélectionnés ({selectedDomains.size})</p>
-                <div className="flex flex-wrap gap-2">
-                  {Array.from(selectedDomains).slice(0, 3).map((domain) => (
-                    <span key={domain} className="text-sm font-semibold text-gray-900 bg-blue-50 px-2 py-1 rounded">
-                      {domain}
-                    </span>
-                  ))}
-                  {selectedDomains.size > 3 && (
-                    <span className="text-sm text-gray-600">+{selectedDomains.size - 3} autres</span>
-                  )}
+            <Card>
+              <div className="flex justify-between items-center">
+                <div>
+                  <Text size="body-s" className="mb-1">Domaines sélectionnés ({selectedDomains.size})</Text>
+                  <div className="flex flex-wrap gap-2">
+                    {Array.from(selectedDomains).slice(0, 3).map((domain) => (
+                      <Badge key={domain} variant="primary">{domain}</Badge>
+                    ))}
+                    {selectedDomains.size > 3 && (
+                      <Text size="body-s">+{selectedDomains.size - 3} autres</Text>
+                    )}
+                  </div>
                 </div>
+                <Button
+                  variant="primary"
+                  onClick={handleContinue}
+                >
+                  Suivant
+                </Button>
               </div>
-              <button
-                onClick={handleContinue}
-                className="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
-              >
-                Suivant
-              </button>
-            </div>
+            </Card>
           </motion.div>
         )}
       </div>

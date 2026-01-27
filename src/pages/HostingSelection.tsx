@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Button } from '@ovhcloud/ods-react';
+import { Card } from '@ovhcloud/ods-react';
+import { Badge } from '@ovhcloud/ods-react';
+import { Checkbox } from '@ovhcloud/ods-react';
+import { Text } from '@ovhcloud/ods-react';
+import { Range } from '@ovhcloud/ods-react';
+import { Accordion } from '@ovhcloud/ods-react';
 
 const hostingPacks = [
   {
@@ -128,14 +135,14 @@ export default function HostingSelection() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-xl shadow-xl p-8 mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <Card className="mb-6">
+          <Text size="heading-l" className="mb-2">
             Choisissez votre pack d'hébergement
-          </h1>
-          <p className="text-gray-600">
+          </Text>
+          <Text size="body-m">
             Nous avons sélectionné le pack le plus adapté à vos besoins
-          </p>
-        </div>
+          </Text>
+        </Card>
 
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Zone centrale - Tuiles d'offres */}
@@ -144,46 +151,44 @@ export default function HostingSelection() {
             <motion.div
               initial={false}
               animate={{ height: 'auto' }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-primary border-l-4"
             >
-              <div className="p-6 bg-blue-50">
-                <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
+              <Card className="border-2 border-primary border-l-4 bg-blue-50">
+                <Badge variant="primary" className="mb-3">
                   Recommandé pour vous
-                </span>
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                </Badge>
+                <Text size="heading-m" className="mb-1">
                   {recommendedPack.name}
-                </h3>
-                <p className="text-gray-600 mb-4">{recommendedPack.tagline}</p>
+                </Text>
+                <Text size="body-m" className="mb-4">{recommendedPack.tagline}</Text>
                 
                 <div className="mt-4">
-                  <p className="text-3xl font-bold text-gray-900 mb-1">
+                  <Text size="heading-xl" className="mb-1">
                     {totalPrice.toFixed(2)} €/mois HT
-                  </p>
-                  <p className="text-sm text-gray-600 mb-4">
+                  </Text>
+                  <Text size="body-s" className="mb-4">
                     soit {(totalPrice * 12).toFixed(2)} €/an HT
-                  </p>
+                  </Text>
                   
                   <ul className="space-y-2 mb-6">
                     {recommendedPack.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center text-gray-700">
                         <span className="text-primary mr-2">✓</span>
-                        {feature}
+                        <Text size="body-m">{feature}</Text>
                       </li>
                     ))}
                   </ul>
 
                   {/* Options de configuration */}
-                  <div className="bg-white rounded-lg p-4 mb-4 border border-gray-200">
-                    <p className="font-semibold text-gray-900 mb-3">Personnaliser les ressources</p>
+                  <Card className="mb-4">
+                    <Text size="body-m" className="font-semibold mb-3">Personnaliser les ressources</Text>
                     
                     {recommendedPack.configurable && (
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <Text size="body-s" className="mb-2">
                             Stockage : {selectedConfig.storage} {recommendedPack.configurable.storage.unit}
-                          </label>
-                          <input
-                            type="range"
+                          </Text>
+                          <Range
                             min={recommendedPack.configurable.storage.min}
                             max={recommendedPack.configurable.storage.max}
                             step={recommendedPack.configurable.storage.step}
@@ -198,11 +203,10 @@ export default function HostingSelection() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <Text size="body-s" className="mb-2">
                             Adresses email : {selectedConfig.emails}
-                          </label>
-                          <input
-                            type="range"
+                          </Text>
+                          <Range
                             min={recommendedPack.configurable.emails.min}
                             max={recommendedPack.configurable.emails.max}
                             step={recommendedPack.configurable.emails.step}
@@ -217,16 +221,17 @@ export default function HostingSelection() {
                         </div>
                       </div>
                     )}
-                  </div>
+                  </Card>
 
-                  <button
+                  <Button
+                    variant="primary"
+                    className="w-full"
                     onClick={handleContinue}
-                    className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
                   >
                     Choisir cette offre
-                  </button>
+                  </Button>
                 </div>
-              </div>
+              </Card>
             </motion.div>
 
             {/* Autres packs repliés */}
@@ -239,49 +244,48 @@ export default function HostingSelection() {
                   key={pack.id}
                   initial={false}
                   animate={{ height: isExpanded ? 'auto' : 80 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-200 cursor-pointer"
+                  className="cursor-pointer"
                   onClick={() => {
                     setExpandedPack(isExpanded ? recommendedPack.id : pack.id);
                     setSelectedPack(pack.id);
                   }}
                 >
-                  <div className="p-6">
+                  <Card className="border-2 border-gray-200">
                     <div className="flex justify-between items-start">
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-900 mb-1">
+                        <Text size="heading-s" className="mb-1">
                           {pack.name}
-                        </h3>
-                        <p className="text-gray-600 text-sm">{pack.tagline}</p>
+                        </Text>
+                        <Text size="body-s">{pack.tagline}</Text>
                         {isExpanded && (
                           <div className="mt-4">
-                            <p className="text-2xl font-bold text-gray-900 mb-1">
+                            <Text size="heading-m" className="mb-1">
                               {calculatePackPrice(pack.id).toFixed(2)} €/mois HT
-                            </p>
-                            <p className="text-sm text-gray-600 mb-4">
+                            </Text>
+                            <Text size="body-s" className="mb-4">
                               soit {(calculatePackPrice(pack.id) * 12).toFixed(2)} €/an HT
-                            </p>
+                            </Text>
                             
                             <ul className="space-y-2 mb-4">
                               {pack.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center text-gray-700 text-sm">
+                                <li key={idx} className="flex items-center text-gray-700">
                                   <span className="text-primary mr-2">✓</span>
-                                  {feature}
+                                  <Text size="body-s">{feature}</Text>
                                 </li>
                               ))}
                             </ul>
 
                             {/* Options de configuration */}
                             {pack.configurable && (
-                              <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
-                                <p className="font-semibold text-gray-900 mb-3 text-sm">Personnaliser les ressources</p>
+                              <Card className="mb-4 bg-gray-50">
+                                <Text size="body-s" className="font-semibold mb-3">Personnaliser les ressources</Text>
                                 
                                 <div className="space-y-3">
                                   <div>
-                                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                                    <Text size="body-xs" className="mb-1">
                                       Stockage : {packConfig.storage} {pack.configurable.storage.unit}
-                                    </label>
-                                    <input
-                                      type="range"
+                                    </Text>
+                                    <Range
                                       min={pack.configurable.storage.min}
                                       max={pack.configurable.storage.max}
                                       step={pack.configurable.storage.step}
@@ -296,11 +300,10 @@ export default function HostingSelection() {
                                   </div>
 
                                   <div>
-                                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                                    <Text size="body-xs" className="mb-1">
                                       Adresses email : {packConfig.emails}
-                                    </label>
-                                    <input
-                                      type="range"
+                                    </Text>
+                                    <Range
                                       min={pack.configurable.emails.min}
                                       max={pack.configurable.emails.max}
                                       step={pack.configurable.emails.step}
@@ -314,31 +317,33 @@ export default function HostingSelection() {
                                     />
                                   </div>
                                 </div>
-                              </div>
+                              </Card>
                             )}
 
-                            <button
+                            <Button
+                              variant="primary"
+                              size="s"
+                              className="w-full"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleContinue();
                               }}
-                              className="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors text-sm"
                             >
                               Choisir cette offre
-                            </button>
+                            </Button>
                           </div>
                         )}
                       </div>
                       {!isExpanded && (
                         <div className="flex items-center gap-4">
-                          <span className="text-gray-700 font-semibold">
+                          <Text size="body-m" className="font-semibold">
                             {calculatePackPrice(pack.id).toFixed(2)} €/mois
-                          </span>
+                          </Text>
                           <span className="text-gray-400 text-xl">▼</span>
                         </div>
                       )}
                     </div>
-                  </div>
+                  </Card>
                 </motion.div>
               );
             })}
@@ -347,53 +352,47 @@ export default function HostingSelection() {
           {/* Sidebar - Options et récapitulatif */}
           <div className="space-y-6">
             {/* Options complémentaires */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">
+            <Card>
+              <Text size="body-m" className="font-semibold mb-4">
                 Options recommandées pour vous
-              </h3>
+              </Text>
               <div className="space-y-4">
                 <label className="flex items-center justify-between cursor-pointer">
                   <div>
-                    <p className="font-medium text-gray-900">Base de données SQL Privée</p>
-                    <p className="text-sm text-gray-600">+4,99 €/mois</p>
+                    <Text size="body-m" className="font-medium">Base de données SQL Privée</Text>
+                    <Text size="body-s">+4,99 €/mois</Text>
                   </div>
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={options.sqlDatabase}
                     onChange={(e) => setOptions({ ...options, sqlDatabase: e.target.checked })}
-                    className="w-5 h-5 text-primary rounded"
                   />
                 </label>
                 <label className="flex items-center justify-between cursor-pointer">
                   <div>
-                    <p className="font-medium text-gray-900">CDN Premium</p>
-                    <p className="text-sm text-gray-600">+9,99 €/mois</p>
+                    <Text size="body-m" className="font-medium">CDN Premium</Text>
+                    <Text size="body-s">+9,99 €/mois</Text>
                   </div>
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={options.cdnPremium}
                     onChange={(e) => setOptions({ ...options, cdnPremium: e.target.checked })}
-                    className="w-5 h-5 text-primary rounded"
                   />
                 </label>
                 <label className="flex items-center justify-between cursor-pointer">
                   <div>
-                    <p className="font-medium text-gray-900">Sauvegarde Cloud supplémentaire</p>
-                    <p className="text-sm text-gray-600">+2,99 €/mois</p>
+                    <Text size="body-m" className="font-medium">Sauvegarde Cloud supplémentaire</Text>
+                    <Text size="body-s">+2,99 €/mois</Text>
                   </div>
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={options.extraBackup}
                     onChange={(e) => setOptions({ ...options, extraBackup: e.target.checked })}
-                    className="w-5 h-5 text-primary rounded"
                   />
                 </label>
               </div>
-            </div>
+            </Card>
 
             {/* Récapitulatif */}
-            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-4">
-              <h3 className="font-semibold text-gray-900 mb-4">Votre sélection</h3>
+            <Card className="sticky top-4">
+              <Text size="body-m" className="font-semibold mb-4">Votre sélection</Text>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Domaines</span>
@@ -422,13 +421,14 @@ export default function HostingSelection() {
                   </div>
                 </div>
               </div>
-              <button
+              <Button
+                variant="primary"
+                className="w-full mt-6"
                 onClick={handleContinue}
-                className="w-full mt-6 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
               >
                 Continuer vers le paiement
-              </button>
-            </div>
+              </Button>
+            </Card>
           </div>
         </div>
       </div>

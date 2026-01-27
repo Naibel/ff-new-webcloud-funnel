@@ -1,4 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Button } from '@ovhcloud/ods-react';
+import { Card } from '@ovhcloud/ods-react';
+import { Text } from '@ovhcloud/ods-react';
+import { Table } from '@ovhcloud/ods-react';
 
 export default function Summary() {
   const location = useLocation();
@@ -29,28 +33,28 @@ export default function Summary() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-xl shadow-xl p-8">
+        <Card>
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <Text size="heading-l" className="mb-2">
               Récapitulatif de votre commande
-            </h1>
-            <p className="text-gray-600">
+            </Text>
+            <Text size="body-m">
               Vérifiez les détails avant de finaliser votre commande
-            </p>
+            </Text>
           </div>
 
           {/* Facture détaillée */}
-          <div className="border-2 border-gray-200 rounded-lg overflow-hidden mb-6">
+          <Card className="mb-6 border-2 border-gray-200">
             {/* En-tête facture */}
             <div className="bg-gray-50 p-6 border-b border-gray-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-2">OVHcloud</h2>
-                  <p className="text-sm text-gray-600">Facture de commande</p>
+                  <Text size="heading-m" className="mb-2">OVHcloud</Text>
+                  <Text size="body-s">Facture de commande</Text>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-600">Date</p>
-                  <p className="font-semibold text-gray-900">{new Date().toLocaleDateString('fr-FR')}</p>
+                  <Text size="body-s">Date</Text>
+                  <Text size="body-m" className="font-semibold">{new Date().toLocaleDateString('fr-FR')}</Text>
                 </div>
               </div>
             </div>
@@ -173,20 +177,22 @@ export default function Summary() {
 
           {/* Boutons d'action */}
           <div className="flex gap-4">
-            <button
+            <Button
+              variant="secondary"
+              className="flex-1"
               onClick={() => navigate('/funnel/hosting')}
-              className="flex-1 px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors font-semibold"
             >
               Retour
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="primary"
+              className="flex-1"
               onClick={() => alert('Fonctionnalité de paiement à implémenter')}
-              className="flex-1 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
             >
               Finaliser la commande ({totalTTC.toFixed(2)} € TTC)
-            </button>
+            </Button>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   );
