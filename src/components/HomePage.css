@@ -1,0 +1,117 @@
+/* HomePage avec style OVHcloud */
+
+.homepage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ovh-color-primary) 0%, var(--ovh-color-primary-dark) 100%);
+  padding: var(--ovh-spacing-xl);
+}
+
+.homepage-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.homepage-header {
+  text-align: center;
+  margin-bottom: var(--ovh-spacing-xxl);
+  color: white;
+}
+
+.homepage-title {
+  font-size: var(--ovh-font-size-xxxl);
+  font-weight: var(--ovh-font-weight-bold);
+  margin-bottom: var(--ovh-spacing-md);
+  line-height: 1.2;
+  color: white;
+}
+
+.homepage-subtitle {
+  font-size: var(--ovh-font-size-lg);
+  opacity: 0.95;
+  font-weight: var(--ovh-font-weight-normal);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.homepage-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--ovh-spacing-xl);
+  margin-top: var(--ovh-spacing-xxl);
+}
+
+.option-card {
+  background: var(--ovh-bg-primary);
+  border-radius: var(--ovh-border-radius-lg);
+  padding: var(--ovh-spacing-xxl) var(--ovh-spacing-xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--ovh-transition-base);
+  box-shadow: var(--ovh-shadow-lg);
+  border: var(--ovh-border-width) solid transparent;
+}
+
+.option-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ovh-shadow-lg);
+  border-color: var(--ovh-color-primary);
+}
+
+.option-icon {
+  font-size: 3.5rem;
+  margin-bottom: var(--ovh-spacing-lg);
+}
+
+.option-title {
+  font-size: var(--ovh-font-size-xl);
+  font-weight: var(--ovh-font-weight-semibold);
+  color: var(--ovh-text-primary);
+  margin-bottom: var(--ovh-spacing-md);
+}
+
+.option-description {
+  font-size: var(--ovh-font-size-md);
+  color: var(--ovh-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--ovh-spacing-xl);
+}
+
+.option-button {
+  background: var(--ovh-color-primary);
+  color: white;
+  border: none;
+  padding: var(--ovh-spacing-md) var(--ovh-spacing-xl);
+  border-radius: var(--ovh-border-radius-md);
+  font-size: var(--ovh-font-size-md);
+  font-weight: var(--ovh-font-weight-medium);
+  cursor: pointer;
+  transition: all var(--ovh-transition-base);
+  width: 100%;
+  font-family: var(--ovh-font-family);
+}
+
+.option-button:hover {
+  background: var(--ovh-color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--ovh-shadow-md);
+}
+
+@media (max-width: 768px) {
+  .homepage-title {
+    font-size: var(--ovh-font-size-xxl);
+  }
+
+  .homepage-subtitle {
+    font-size: var(--ovh-font-size-md);
+  }
+
+  .homepage-options {
+    grid-template-columns: 1fr;
+  }
+
+  .option-card {
+    padding: var(--ovh-spacing-xl) var(--ovh-spacing-lg);
+  }
+}
