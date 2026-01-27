@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export default function Summary() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { questionnaire, domain, hosting, options } = location.state || {};
+  const { domain, hosting, options } = location.state || {};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
