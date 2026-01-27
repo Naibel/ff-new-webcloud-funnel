@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // Import des styles ODS
-import '@ovhcloud/ods-react/src/style/normalize.css'
-import '@ovhcloud/ods-react/src/style/index.scss'
+// Note: Les composants ODS chargent leurs styles CSS automatiquement via leurs imports
+// Les styles globaux (normalize, variables) sont optionnels
 import './index.css'
 import App from './App.tsx'
 

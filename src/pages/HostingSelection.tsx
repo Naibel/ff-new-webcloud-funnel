@@ -6,8 +6,6 @@ import { Card } from '@ovhcloud/ods-react';
 import { Badge } from '@ovhcloud/ods-react';
 import { Checkbox } from '@ovhcloud/ods-react';
 import { Text } from '@ovhcloud/ods-react';
-import { Range } from '@ovhcloud/ods-react';
-import { Accordion } from '@ovhcloud/ods-react';
 
 const hostingPacks = [
   {
@@ -188,7 +186,8 @@ export default function HostingSelection() {
                           <Text preset="small" className="mb-2">
                             Stockage : {selectedConfig.storage} {recommendedPack.configurable.storage.unit}
                           </Text>
-                          <Range
+                          <input
+                            type="range"
                             min={recommendedPack.configurable.storage.min}
                             max={recommendedPack.configurable.storage.max}
                             step={recommendedPack.configurable.storage.step}
@@ -206,7 +205,8 @@ export default function HostingSelection() {
                           <Text preset="small" className="mb-2">
                             Adresses email : {selectedConfig.emails}
                           </Text>
-                          <Range
+                          <input
+                            type="range"
                             min={recommendedPack.configurable.emails.min}
                             max={recommendedPack.configurable.emails.max}
                             step={recommendedPack.configurable.emails.step}
@@ -286,7 +286,8 @@ export default function HostingSelection() {
                                     <Text preset="small" className="mb-1">
                                       Stockage : {packConfig.storage} {pack.configurable.storage.unit}
                                     </Text>
-                                    <Range
+                                    <input
+                                      type="range"
                                       min={pack.configurable.storage.min}
                                       max={pack.configurable.storage.max}
                                       step={pack.configurable.storage.step}
@@ -304,7 +305,8 @@ export default function HostingSelection() {
                                     <Text preset="small" className="mb-1">
                                       Adresses email : {packConfig.emails}
                                     </Text>
-                                    <Range
+                                    <input
+                                      type="range"
                                       min={pack.configurable.emails.min}
                                       max={pack.configurable.emails.max}
                                       step={pack.configurable.emails.step}
@@ -366,7 +368,7 @@ export default function HostingSelection() {
                   </div>
                   <Checkbox
                     checked={options.sqlDatabase}
-                    onChange={(e) => setOptions({ ...options, sqlDatabase: e.target.checked })}
+                    onCheckedChange={(detail) => setOptions({ ...options, sqlDatabase: detail.checked === true })}
                   />
                 </label>
                 <label className="flex items-center justify-between cursor-pointer">
@@ -376,7 +378,7 @@ export default function HostingSelection() {
                   </div>
                   <Checkbox
                     checked={options.cdnPremium}
-                    onChange={(e) => setOptions({ ...options, cdnPremium: e.target.checked })}
+                    onCheckedChange={(detail) => setOptions({ ...options, cdnPremium: detail.checked === true })}
                   />
                 </label>
                 <label className="flex items-center justify-between cursor-pointer">
@@ -386,7 +388,7 @@ export default function HostingSelection() {
                   </div>
                   <Checkbox
                     checked={options.extraBackup}
-                    onChange={(e) => setOptions({ ...options, extraBackup: e.target.checked })}
+                    onCheckedChange={(detail) => setOptions({ ...options, extraBackup: detail.checked === true })}
                   />
                 </label>
               </div>

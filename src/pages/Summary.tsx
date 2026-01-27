@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@ovhcloud/ods-react';
 import { Card } from '@ovhcloud/ods-react';
 import { Text } from '@ovhcloud/ods-react';
-import { Table } from '@ovhcloud/ods-react';
 
 export default function Summary() {
   const location = useLocation();
