@@ -1,9 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Button } from '@ovhcloud/ods-react';
-import { Card } from '@ovhcloud/ods-react';
-import { Badge } from '@ovhcloud/ods-react';
-import { Text } from '@ovhcloud/ods-react';
+import { Button, Card, Badge, Text } from '@ovhcloud/ods-react';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -17,10 +14,10 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="max-w-4xl w-full">
-        <div className="text-center mb-12">
-          <Text preset="heading-1" className="mb-4">
+    <div className="ods-page">
+      <div className="ods-container ods-container--centered">
+        <div className="ods-section ods-section--hero ods-text--center ods-mb-12">
+          <Text preset="heading-1" className="ods-mb-4">
             Développez votre présence en ligne
           </Text>
           <Text preset="paragraph">
@@ -28,25 +25,26 @@ export default function LandingPage() {
           </Text>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="ods-grid ods-grid--2-cols ods-gap-6">
           {/* Option A - Mode Guidé */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative"
+            className="ods-position--relative"
           >
             <Card 
-              className="cursor-pointer border-2 border-primary hover:shadow-xl transition-shadow"
+              color="primary"
+              className="ods-card--interactive ods-p-6"
               onClick={handleGuidedMode}
             >
-              <div className="absolute top-4 right-4">
-                <Badge color="primary">Recommandé</Badge>
+              <div className="ods-position--absolute ods-top-4 ods-right-4">
+                <Badge color="primary" size="sm">Recommandé</Badge>
               </div>
               
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-4">🧭</div>
-                <Text preset="heading-3" className="mb-2">
+              <div className="ods-text--center ods-mb-6">
+                <div className="ods-text--5xl ods-mb-4">🧭</div>
+                <Text preset="heading-3" className="ods-mb-2">
                   Laissez-vous guider
                 </Text>
                 <Text preset="paragraph">
@@ -54,22 +52,22 @@ export default function LandingPage() {
                 </Text>
               </div>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm text-gray-700">
-                  <span className="text-primary mr-2">✓</span>
-                  Questionnaire rapide (4 questions)
+              <div className="ods-space-y-3 ods-mb-6">
+                <div className="ods-flex ods-items-center ods-text--sm">
+                  <span className="ods-text--primary ods-mr-2">✓</span>
+                  <Text preset="small">Questionnaire rapide (4 questions)</Text>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <span className="text-primary mr-2">✓</span>
-                  Pack d'hébergement adapté à vos besoins
+                <div className="ods-flex ods-items-center ods-text--sm">
+                  <span className="ods-text--primary ods-mr-2">✓</span>
+                  <Text preset="small">Pack d'hébergement adapté à vos besoins</Text>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <span className="text-primary mr-2">✓</span>
-                  Suggestions de domaines intelligentes
+                <div className="ods-flex ods-items-center ods-text--sm">
+                  <span className="ods-text--primary ods-mr-2">✓</span>
+                  <Text preset="small">Suggestions de domaines intelligentes</Text>
                 </div>
               </div>
 
-              <Button variant="default" color="primary" className="w-full" onClick={handleGuidedMode}>
+              <Button variant="default" color="primary" className="ods-w-full" onClick={handleGuidedMode}>
                 Commencer
               </Button>
             </Card>
@@ -82,12 +80,13 @@ export default function LandingPage() {
             transition={{ duration: 0.3, delay: 0.2 }}
           >
             <Card 
-              className="cursor-pointer border-2 border-gray-200 hover:shadow-xl transition-shadow"
+              color="neutral"
+              className="ods-card--interactive ods-p-6"
               onClick={handleDirectAccess}
             >
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-4">📋</div>
-                <Text preset="heading-3" className="mb-2">
+              <div className="ods-text--center ods-mb-6">
+                <div className="ods-text--5xl ods-mb-4">📋</div>
+                <Text preset="heading-3" className="ods-mb-2">
                   Accès direct au catalogue
                 </Text>
                 <Text preset="paragraph">
@@ -95,22 +94,22 @@ export default function LandingPage() {
                 </Text>
               </div>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm text-gray-700">
-                  <span className="text-gray-400 mr-2">→</span>
-                  Parcourir tous les packs disponibles
+              <div className="ods-space-y-3 ods-mb-6">
+                <div className="ods-flex ods-items-center ods-text--sm">
+                  <span className="ods-text--muted ods-mr-2">→</span>
+                  <Text preset="small">Parcourir tous les packs disponibles</Text>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <span className="text-gray-400 mr-2">→</span>
-                  Configuration manuelle
+                <div className="ods-flex ods-items-center ods-text--sm">
+                  <span className="ods-text--muted ods-mr-2">→</span>
+                  <Text preset="small">Configuration manuelle</Text>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <span className="text-gray-400 mr-2">→</span>
-                  Pack Pro présélectionné
+                <div className="ods-flex ods-items-center ods-text--sm">
+                  <span className="ods-text--muted ods-mr-2">→</span>
+                  <Text preset="small">Pack Pro présélectionné</Text>
                 </div>
               </div>
 
-              <Button variant="outline" className="w-full" onClick={handleDirectAccess}>
+              <Button variant="outline" color="neutral" className="ods-w-full" onClick={handleDirectAccess}>
                 Accéder au catalogue
               </Button>
             </Card>
@@ -120,4 +119,3 @@ export default function LandingPage() {
     </div>
   );
 }
-

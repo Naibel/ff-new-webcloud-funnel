@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Button } from '@ovhcloud/ods-react';
-import { Card } from '@ovhcloud/ods-react';
-import { Badge } from '@ovhcloud/ods-react';
-import { Checkbox } from '@ovhcloud/ods-react';
-import { Text } from '@ovhcloud/ods-react';
+import { 
+  Button, 
+  Card, 
+  Badge, 
+  Checkbox, 
+  CheckboxControl,
+  Text,
+  Range
+} from '@ovhcloud/ods-react';
 
 const hostingPacks = [
   {
@@ -131,10 +135,10 @@ export default function HostingSelection() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <Card className="mb-6">
-          <Text preset="heading-2" className="mb-2">
+    <div className="ods-page">
+      <div className="ods-container ods-max-w-6xl">
+        <Card color="neutral" className="ods-mb-6 ods-p-6">
+          <Text preset="heading-2" className="ods-mb-2">
             Choisissez votre pack d'hébergement
           </Text>
           <Text preset="paragraph">
@@ -142,79 +146,77 @@ export default function HostingSelection() {
           </Text>
         </Card>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="ods-grid ods-grid--3-cols ods-gap-6">
           {/* Zone centrale - Tuiles d'offres */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="ods-col-span-2 ods-space-y-4">
             {/* Pack recommandé en premier, déplié */}
             <motion.div
               initial={false}
               animate={{ height: 'auto' }}
             >
-              <Card className="border-2 border-primary border-l-4 bg-blue-50">
-                <Badge color="primary" className="mb-3">
+              <Card color="primary" className="ods-p-6 ods-border-l-4 ods-border--primary">
+                <Badge color="primary" size="sm" className="ods-mb-3">
                   Recommandé pour vous
                 </Badge>
-                <Text preset="heading-3" className="mb-1">
+                <Text preset="heading-3" className="ods-mb-1">
                   {recommendedPack.name}
                 </Text>
-                <Text preset="paragraph" className="mb-4">{recommendedPack.tagline}</Text>
+                <Text preset="paragraph" className="ods-mb-4">{recommendedPack.tagline}</Text>
                 
-                <div className="mt-4">
-                  <Text preset="heading-1" className="mb-1">
+                <div className="ods-mt-4">
+                  <Text preset="heading-1" className="ods-mb-1">
                     {totalPrice.toFixed(2)} €/mois HT
                   </Text>
-                  <Text preset="small" className="mb-4">
+                  <Text preset="small" className="ods-mb-4 ods-text--muted">
                     soit {(totalPrice * 12).toFixed(2)} €/an HT
                   </Text>
                   
-                  <ul className="space-y-2 mb-6">
+                  <ul className="ods-space-y-2 ods-mb-6">
                     {recommendedPack.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-gray-700">
-                        <span className="text-primary mr-2">✓</span>
+                      <li key={idx} className="ods-flex ods-items-center">
+                        <span className="ods-text--primary ods-mr-2">✓</span>
                         <Text preset="paragraph">{feature}</Text>
                       </li>
                     ))}
                   </ul>
 
                   {/* Options de configuration */}
-                  <Card className="mb-4">
-                    <Text preset="paragraph" className="font-semibold mb-3">Personnaliser les ressources</Text>
+                  <Card color="neutral" className="ods-mb-4 ods-p-4">
+                    <Text preset="paragraph" className="ods-font--semibold ods-mb-3">
+                      Personnaliser les ressources
+                    </Text>
                     
                     {recommendedPack.configurable && (
-                      <div className="space-y-4">
+                      <div className="ods-space-y-4">
                         <div>
-                          <Text preset="small" className="mb-2">
+                          <Text preset="small" className="ods-mb-2">
                             Stockage : {selectedConfig.storage} {recommendedPack.configurable.storage.unit}
                           </Text>
-                          <input
-                            type="range"
+                          <Range
                             min={recommendedPack.configurable.storage.min}
                             max={recommendedPack.configurable.storage.max}
                             step={recommendedPack.configurable.storage.step}
-                            value={selectedConfig.storage}
-                            onChange={(e) => updatePackConfig(recommendedPack.id, 'storage', parseInt(e.target.value))}
-                            className="w-full"
+                            defaultValue={[selectedConfig.storage]}
+                            onValueChange={(detail) => updatePackConfig(recommendedPack.id, 'storage', detail.value[0])}
                           />
-                          <div className="flex justify-between text-xs text-gray-500 mt-1">
+                          <div className="ods-flex ods-justify-between ods-text--xs ods-text--muted ods-mt-1">
                             <span>{recommendedPack.configurable.storage.min} {recommendedPack.configurable.storage.unit}</span>
                             <span>{recommendedPack.configurable.storage.max} {recommendedPack.configurable.storage.unit}</span>
                           </div>
                         </div>
 
                         <div>
-                          <Text preset="small" className="mb-2">
+                          <Text preset="small" className="ods-mb-2">
                             Adresses email : {selectedConfig.emails}
                           </Text>
-                          <input
-                            type="range"
+                          <Range
                             min={recommendedPack.configurable.emails.min}
                             max={recommendedPack.configurable.emails.max}
                             step={recommendedPack.configurable.emails.step}
-                            value={selectedConfig.emails}
-                            onChange={(e) => updatePackConfig(recommendedPack.id, 'emails', parseInt(e.target.value))}
-                            className="w-full"
+                            defaultValue={[selectedConfig.emails]}
+                            onValueChange={(detail) => updatePackConfig(recommendedPack.id, 'emails', detail.value[0])}
                           />
-                          <div className="flex justify-between text-xs text-gray-500 mt-1">
+                          <div className="ods-flex ods-justify-between ods-text--xs ods-text--muted ods-mt-1">
                             <span>{recommendedPack.configurable.emails.min}</span>
                             <span>{recommendedPack.configurable.emails.max}</span>
                           </div>
@@ -226,7 +228,7 @@ export default function HostingSelection() {
                   <Button
                     variant="default"
                     color="primary"
-                    className="w-full"
+                    className="ods-w-full"
                     onClick={handleContinue}
                   >
                     Choisir cette offre
@@ -245,32 +247,32 @@ export default function HostingSelection() {
                   key={pack.id}
                   initial={false}
                   animate={{ height: isExpanded ? 'auto' : 80 }}
-                  className="cursor-pointer"
+                  className="ods-cursor-pointer ods-overflow-hidden"
                   onClick={() => {
                     setExpandedPack(isExpanded ? recommendedPack.id : pack.id);
                     setSelectedPack(pack.id);
                   }}
                 >
-                  <Card className="border-2 border-gray-200">
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <Text preset="heading-5" className="mb-1">
+                  <Card color="neutral" className="ods-p-4">
+                    <div className="ods-flex ods-justify-between ods-items-start">
+                      <div className="ods-flex-1">
+                        <Text preset="heading-5" className="ods-mb-1">
                           {pack.name}
                         </Text>
-                        <Text preset="small">{pack.tagline}</Text>
+                        <Text preset="small" className="ods-text--muted">{pack.tagline}</Text>
                         {isExpanded && (
-                          <div className="mt-4">
-                            <Text preset="heading-3" className="mb-1">
+                          <div className="ods-mt-4">
+                            <Text preset="heading-3" className="ods-mb-1">
                               {calculatePackPrice(pack.id).toFixed(2)} €/mois HT
                             </Text>
-                            <Text preset="small" className="mb-4">
+                            <Text preset="small" className="ods-mb-4 ods-text--muted">
                               soit {(calculatePackPrice(pack.id) * 12).toFixed(2)} €/an HT
                             </Text>
                             
-                            <ul className="space-y-2 mb-4">
+                            <ul className="ods-space-y-2 ods-mb-4">
                               {pack.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center text-gray-700">
-                                  <span className="text-primary mr-2">✓</span>
+                                <li key={idx} className="ods-flex ods-items-center">
+                                  <span className="ods-text--primary ods-mr-2">✓</span>
                                   <Text preset="small">{feature}</Text>
                                 </li>
                               ))}
@@ -278,45 +280,39 @@ export default function HostingSelection() {
 
                             {/* Options de configuration */}
                             {pack.configurable && (
-                              <Card className="mb-4 bg-gray-50">
-                                <Text preset="small" className="font-semibold mb-3">Personnaliser les ressources</Text>
+                              <Card color="neutral" className="ods-mb-4 ods-p-4">
+                                <Text preset="small" className="ods-font--semibold ods-mb-3">
+                                  Personnaliser les ressources
+                                </Text>
                                 
-                                <div className="space-y-3">
+                                <div className="ods-space-y-3">
                                   <div>
-                                    <Text preset="small" className="mb-1">
+                                    <Text preset="small" className="ods-mb-1">
                                       Stockage : {packConfig.storage} {pack.configurable.storage.unit}
                                     </Text>
-                                    <input
-                                      type="range"
+                                    <Range
                                       min={pack.configurable.storage.min}
                                       max={pack.configurable.storage.max}
                                       step={pack.configurable.storage.step}
-                                      value={packConfig.storage}
-                                      onChange={(e) => {
-                                        e.stopPropagation();
-                                        updatePackConfig(pack.id, 'storage', parseInt(e.target.value));
+                                      defaultValue={[packConfig.storage]}
+                                      onValueChange={(detail) => {
+                                        updatePackConfig(pack.id, 'storage', detail.value[0]);
                                       }}
-                                      onClick={(e) => e.stopPropagation()}
-                                      className="w-full"
                                     />
                                   </div>
 
                                   <div>
-                                    <Text preset="small" className="mb-1">
+                                    <Text preset="small" className="ods-mb-1">
                                       Adresses email : {packConfig.emails}
                                     </Text>
-                                    <input
-                                      type="range"
+                                    <Range
                                       min={pack.configurable.emails.min}
                                       max={pack.configurable.emails.max}
                                       step={pack.configurable.emails.step}
-                                      value={packConfig.emails}
-                                      onChange={(e) => {
-                                        e.stopPropagation();
-                                        updatePackConfig(pack.id, 'emails', parseInt(e.target.value));
+                                      defaultValue={[packConfig.emails]}
+                                      onValueChange={(detail) => {
+                                        updatePackConfig(pack.id, 'emails', detail.value[0]);
                                       }}
-                                      onClick={(e) => e.stopPropagation()}
-                                      className="w-full"
                                     />
                                   </div>
                                 </div>
@@ -327,7 +323,7 @@ export default function HostingSelection() {
                               variant="default"
                               color="primary"
                               size="sm"
-                              className="w-full"
+                              className="ods-w-full"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleContinue();
@@ -339,11 +335,11 @@ export default function HostingSelection() {
                         )}
                       </div>
                       {!isExpanded && (
-                        <div className="flex items-center gap-4">
-                          <Text preset="paragraph" className="font-semibold">
+                        <div className="ods-flex ods-items-center ods-gap-4">
+                          <Text preset="paragraph" className="ods-font--semibold">
                             {calculatePackPrice(pack.id).toFixed(2)} €/mois
                           </Text>
-                          <span className="text-gray-400 text-xl">▼</span>
+                          <span className="ods-text--muted ods-text--xl">▼</span>
                         </div>
                       )}
                     </div>
@@ -354,72 +350,78 @@ export default function HostingSelection() {
           </div>
 
           {/* Sidebar - Options et récapitulatif */}
-          <div className="space-y-6">
+          <div className="ods-space-y-6">
             {/* Options complémentaires */}
-            <Card>
-              <Text preset="paragraph" className="font-semibold mb-4">
+            <Card color="neutral" className="ods-p-6">
+              <Text preset="paragraph" className="ods-font--semibold ods-mb-4">
                 Options recommandées pour vous
               </Text>
-              <div className="space-y-4">
-                <label className="flex items-center justify-between cursor-pointer">
+              <div className="ods-space-y-4">
+                <label className="ods-flex ods-items-center ods-justify-between ods-cursor-pointer">
                   <div>
-                    <Text preset="paragraph" className="font-medium">Base de données SQL Privée</Text>
-                    <Text preset="small">+4,99 €/mois</Text>
+                    <Text preset="paragraph" className="ods-font--medium">Base de données SQL Privée</Text>
+                    <Text preset="small" className="ods-text--muted">+4,99 €/mois</Text>
                   </div>
                   <Checkbox
                     checked={options.sqlDatabase}
                     onCheckedChange={(detail) => setOptions({ ...options, sqlDatabase: detail.checked === true })}
-                  />
+                  >
+                    <CheckboxControl />
+                  </Checkbox>
                 </label>
-                <label className="flex items-center justify-between cursor-pointer">
+                <label className="ods-flex ods-items-center ods-justify-between ods-cursor-pointer">
                   <div>
-                    <Text preset="paragraph" className="font-medium">CDN Premium</Text>
-                    <Text preset="small">+9,99 €/mois</Text>
+                    <Text preset="paragraph" className="ods-font--medium">CDN Premium</Text>
+                    <Text preset="small" className="ods-text--muted">+9,99 €/mois</Text>
                   </div>
                   <Checkbox
                     checked={options.cdnPremium}
                     onCheckedChange={(detail) => setOptions({ ...options, cdnPremium: detail.checked === true })}
-                  />
+                  >
+                    <CheckboxControl />
+                  </Checkbox>
                 </label>
-                <label className="flex items-center justify-between cursor-pointer">
+                <label className="ods-flex ods-items-center ods-justify-between ods-cursor-pointer">
                   <div>
-                    <Text preset="paragraph" className="font-medium">Sauvegarde Cloud supplémentaire</Text>
-                    <Text preset="small">+2,99 €/mois</Text>
+                    <Text preset="paragraph" className="ods-font--medium">Sauvegarde Cloud supplémentaire</Text>
+                    <Text preset="small" className="ods-text--muted">+2,99 €/mois</Text>
                   </div>
                   <Checkbox
                     checked={options.extraBackup}
                     onCheckedChange={(detail) => setOptions({ ...options, extraBackup: detail.checked === true })}
-                  />
+                  >
+                    <CheckboxControl />
+                  </Checkbox>
                 </label>
               </div>
             </Card>
 
             {/* Récapitulatif */}
-            <Card className="sticky top-4">
-              <Text preset="paragraph" className="font-semibold mb-4">Votre sélection</Text>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Domaines</span>
-                  <span className="font-semibold">{domains?.length || 0} sélectionné(s)</span>
+            <Card color="neutral" className="ods-sticky ods-top-4 ods-p-6">
+              <Text preset="paragraph" className="ods-font--semibold ods-mb-4">Votre sélection</Text>
+              <div className="ods-space-y-3 ods-text--sm">
+                <div className="ods-flex ods-justify-between">
+                  <span className="ods-text--muted">Domaines</span>
+                  <span className="ods-font--semibold">{domains?.length || 0} sélectionné(s)</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Hébergement</span>
-                  <span className="font-semibold">
+                <div className="ods-flex ods-justify-between">
+                  <span className="ods-text--muted">Hébergement</span>
+                  <span className="ods-font--semibold">
                     {selectedPackData?.name} - {totalPrice.toFixed(2)} €/mois
                   </span>
                 </div>
                 {optionsPrice > 0 && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Options</span>
-                    <span className="font-semibold">{optionsPrice.toFixed(2)} €/mois</span>
+                  <div className="ods-flex ods-justify-between">
+                    <span className="ods-text--muted">Options</span>
+                    <span className="ods-font--semibold">{optionsPrice.toFixed(2)} €/mois</span>
                   </div>
                 )}
-                <div className="border-t pt-3 mt-3">
-                  <div className="flex justify-between font-semibold text-lg">
+                <div className="ods-border-t ods-pt-3 ods-mt-3">
+                  <div className="ods-flex ods-justify-between ods-font--semibold ods-text--lg">
                     <span>Total mensuel HT</span>
                     <span>{(totalPrice + optionsPrice).toFixed(2)} €/mois</span>
                   </div>
-                  <div className="flex justify-between text-sm text-gray-600 mt-1">
+                  <div className="ods-flex ods-justify-between ods-text--sm ods-text--muted ods-mt-1">
                     <span>Total annuel HT</span>
                     <span>{((totalPrice + optionsPrice) * 12).toFixed(2)} €/an</span>
                   </div>
@@ -428,7 +430,7 @@ export default function HostingSelection() {
               <Button
                 variant="default"
                 color="primary"
-                className="w-full mt-6"
+                className="ods-w-full ods-mt-6"
                 onClick={handleContinue}
               >
                 Continuer vers le paiement

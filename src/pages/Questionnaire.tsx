@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@ovhcloud/ods-react';
-import { Card } from '@ovhcloud/ods-react';
-import { ProgressBar } from '@ovhcloud/ods-react';
-import { Text } from '@ovhcloud/ods-react';
+import { Button, Card, ProgressBar, Text } from '@ovhcloud/ods-react';
 
 const questions = [
   {
@@ -82,65 +79,68 @@ export default function Questionnaire() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <Card className="max-w-2xl w-full">
-        {/* Barre de progression */}
-        <div className="mb-8">
-          <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>Question {currentQuestion + 1} sur {questions.length}</span>
-            <span>{Math.round(progress)}%</span>
-          </div>
-          <ProgressBar value={progress} max={100} />
-        </div>
-
-        {/* Question */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentQuestion}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Text preset="heading-3" className="mb-8">
-              {questions[currentQuestion].question}
-            </Text>
-
-            <div className="space-y-3 mb-8">
-              {questions[currentQuestion].options.map((option) => (
-                <Button
-                  key={option.value}
-                  variant={answers[questions[currentQuestion].id] === option.value ? 'default' : 'outline'}
-                  color={answers[questions[currentQuestion].id] === option.value ? 'primary' : undefined}
-                  className="w-full text-left justify-start"
-                  onClick={() => handleAnswer(option.value)}
-                >
-                  {option.label}
-                </Button>
-              ))}
+    <div className="ods-page">
+      <div className="ods-container ods-container--centered">
+        <Card color="neutral" className="ods-p-8 ods-max-w-2xl">
+          {/* Barre de progression */}
+          <div className="ods-mb-8">
+            <div className="ods-flex ods-justify-between ods-text--sm ods-text--muted ods-mb-2">
+              <span>Question {currentQuestion + 1} sur {questions.length}</span>
+              <span>{Math.round(progress)}%</span>
             </div>
-          </motion.div>
-        </AnimatePresence>
+            <ProgressBar value={progress} max={100} />
+          </div>
 
-        {/* Navigation */}
-        <div className="flex justify-between">
-          <Button
-            variant="outline"
-            onClick={handlePrevious}
-            disabled={currentQuestion === 0}
-          >
-            Précédent
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleSkip}
-          >
-            Passer le questionnaire
-          </Button>
-        </div>
-      </Card>
+          {/* Question */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentQuestion}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Text preset="heading-3" className="ods-mb-8">
+                {questions[currentQuestion].question}
+              </Text>
+
+              <div className="ods-space-y-3 ods-mb-8">
+                {questions[currentQuestion].options.map((option) => (
+                  <Button
+                    key={option.value}
+                    variant={answers[questions[currentQuestion].id] === option.value ? 'default' : 'outline'}
+                    color={answers[questions[currentQuestion].id] === option.value ? 'primary' : 'neutral'}
+                    className="ods-w-full ods-text--left ods-justify-start"
+                    onClick={() => handleAnswer(option.value)}
+                  >
+                    {option.label}
+                  </Button>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation */}
+          <div className="ods-flex ods-justify-between">
+            <Button
+              variant="outline"
+              color="neutral"
+              onClick={handlePrevious}
+              disabled={currentQuestion === 0}
+            >
+              Précédent
+            </Button>
+            <Button
+              variant="ghost"
+              color="neutral"
+              size="sm"
+              onClick={handleSkip}
+            >
+              Passer le questionnaire
+            </Button>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }
-

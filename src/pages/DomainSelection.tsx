@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState, type ChangeEvent, type KeyboardEvent } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Button } from '@ovhcloud/ods-react';
-import { Card } from '@ovhcloud/ods-react';
-import { Input } from '@ovhcloud/ods-react';
-import { Badge } from '@ovhcloud/ods-react';
-import { Checkbox } from '@ovhcloud/ods-react';
-import { Text } from '@ovhcloud/ods-react';
-import { Spinner } from '@ovhcloud/ods-react';
+import { 
+  Button, 
+  Card, 
+  Input, 
+  Badge, 
+  Checkbox, 
+  CheckboxControl,
+  Text
+} from '@ovhcloud/ods-react';
 
 interface DomainResult {
   name: string;
@@ -116,17 +118,21 @@ export default function DomainSelection() {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSearch();
     }
   };
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <Card className="mb-6">
-          <Text preset="heading-2" className="mb-2">
+    <div className="ods-page">
+      <div className="ods-container ods-max-w-4xl">
+        <Card color="neutral" className="ods-mb-6 ods-p-6">
+          <Text preset="heading-2" className="ods-mb-2">
             Recherchez votre nom de domaine
           </Text>
           <Text preset="paragraph">
@@ -135,23 +141,24 @@ export default function DomainSelection() {
         </Card>
 
         {/* Champ de recherche */}
-        <Card className="mb-6">
-          <div className="flex gap-4 mb-4">
-            <Input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Recherchez votre domaine (ex: votre-entreprise)"
-              className="flex-1"
-            />
+        <Card color="neutral" className="ods-mb-6 ods-p-6">
+          <div className="ods-flex ods-gap-4 ods-mb-4">
+            <div className="ods-flex-1">
+              <Input
+                value={searchTerm}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
+                placeholder="Recherchez votre domaine (ex: votre-entreprise)"
+              />
+            </div>
             <Button 
               variant="default"
               color="primary"
               onClick={handleSearch}
               disabled={!searchTerm.trim() || isSearching}
+              loading={isSearching}
             >
-              {isSearching ? <Spinner size="sm" /> : 'Rechercher'}
+              Rechercher
             </Button>
           </div>
 
@@ -160,12 +167,12 @@ export default function DomainSelection() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-6"
+              className="ods-mt-6"
             >
-              <Text preset="small" className="mb-4">
+              <Text preset="small" className="ods-mb-4">
                 Résultats de recherche ({searchResults.length} domaines trouvés)
               </Text>
-              <div className="space-y-3 max-h-96 overflow-y-auto">
+              <div className="ods-space-y-3 ods-max-h-96 ods-overflow-y-auto">
                 {searchResults.map((result, idx) => {
                   const domainFull = `${result.name}${result.extension}`;
                   const isSelected = selectedDomains.has(domainFull);
@@ -173,41 +180,37 @@ export default function DomainSelection() {
                   return (
                     <Card
                       key={`${result.name}-${result.extension}-${idx}`}
-                      className={`cursor-pointer transition-all ${
-                        isSelected
-                          ? 'border-primary bg-blue-50'
-                          : result.available
-                          ? 'border-gray-200 hover:border-primary'
-                          : 'border-red-200 bg-red-50 opacity-60'
-                      }`}
+                      color={isSelected ? 'primary' : result.available ? 'neutral' : 'critical'}
+                      className={`ods-card--interactive ods-p-4 ${!result.available ? 'ods-opacity-60' : ''}`}
                       onClick={() => result.available && handleDomainToggle(domainFull)}
                     >
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-3">
+                      <div className="ods-flex ods-justify-between ods-items-center">
+                        <div className="ods-flex ods-items-center ods-gap-3">
                           <Checkbox
                             checked={isSelected}
-                            onChange={() => result.available && handleDomainToggle(domainFull)}
+                            onCheckedChange={() => result.available && handleDomainToggle(domainFull)}
                             disabled={!result.available}
-                            onClick={(e) => e.stopPropagation()}
-                          />
+                          >
+                            <CheckboxControl />
+                          </Checkbox>
                           <div>
-                            <Text preset="paragraph" className="font-semibold">
+                            <Text preset="paragraph" className="ods-font--semibold">
                               {result.name}
-                              <span className="text-primary">{result.extension}</span>
+                              <span className="ods-text--primary">{result.extension}</span>
                             </Text>
-                            <div className="flex gap-2 mt-1">
+                            <div className="ods-flex ods-gap-2 ods-mt-1">
                               {result.available ? (
-                                <Badge color="success">Disponible</Badge>
+                                <Badge color="success" size="sm">Disponible</Badge>
                               ) : (
-                                <Badge color="critical">Indisponible</Badge>
+                                <Badge color="critical" size="sm">Indisponible</Badge>
                               )}
                               {availableExtensions.find(e => e.ext === result.extension)?.popular && (
-                                <Badge color="warning">Populaire</Badge>
+                                <Badge color="warning" size="sm">Populaire</Badge>
                               )}
                             </div>
                           </div>
                         </div>
-                        <Text preset="paragraph" className="font-semibold">
+                        <Text preset="paragraph" className="ods-font--semibold">
                           {result.price.toFixed(2)} €/an HT
                         </Text>
                       </div>
@@ -220,8 +223,10 @@ export default function DomainSelection() {
 
           {/* Message si pas de recherche */}
           {searchResults.length === 0 && !isSearching && (
-            <div className="text-center py-8 text-gray-500">
-              <Text preset="paragraph">Entrez un nom de domaine dans le champ ci-dessus et cliquez sur "Rechercher"</Text>
+            <div className="ods-text--center ods-py-8">
+              <Text preset="paragraph" className="ods-text--muted">
+                Entrez un nom de domaine dans le champ ci-dessus et cliquez sur "Rechercher"
+              </Text>
             </div>
           )}
         </Card>
@@ -231,15 +236,17 @@ export default function DomainSelection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="sticky bottom-4"
+            className="ods-sticky ods-bottom-4"
           >
-            <Card>
-              <div className="flex justify-between items-center">
+            <Card color="neutral" className="ods-p-4">
+              <div className="ods-flex ods-justify-between ods-items-center">
                 <div>
-                  <Text preset="small" className="mb-1">Domaines sélectionnés ({selectedDomains.size})</Text>
-                  <div className="flex flex-wrap gap-2">
+                  <Text preset="small" className="ods-mb-1">
+                    Domaines sélectionnés ({selectedDomains.size})
+                  </Text>
+                  <div className="ods-flex ods-flex-wrap ods-gap-2">
                     {Array.from(selectedDomains).slice(0, 3).map((domain) => (
-                      <Badge key={domain} color="primary">{domain}</Badge>
+                      <Badge key={domain} color="primary" size="sm">{domain}</Badge>
                     ))}
                     {selectedDomains.size > 3 && (
                       <Text preset="small">+{selectedDomains.size - 3} autres</Text>
