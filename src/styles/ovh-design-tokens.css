@@ -1,0 +1,214 @@
+/* OVHcloud Design System Tokens */
+
+:root {
+  /* Couleurs principales OVHcloud */
+  --ovh-color-primary: #1f4e79;
+  --ovh-color-primary-light: #2d6ba3;
+  --ovh-color-primary-dark: #163a5c;
+  --ovh-color-secondary: #00a2bf;
+  --ovh-color-accent: #ff6900;
+  
+  /* Couleurs de fond */
+  --ovh-bg-primary: #ffffff;
+  --ovh-bg-secondary: #f5f5f5;
+  --ovh-bg-tertiary: #e8e8e8;
+  
+  /* Couleurs de texte */
+  --ovh-text-primary: #1f4e79;
+  --ovh-text-secondary: #6c757d;
+  --ovh-text-muted: #adb5bd;
+  
+  /* Couleurs d'état */
+  --ovh-color-success: #28a745;
+  --ovh-color-warning: #ffc107;
+  --ovh-color-error: #dc3545;
+  --ovh-color-info: #17a2b8;
+  
+  /* Espacements OVHcloud */
+  --ovh-spacing-xs: 0.25rem;  /* 4px */
+  --ovh-spacing-sm: 0.5rem;   /* 8px */
+  --ovh-spacing-md: 1rem;     /* 16px */
+  --ovh-spacing-lg: 1.5rem;   /* 24px */
+  --ovh-spacing-xl: 2rem;     /* 32px */
+  --ovh-spacing-xxl: 3rem;   /* 48px */
+  
+  /* Bordures */
+  --ovh-border-radius-sm: 4px;
+  --ovh-border-radius-md: 8px;
+  --ovh-border-radius-lg: 12px;
+  --ovh-border-color: #dee2e6;
+  --ovh-border-width: 1px;
+  
+  /* Ombres */
+  --ovh-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --ovh-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --ovh-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+  
+  /* Typographie */
+  --ovh-font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ovh-font-size-xs: 0.75rem;   /* 12px */
+  --ovh-font-size-sm: 0.875rem;  /* 14px */
+  --ovh-font-size-md: 1rem;      /* 16px */
+  --ovh-font-size-lg: 1.125rem; /* 18px */
+  --ovh-font-size-xl: 1.25rem;  /* 20px */
+  --ovh-font-size-xxl: 1.5rem;  /* 24px */
+  --ovh-font-size-xxxl: 2rem;   /* 32px */
+  
+  --ovh-font-weight-normal: 400;
+  --ovh-font-weight-medium: 500;
+  --ovh-font-weight-semibold: 600;
+  --ovh-font-weight-bold: 700;
+  
+  /* Transitions */
+  --ovh-transition-fast: 0.15s ease;
+  --ovh-transition-base: 0.3s ease;
+  --ovh-transition-slow: 0.5s ease;
+}
+
+/* Styles de base OVHcloud */
+body {
+  font-family: var(--ovh-font-family);
+  color: var(--ovh-text-primary);
+  background-color: var(--ovh-bg-secondary);
+  line-height: 1.5;
+}
+
+/* Boutons OVHcloud */
+.ovh-button {
+  font-family: var(--ovh-font-family);
+  font-size: var(--ovh-font-size-md);
+  font-weight: var(--ovh-font-weight-medium);
+  padding: var(--ovh-spacing-sm) var(--ovh-spacing-lg);
+  border-radius: var(--ovh-border-radius-md);
+  border: var(--ovh-border-width) solid transparent;
+  cursor: pointer;
+  transition: all var(--ovh-transition-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ovh-spacing-sm);
+}
+
+.ovh-button-primary {
+  background-color: var(--ovh-color-primary);
+  color: white;
+  border-color: var(--ovh-color-primary);
+}
+
+.ovh-button-primary:hover {
+  background-color: var(--ovh-color-primary-light);
+  border-color: var(--ovh-color-primary-light);
+}
+
+.ovh-button-secondary {
+  background-color: white;
+  color: var(--ovh-color-primary);
+  border-color: var(--ovh-color-primary);
+}
+
+.ovh-button-secondary:hover {
+  background-color: var(--ovh-bg-secondary);
+}
+
+.ovh-button-link {
+  background-color: transparent;
+  color: var(--ovh-color-primary);
+  border: none;
+  padding: var(--ovh-spacing-xs) var(--ovh-spacing-sm);
+  text-decoration: underline;
+}
+
+/* Cards OVHcloud */
+.ovh-card {
+  background: var(--ovh-bg-primary);
+  border: var(--ovh-border-width) solid var(--ovh-border-color);
+  border-radius: var(--ovh-border-radius-lg);
+  padding: var(--ovh-spacing-xl);
+  box-shadow: var(--ovh-shadow-sm);
+  transition: all var(--ovh-transition-base);
+}
+
+.ovh-card:hover {
+  box-shadow: var(--ovh-shadow-md);
+}
+
+/* Inputs OVHcloud */
+.ovh-input {
+  font-family: var(--ovh-font-family);
+  font-size: var(--ovh-font-size-md);
+  padding: var(--ovh-spacing-sm) var(--ovh-spacing-md);
+  border: var(--ovh-border-width) solid var(--ovh-border-color);
+  border-radius: var(--ovh-border-radius-md);
+  background-color: var(--ovh-bg-primary);
+  color: var(--ovh-text-primary);
+  transition: border-color var(--ovh-transition-fast);
+  width: 100%;
+}
+
+.ovh-input:focus {
+  outline: none;
+  border-color: var(--ovh-color-primary);
+  box-shadow: 0 0 0 3px rgba(31, 78, 121, 0.1);
+}
+
+/* Badges OVHcloud */
+.ovh-badge {
+  display: inline-block;
+  padding: var(--ovh-spacing-xs) var(--ovh-spacing-sm);
+  border-radius: var(--ovh-border-radius-sm);
+  font-size: var(--ovh-font-size-xs);
+  font-weight: var(--ovh-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ovh-badge-primary {
+  background-color: var(--ovh-color-primary);
+  color: white;
+}
+
+.ovh-badge-success {
+  background-color: var(--ovh-color-success);
+  color: white;
+}
+
+.ovh-badge-warning {
+  background-color: var(--ovh-color-warning);
+  color: var(--ovh-text-primary);
+}
+
+/* Typographie OVHcloud */
+.ovh-heading-1 {
+  font-size: var(--ovh-font-size-xxxl);
+  font-weight: var(--ovh-font-weight-bold);
+  color: var(--ovh-text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--ovh-spacing-md);
+}
+
+.ovh-heading-2 {
+  font-size: var(--ovh-font-size-xxl);
+  font-weight: var(--ovh-font-weight-semibold);
+  color: var(--ovh-text-primary);
+  line-height: 1.3;
+  margin-bottom: var(--ovh-spacing-md);
+}
+
+.ovh-heading-3 {
+  font-size: var(--ovh-font-size-xl);
+  font-weight: var(--ovh-font-weight-semibold);
+  color: var(--ovh-text-primary);
+  line-height: 1.4;
+  margin-bottom: var(--ovh-spacing-sm);
+}
+
+.ovh-text {
+  font-size: var(--ovh-font-size-md);
+  color: var(--ovh-text-primary);
+  line-height: 1.6;
+}
+
+.ovh-text-muted {
+  color: var(--ovh-text-secondary);
+  font-size: var(--ovh-font-size-sm);
+}

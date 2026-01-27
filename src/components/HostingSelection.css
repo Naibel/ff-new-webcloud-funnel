@@ -1,0 +1,334 @@
+/* HostingSelection avec style OVHcloud */
+
+.hosting-selection {
+  min-height: 100vh;
+  background: var(--ovh-bg-secondary);
+  padding: var(--ovh-spacing-xl);
+}
+
+.hosting-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hosting-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--ovh-spacing-xl);
+}
+
+.hosting-main {
+  background: var(--ovh-bg-primary);
+  padding: var(--ovh-spacing-xl);
+  border-radius: var(--ovh-border-radius-lg);
+  box-shadow: var(--ovh-shadow-md);
+  border: var(--ovh-border-width) solid var(--ovh-border-color);
+}
+
+.hosting-title {
+  font-size: var(--ovh-font-size-xxxl);
+  font-weight: var(--ovh-font-weight-bold);
+  color: var(--ovh-text-primary);
+  margin-bottom: var(--ovh-spacing-sm);
+  font-family: var(--ovh-font-family);
+}
+
+.hosting-subtitle {
+  font-size: var(--ovh-font-size-lg);
+  color: var(--ovh-text-secondary);
+  margin-bottom: var(--ovh-spacing-xxl);
+  font-family: var(--ovh-font-family);
+}
+
+.packs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ovh-spacing-lg);
+  margin-bottom: var(--ovh-spacing-xxl);
+}
+
+.pack-card {
+  position: relative;
+  background: var(--ovh-bg-primary);
+  border: var(--ovh-border-width) solid var(--ovh-border-color);
+  border-radius: var(--ovh-border-radius-md);
+  padding: var(--ovh-spacing-xl) var(--ovh-spacing-lg);
+  cursor: pointer;
+  transition: all var(--ovh-transition-base);
+  text-align: center;
+}
+
+.pack-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ovh-shadow-md);
+  border-color: var(--ovh-color-primary);
+}
+
+.pack-card.recommended {
+  border-color: var(--ovh-color-primary);
+  background: rgba(31, 78, 121, 0.03);
+  transform: scale(1.02);
+  box-shadow: var(--ovh-shadow-lg);
+}
+
+.pack-card.selected {
+  border-color: var(--ovh-color-primary);
+  background: rgba(31, 78, 121, 0.05);
+}
+
+.recommended-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ovh-color-primary);
+  color: white;
+  padding: var(--ovh-spacing-sm) var(--ovh-spacing-lg);
+  border-radius: var(--ovh-border-radius-sm);
+  font-size: var(--ovh-font-size-xs);
+  font-weight: var(--ovh-font-weight-semibold);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.personalized-badge {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ovh-color-success);
+  color: white;
+  padding: var(--ovh-spacing-xs) var(--ovh-spacing-md);
+  border-radius: var(--ovh-border-radius-sm);
+  font-size: var(--ovh-font-size-xs);
+  font-weight: var(--ovh-font-weight-semibold);
+  margin-top: var(--ovh-spacing-sm);
+}
+
+.pack-name {
+  font-size: var(--ovh-font-size-xl);
+  font-weight: var(--ovh-font-weight-semibold);
+  color: var(--ovh-text-primary);
+  margin-top: var(--ovh-spacing-md);
+  margin-bottom: var(--ovh-spacing-md);
+  font-family: var(--ovh-font-family);
+}
+
+.pack-price {
+  margin-bottom: var(--ovh-spacing-lg);
+}
+
+.price-amount {
+  font-size: var(--ovh-font-size-xxl);
+  font-weight: var(--ovh-font-weight-bold);
+  color: var(--ovh-text-primary);
+}
+
+.price-period {
+  font-size: var(--ovh-font-size-md);
+  color: var(--ovh-text-secondary);
+  margin-left: var(--ovh-spacing-xs);
+}
+
+.pack-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--ovh-spacing-lg) 0;
+  text-align: left;
+}
+
+.feature-item {
+  padding: var(--ovh-spacing-sm) 0;
+  color: var(--ovh-text-primary);
+  font-size: var(--ovh-font-size-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ovh-spacing-sm);
+  font-family: var(--ovh-font-family);
+}
+
+.feature-icon {
+  color: var(--ovh-color-success);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.pack-select-button {
+  width: 100%;
+  padding: var(--ovh-spacing-md) var(--ovh-spacing-lg);
+  border: var(--ovh-border-width) solid var(--ovh-color-primary);
+  background: var(--ovh-bg-primary);
+  color: var(--ovh-color-primary);
+  border-radius: var(--ovh-border-radius-md);
+  font-size: var(--ovh-font-size-md);
+  font-weight: var(--ovh-font-weight-medium);
+  cursor: pointer;
+  transition: all var(--ovh-transition-fast);
+  font-family: var(--ovh-font-family);
+}
+
+.pack-select-button:hover {
+  background: var(--ovh-bg-secondary);
+}
+
+.pack-select-button.selected {
+  background: var(--ovh-color-primary);
+  color: white;
+}
+
+.additional-options-section {
+  margin-top: var(--ovh-spacing-xxl);
+  border-top: var(--ovh-border-width) solid var(--ovh-border-color);
+  padding-top: var(--ovh-spacing-xl);
+}
+
+.additional-options-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: var(--ovh-spacing-md);
+  font-size: var(--ovh-font-size-lg);
+  font-weight: var(--ovh-font-weight-semibold);
+  color: var(--ovh-text-primary);
+  cursor: pointer;
+  border-radius: var(--ovh-border-radius-md);
+  transition: background var(--ovh-transition-fast);
+  font-family: var(--ovh-font-family);
+}
+
+.additional-options-toggle:hover {
+  background: var(--ovh-bg-secondary);
+}
+
+.chevron {
+  transition: transform var(--ovh-transition-base);
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.additional-options-content {
+  margin-top: var(--ovh-spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ovh-spacing-md);
+}
+
+.option-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ovh-spacing-lg);
+  background: var(--ovh-bg-secondary);
+  border-radius: var(--ovh-border-radius-md);
+  border: var(--ovh-border-width) solid var(--ovh-border-color);
+}
+
+.option-item.included {
+  background: rgba(31, 78, 121, 0.03);
+  border-color: var(--ovh-color-success);
+}
+
+.option-info {
+  flex: 1;
+}
+
+.option-info h4 {
+  margin: 0 0 var(--ovh-spacing-sm) 0;
+  font-size: var(--ovh-font-size-md);
+  font-weight: var(--ovh-font-weight-semibold);
+  color: var(--ovh-text-primary);
+  font-family: var(--ovh-font-family);
+}
+
+.option-info p {
+  margin: 0;
+  font-size: var(--ovh-font-size-sm);
+  color: var(--ovh-text-secondary);
+  font-family: var(--ovh-font-family);
+}
+
+.option-badge.free {
+  background: var(--ovh-color-success);
+  color: white;
+  padding: var(--ovh-spacing-sm) var(--ovh-spacing-md);
+  border-radius: var(--ovh-border-radius-sm);
+  font-size: var(--ovh-font-size-xs);
+  font-weight: var(--ovh-font-weight-semibold);
+}
+
+.option-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--ovh-spacing-md);
+}
+
+.option-price {
+  font-size: var(--ovh-font-size-md);
+  font-weight: var(--ovh-font-weight-semibold);
+  color: var(--ovh-text-primary);
+  font-family: var(--ovh-font-family);
+}
+
+.checkbox-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: var(--ovh-color-primary);
+}
+
+.email-select {
+  padding: var(--ovh-spacing-sm) var(--ovh-spacing-md);
+  border: var(--ovh-border-width) solid var(--ovh-border-color);
+  border-radius: var(--ovh-border-radius-md);
+  font-size: var(--ovh-font-size-md);
+  font-family: var(--ovh-font-family);
+  color: var(--ovh-text-primary);
+  background-color: var(--ovh-bg-primary);
+  cursor: pointer;
+  transition: border-color var(--ovh-transition-fast);
+}
+
+.email-select:focus {
+  outline: none;
+  border-color: var(--ovh-color-primary);
+  box-shadow: 0 0 0 3px rgba(31, 78, 121, 0.1);
+}
+
+@media (max-width: 1200px) {
+  .hosting-content {
+    grid-template-columns: 1fr;
+  }
+
+  .packs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hosting-selection {
+    padding: var(--ovh-spacing-md);
+  }
+
+  .hosting-title {
+    font-size: var(--ovh-font-size-xxl);
+  }
+
+  .packs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pack-card.recommended {
+    transform: scale(1);
+  }
+}
