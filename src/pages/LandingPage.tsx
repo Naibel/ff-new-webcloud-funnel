@@ -66,15 +66,15 @@ export default function LandingPage() {
                   Laissez-vous guider
                 </h2>
                 <p className="text-neutral-600 mb-6">
-                  Recommandation personnalisée en 30 secondes
+                  Recommandation personnalisée en quelques clics
                 </p>
 
                 {/* Features */}
                 <div className="space-y-3 mb-8">
                   {[
                     'Questionnaire rapide (4 questions)',
-                    'Pack d\'hébergement adapté à vos besoins',
                     'Suggestions de domaines intelligentes',
+                    'Hébergement adapté à vos besoins',
                   ].map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
@@ -125,9 +125,8 @@ export default function LandingPage() {
               {/* Features */}
               <div className="space-y-3 mb-8">
                 {[
-                  'Parcourir tous les packs disponibles',
+                  'Parcourir toutes les offres disponibles',
                   'Configuration manuelle',
-                  'Pack Pro présélectionné',
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0">
@@ -149,15 +148,43 @@ export default function LandingPage() {
           </motion.div>
         </div>
 
-        {/* Help text */}
-        <motion.p
+        {/* Why OVHcloud */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="text-center text-neutral-500 text-sm mt-12"
+          className="mt-16 max-w-4xl mx-auto"
         >
-          Besoin d'aide ? Notre équipe est disponible 24/7 pour vous accompagner.
-        </motion.p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center p-6">
+              <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <span className="text-2xl">🌍</span>
+              </div>
+              <h3 className="font-bold text-neutral-900 mb-2">Leader européen</h3>
+              <p className="text-neutral-600 text-sm">
+                Plus de 1,6 million de clients nous font confiance dans le monde entier
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <span className="text-2xl">🔒</span>
+              </div>
+              <h3 className="font-bold text-neutral-900 mb-2">Sécurité garantie</h3>
+              <p className="text-neutral-600 text-sm">
+                Données hébergées en Europe avec conformité RGPD et disponibilité 99,9%
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <span className="text-2xl">💰</span>
+              </div>
+              <h3 className="font-bold text-neutral-900 mb-2">Prix compétitifs</h3>
+              <p className="text-neutral-600 text-sm">
+                Le meilleur rapport qualité-prix du marché, sans frais cachés
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

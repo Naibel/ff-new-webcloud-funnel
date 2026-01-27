@@ -11,10 +11,6 @@ const hostingPacks = [
     icon: '🌱',
     color: 'from-green-400 to-emerald-500',
     features: ['10 Go d\'espace SSD', '2 adresses email', 'Trafic illimité', 'SSL gratuit inclus'],
-    configurable: {
-      storage: { min: 10, max: 50, step: 10, unit: 'Go', pricePerUnit: 0.5 },
-      emails: { min: 2, max: 10, step: 1, pricePerUnit: 0.5 },
-    },
   },
   {
     id: 'perso',
@@ -24,10 +20,6 @@ const hostingPacks = [
     icon: '🚀',
     color: 'from-blue-400 to-indigo-500',
     features: ['100 Go d\'espace SSD', '10 adresses email', 'Trafic illimité', 'SSL gratuit inclus'],
-    configurable: {
-      storage: { min: 100, max: 200, step: 25, unit: 'Go', pricePerUnit: 0.3 },
-      emails: { min: 10, max: 50, step: 5, pricePerUnit: 0.4 },
-    },
   },
   {
     id: 'pro',
@@ -37,10 +29,6 @@ const hostingPacks = [
     icon: '⭐',
     color: 'from-primary-500 to-primary-600',
     features: ['250 Go d\'espace SSD', '100 adresses email', 'Trafic illimité', 'SSL gratuit inclus', 'Support prioritaire'],
-    configurable: {
-      storage: { min: 250, max: 500, step: 50, unit: 'Go', pricePerUnit: 0.2 },
-      emails: { min: 100, max: 200, step: 10, pricePerUnit: 0.3 },
-    },
     recommended: true,
   },
   {
@@ -51,10 +39,12 @@ const hostingPacks = [
     icon: '💎',
     color: 'from-purple-500 to-pink-500',
     features: ['500 Go d\'espace SSD', 'Emails illimités', '99,99% disponibilité', 'SSL gratuit inclus', 'Support 24/7'],
-    configurable: {
-      storage: { min: 500, max: 1000, step: 100, unit: 'Go', pricePerUnit: 0.15 },
-      emails: { min: 1000, max: 5000, step: 500, pricePerUnit: 0.2 },
-    },
+    performanceLevels: [
+      { id: 1, name: 'Performance 1', cores: 2, ram: 4, price: 10.99, pricePerYear: 131.88 },
+      { id: 2, name: 'Performance 2', cores: 4, ram: 8, price: 20.89, pricePerYear: 250.68 },
+      { id: 3, name: 'Performance 3', cores: 6, ram: 12, price: 29.69, pricePerYear: 356.28 },
+      { id: 4, name: 'Performance 4', cores: 8, ram: 16, price: 37.39, pricePerYear: 448.68 },
+    ],
   },
 ];
 
@@ -72,6 +62,7 @@ export default function HostingSelection() {
     pro: { storage: 250, emails: 100 },
     performance: { storage: 500, emails: 1000 },
   });
+  const [selectedPerformanceLevel, setSelectedPerformanceLevel] = useState(1);
   const [options, setOptions] = useState({
     sqlDatabase: false,
     cdnPremium: false,
@@ -85,18 +76,13 @@ export default function HostingSelection() {
     const pack = hostingPacks.find(p => p.id === packId);
     if (!pack) return 0;
     
-    const config = packConfigs[packId];
-    let price = pack.price;
-    
-    if (pack.configurable) {
-      const storageExtra = Math.max(0, config.storage - pack.configurable.storage.min);
-      price += (storageExtra / pack.configurable.storage.step) * pack.configurable.storage.pricePerUnit;
-      
-      const emailsExtra = Math.max(0, config.emails - pack.configurable.emails.min);
-      price += (emailsExtra / pack.configurable.emails.step) * pack.configurable.emails.pricePerUnit;
+    // Si c'est le pack Performance, retourner le prix du niveau sélectionné
+    if (packId === 'performance' && pack.performanceLevels) {
+      const level = pack.performanceLevels.find(l => l.id === selectedPerformanceLevel);
+      return level ? level.price : pack.price;
     }
     
-    return price;
+    return pack.price;
   };
 
   const totalPrice = calculatePackPrice(selectedPack);
@@ -105,24 +91,34 @@ export default function HostingSelection() {
                       (options.extraBackup ? 2.99 : 0);
 
   const handleContinue = () => {
+    const packData = hostingPacks.find(p => p.id === selectedPack);
+    let hostingConfig = selectedConfig;
+    
+    // Si c'est le pack Performance, utiliser les infos du niveau sélectionné
+    if (selectedPack === 'performance' && packData?.performanceLevels) {
+      const level = packData.performanceLevels.find(l => l.id === selectedPerformanceLevel);
+      if (level) {
+        hostingConfig = {
+          storage: 500, // Stockage de base pour Performance
+          emails: 1000, // Emails de base pour Performance
+          cores: level.cores,
+          ram: level.ram,
+          performanceLevel: level.name,
+        };
+      }
+    }
+    
     navigate('/funnel/summary', {
       state: {
         questionnaire,
         domains,
         hosting: selectedPack,
-        hostingConfig: selectedConfig,
+        hostingConfig,
         hostingPrice: totalPrice,
         options,
         optionsPrice,
       },
     });
-  };
-
-  const updatePackConfig = (packId: string, field: 'storage' | 'emails', value: number) => {
-    setPackConfigs(prev => ({
-      ...prev,
-      [packId]: { ...prev[packId], [field]: value },
-    }));
   };
 
   return (
@@ -150,7 +146,6 @@ export default function HostingSelection() {
           <div className="lg:col-span-2 space-y-4">
             {hostingPacks.map((pack, idx) => {
               const isSelected = selectedPack === pack.id;
-              const packConfig = packConfigs[pack.id];
               const packPrice = calculatePackPrice(pack.id);
               
               return (
@@ -215,60 +210,68 @@ export default function HostingSelection() {
                     </div>
                   </div>
 
-                  {/* Expanded Configuration */}
-                  {isSelected && pack.configurable && (
+                  {/* Expanded Configuration - Performance Levels */}
+                  {isSelected && pack.performanceLevels && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       className="mt-6 pt-6 border-t border-neutral-200"
                     >
-                      <h4 className="font-semibold text-neutral-900 mb-4">Personnaliser les ressources</h4>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        {/* Storage */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-sm text-neutral-600">Stockage</span>
-                            <span className="text-sm font-semibold text-primary-600">
-                              {packConfig.storage} {pack.configurable.storage.unit}
-                            </span>
-                          </div>
-                          <input
-                            type="range"
-                            min={pack.configurable.storage.min}
-                            max={pack.configurable.storage.max}
-                            step={pack.configurable.storage.step}
-                            value={packConfig.storage}
-                            onChange={(e) => updatePackConfig(pack.id, 'storage', parseInt(e.target.value))}
-                            className="ovh-range"
-                          />
-                          <div className="flex justify-between text-xs text-neutral-400 mt-1">
-                            <span>{pack.configurable.storage.min} {pack.configurable.storage.unit}</span>
-                            <span>{pack.configurable.storage.max} {pack.configurable.storage.unit}</span>
-                          </div>
-                        </div>
-
-                        {/* Emails */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-sm text-neutral-600">Adresses email</span>
-                            <span className="text-sm font-semibold text-primary-600">
-                              {packConfig.emails}
-                            </span>
-                          </div>
-                          <input
-                            type="range"
-                            min={pack.configurable.emails.min}
-                            max={pack.configurable.emails.max}
-                            step={pack.configurable.emails.step}
-                            value={packConfig.emails}
-                            onChange={(e) => updatePackConfig(pack.id, 'emails', parseInt(e.target.value))}
-                            className="ovh-range"
-                          />
-                          <div className="flex justify-between text-xs text-neutral-400 mt-1">
-                            <span>{pack.configurable.emails.min}</span>
-                            <span>{pack.configurable.emails.max}</span>
-                          </div>
-                        </div>
+                      <h4 className="font-semibold text-neutral-900 mb-4">Choisissez le niveau de performance</h4>
+                      <p className="text-sm text-neutral-600 mb-4">
+                        Vous pouvez basculer d'un niveau à l'autre à tout moment pour accompagner la croissance de votre projet
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        {pack.performanceLevels.map((level) => {
+                          const isLevelSelected = selectedPerformanceLevel === level.id;
+                          return (
+                            <motion.button
+                              key={level.id}
+                              onClick={() => setSelectedPerformanceLevel(level.id)}
+                              className={`text-left p-4 rounded-xl border-2 transition-all ${
+                                isLevelSelected
+                                  ? 'border-primary-500 bg-primary-50 shadow-md'
+                                  : 'border-neutral-200 bg-white hover:border-primary-300 hover:bg-primary-50/50'
+                              }`}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <div className="flex items-start justify-between mb-3">
+                                <h5 className={`font-bold ${isLevelSelected ? 'text-primary-700' : 'text-neutral-900'}`}>
+                                  {level.name}
+                                </h5>
+                                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                                  isLevelSelected ? 'bg-primary-500 border-primary-500' : 'border-neutral-300'
+                                }`}>
+                                  {isLevelSelected && (
+                                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="space-y-1 mb-3">
+                                <div className="flex items-center gap-2 text-sm text-neutral-700">
+                                  <span>✓</span>
+                                  <span>{level.cores} vCore</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-neutral-700">
+                                  <span>✓</span>
+                                  <span>{level.ram} Go RAM</span>
+                                </div>
+                              </div>
+                              <div className="flex items-baseline gap-1">
+                                <span className={`text-2xl font-bold ${isLevelSelected ? 'text-primary-600' : 'text-neutral-900'}`}>
+                                  {level.price.toFixed(2)} €
+                                </span>
+                                <span className="text-sm text-neutral-500">hors. TVA/mois</span>
+                              </div>
+                              <div className="text-xs text-neutral-500 mt-1">
+                                soit {level.pricePerYear.toFixed(2)} €/an
+                              </div>
+                            </motion.button>
+                          );
+                        })}
                       </div>
                     </motion.div>
                   )}

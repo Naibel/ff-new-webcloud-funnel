@@ -5,13 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 const questions = [
   {
     id: 'organizationSize',
-    question: 'Quelle est la taille de votre organisation ?',
+    question: 'Combien de personnes composent votre équipe ?',
     icon: '🏢',
     options: [
-      { value: 'freelance', label: 'Particulier / Freelance / Indépendant', icon: '👤' },
-      { value: 'tpe', label: 'TPE (1-10 salariés)', icon: '👥' },
-      { value: 'pme', label: 'PME (11-50 salariés)', icon: '🏛️' },
-      { value: 'large', label: 'Grande entreprise (+50 salariés)', icon: '🏗️' },
+      { value: 'freelance', label: 'Une seule', icon: '👤' },
+      { value: 'tpe', label: 'Entre 2 et 10', icon: '👥' },
+      { value: 'pme', label: 'Entre 11 et 50', icon: '🏛️' },
+      { value: 'large', label: 'Plus de 50', icon: '🏗️' },
+      // Decide du pack d'hébergement pour le projet
     ],
   },
   {
@@ -20,20 +21,21 @@ const questions = [
     icon: '🌐',
     options: [
       { value: 'vitrine', label: 'Site vitrine (blog, média,…)', icon: '📰' },
-      { value: 'commerce', label: 'Commerce (boutique en ligne..)', icon: '🛒' },
-      { value: 'application', label: 'Application web', icon: '⚙️' },
+      { value: 'commerce', label: 'Boutique E-Commerce', icon: '🛒' },
+      { value: 'application', label: 'Application web (outil interactif)', icon: '⚙️' },
       { value: 'autre', label: 'Autre', icon: '📦' },
     ],
   },
   {
     id: 'geographicScope',
-    question: 'Quelle est la portée géographique de votre activité ?',
+    question: 'A quelle échelle souhaitez-vous communiquer ?',
     icon: '🗺️',
     options: [
       { value: 'regionale', label: 'Régionale', icon: '📍' },
       { value: 'national', label: 'Nationale', icon: '🇫🇷' },
       { value: 'european', label: 'Européenne', icon: '🇪🇺' },
       { value: 'international', label: 'Internationale', icon: '🌍' },
+      // Dédicde de la TLD en plus
     ],
   },
   {
@@ -41,13 +43,11 @@ const questions = [
     question: 'Dans quel secteur d\'activité évoluez-vous ?',
     icon: '💼',
     options: [
-      { value: 'services', label: 'Services / Conseil / Commerce', icon: '🤝' },
-      { value: 'sante', label: 'Santé & Médical', icon: '⚕️' },
-      { value: 'tech', label: 'Tech & Digital / Créatif', icon: '💻' },
-      { value: 'restauration', label: 'Restauration & Hôtellerie', icon: '🍽️' },
-      { value: 'institutionnel', label: 'Institutionnel (fonction publique)', icon: '🏛️' },
-      { value: 'association', label: 'Association', icon: '🤲' },
-      { value: 'aucun', label: 'Autre / Non spécifié', icon: '📋' },
+      { value: 'startups', label: 'Pour les startups', icon: '🤝' },
+      { value: 'entrepreneurs', label: 'Pour les créateurs d\'entreprise', icon: '⚕️' },
+      { value: 'creatives', label: 'Pour les projets créatifs', icon: '💻' },
+      { value: 'health', label: 'Pour les pros de la santé et du bien-être', icon: '🤲' },
+      // health => .doc, startups => .dev, creatives => .io
     ],
   },
 ];
@@ -74,6 +74,8 @@ export default function Questionnaire() {
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+    } else {
+      navigate('/funnel');
     }
   };
 
@@ -99,7 +101,70 @@ export default function Questionnaire() {
                 {Math.round(progress)}%
               </span>
             </div>
-            <div className="ovh-progress">
+            
+            {/* Stepper */}
+            <div className="flex items-center justify-between mb-4 relative">
+              {/* Connection line */}
+              <div className="absolute top-4 left-0 right-0 h-0.5 bg-neutral-200 -z-10">
+                <motion.div
+                  className="h-full bg-primary-500"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${(currentQuestion / (questions.length - 1)) * 100}%` }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                />
+              </div>
+              
+              {questions.map((q, idx) => {
+                const isCompleted = idx < currentQuestion;
+                const isCurrent = idx === currentQuestion;
+                const isAnswered = answers[q.id] !== undefined;
+                const isClickable = isAnswered || idx <= currentQuestion;
+                
+                return (
+                  <button
+                    key={q.id}
+                    onClick={() => isClickable && setCurrentQuestion(idx)}
+                    disabled={!isClickable}
+                    className={`relative flex flex-col items-center group ${
+                      isClickable ? 'cursor-pointer' : 'cursor-not-allowed'
+                    }`}
+                    title={`Question ${idx + 1}: ${q.question}`}
+                  >
+                    {/* Step circle */}
+                    <motion.div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                        isCurrent
+                          ? 'bg-primary-500 text-white shadow-lg scale-110'
+                          : isCompleted
+                          ? 'bg-primary-500 text-white'
+                          : isClickable
+                          ? 'bg-neutral-200 text-neutral-600 hover:bg-primary-100'
+                          : 'bg-neutral-100 text-neutral-400'
+                      }`}
+                      whileHover={isClickable ? { scale: 1.1 } : {}}
+                      whileTap={isClickable ? { scale: 0.95 } : {}}
+                    >
+                      {isCompleted ? (
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      ) : (
+                        idx + 1
+                      )}
+                    </motion.div>
+                    
+                    {/* Step label - visible on hover */}
+                    <span className={`absolute -bottom-6 text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity ${
+                      isCurrent ? 'text-primary-600 font-semibold' : 'text-neutral-500'
+                    }`}>
+                      Q{idx + 1}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            
+            <div className="ovh-progress mt-6">
               <motion.div 
                 className="ovh-progress-bar"
                 initial={{ width: 0 }}
@@ -174,8 +239,7 @@ export default function Questionnaire() {
           <div className="flex items-center justify-between pt-6 border-t border-neutral-100">
             <button
               onClick={handlePrevious}
-              disabled={currentQuestion === 0}
-              className={`ovh-btn-ghost ${currentQuestion === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className="ovh-btn-ghost"
             >
               ← Précédent
             </button>
