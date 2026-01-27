@@ -9,6 +9,10 @@ const hostingPacks = [
     price: 1.19,
     tagline: 'Parfait pour démarrer',
     features: ['10 Go d\'espace', '2 adresses email', 'Trafic illimité', 'SSL inclus'],
+    configurable: {
+      storage: { min: 10, max: 50, step: 10, unit: 'Go', pricePerUnit: 0.5 },
+      emails: { min: 2, max: 10, step: 1, pricePerUnit: 0.5 },
+    },
   },
   {
     id: 'perso',
@@ -16,6 +20,10 @@ const hostingPacks = [
     price: 2.99,
     tagline: 'Pour les équipes en croissance',
     features: ['100 Go d\'espace', '10 adresses email', 'Trafic illimité', 'SSL inclus'],
+    configurable: {
+      storage: { min: 100, max: 200, step: 25, unit: 'Go', pricePerUnit: 0.3 },
+      emails: { min: 10, max: 50, step: 5, pricePerUnit: 0.4 },
+    },
   },
   {
     id: 'pro',
@@ -23,6 +31,10 @@ const hostingPacks = [
     price: 5.99,
     tagline: 'Pour les professionnels exigeants',
     features: ['250 Go d\'espace', '100 adresses email', 'Trafic illimité', 'SSL inclus'],
+    configurable: {
+      storage: { min: 250, max: 500, step: 50, unit: 'Go', pricePerUnit: 0.2 },
+      emails: { min: 100, max: 200, step: 10, pricePerUnit: 0.3 },
+    },
     recommended: true,
   },
   {
@@ -31,16 +43,30 @@ const hostingPacks = [
     price: 11.99,
     tagline: 'Haute performance garantie',
     features: ['500 Go d\'espace', 'Emails illimités', '99,99% disponibilité', 'SSL inclus'],
+    configurable: {
+      storage: { min: 500, max: 1000, step: 100, unit: 'Go', pricePerUnit: 0.15 },
+      emails: { min: 1000, max: 5000, step: 500, pricePerUnit: 0.2 },
+    },
   },
 ];
 
 export default function HostingSelection() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { questionnaire, domain } = location.state || {};
+  const { questionnaire, domains } = location.state || {};
   
-  const [expandedPack, setExpandedPack] = useState('pro');
-  const [selectedPack, setSelectedPack] = useState('pro');
+  // Trouver le pack recommandé
+  const recommendedPack = hostingPacks.find(p => p.recommended) || hostingPacks[2]; // Pro par défaut
+  const otherPacks = hostingPacks.filter(p => p.id !== recommendedPack.id).slice(0, 2); // Max 2 autres
+  
+  const [expandedPack, setExpandedPack] = useState(recommendedPack.id);
+  const [selectedPack, setSelectedPack] = useState(recommendedPack.id);
+  const [packConfigs, setPackConfigs] = useState<Record<string, { storage: number; emails: number }>>({
+    starter: { storage: 10, emails: 2 },
+    perso: { storage: 100, emails: 10 },
+    pro: { storage: 250, emails: 100 },
+    performance: { storage: 500, emails: 1000 },
+  });
   const [options, setOptions] = useState({
     sqlDatabase: false,
     cdnPremium: false,
@@ -48,16 +74,55 @@ export default function HostingSelection() {
   });
 
   const selectedPackData = hostingPacks.find(p => p.id === selectedPack);
+  const selectedConfig = packConfigs[selectedPack] || { storage: 0, emails: 0 };
+
+  const calculatePackPrice = (packId: string) => {
+    const pack = hostingPacks.find(p => p.id === packId);
+    if (!pack) return 0;
+    
+    const config = packConfigs[packId] || { storage: 0, emails: 0 };
+    let price = pack.price;
+    
+    if (pack.configurable) {
+      // Calcul supplément pour stockage
+      const storageExtra = Math.max(0, config.storage - pack.configurable.storage.min);
+      price += (storageExtra / pack.configurable.storage.step) * pack.configurable.storage.pricePerUnit;
+      
+      // Calcul supplément pour emails
+      const emailsExtra = Math.max(0, config.emails - pack.configurable.emails.min);
+      price += (emailsExtra / pack.configurable.emails.step) * pack.configurable.emails.pricePerUnit;
+    }
+    
+    return price;
+  };
+
+  const totalPrice = calculatePackPrice(selectedPack);
+  const optionsPrice = (options.sqlDatabase ? 4.99 : 0) + 
+                      (options.cdnPremium ? 9.99 : 0) + 
+                      (options.extraBackup ? 2.99 : 0);
 
   const handleContinue = () => {
     navigate('/funnel/summary', {
       state: {
         questionnaire,
-        domain,
+        domains,
         hosting: selectedPack,
+        hostingConfig: selectedConfig,
+        hostingPrice: totalPrice,
         options,
+        optionsPrice,
       },
     });
+  };
+
+  const updatePackConfig = (packId: string, field: 'storage' | 'emails', value: number) => {
+    setPackConfigs(prev => ({
+      ...prev,
+      [packId]: {
+        ...prev[packId],
+        [field]: value,
+      },
+    }));
   };
 
   return (
@@ -75,57 +140,189 @@ export default function HostingSelection() {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Zone centrale - Tuiles d'offres */}
           <div className="lg:col-span-2 space-y-4">
-            {hostingPacks.map((pack) => {
+            {/* Pack recommandé en premier, déplié */}
+            <motion.div
+              initial={false}
+              animate={{ height: 'auto' }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-primary border-l-4"
+            >
+              <div className="p-6 bg-blue-50">
+                <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                  Recommandé pour vous
+                </span>
+                <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                  {recommendedPack.name}
+                </h3>
+                <p className="text-gray-600 mb-4">{recommendedPack.tagline}</p>
+                
+                <div className="mt-4">
+                  <p className="text-3xl font-bold text-gray-900 mb-1">
+                    {totalPrice.toFixed(2)} €/mois HT
+                  </p>
+                  <p className="text-sm text-gray-600 mb-4">
+                    soit {(totalPrice * 12).toFixed(2)} €/an HT
+                  </p>
+                  
+                  <ul className="space-y-2 mb-6">
+                    {recommendedPack.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-700">
+                        <span className="text-primary mr-2">✓</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Options de configuration */}
+                  <div className="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+                    <p className="font-semibold text-gray-900 mb-3">Personnaliser les ressources</p>
+                    
+                    {recommendedPack.configurable && (
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Stockage : {selectedConfig.storage} {recommendedPack.configurable.storage.unit}
+                          </label>
+                          <input
+                            type="range"
+                            min={recommendedPack.configurable.storage.min}
+                            max={recommendedPack.configurable.storage.max}
+                            step={recommendedPack.configurable.storage.step}
+                            value={selectedConfig.storage}
+                            onChange={(e) => updatePackConfig(recommendedPack.id, 'storage', parseInt(e.target.value))}
+                            className="w-full"
+                          />
+                          <div className="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>{recommendedPack.configurable.storage.min} {recommendedPack.configurable.storage.unit}</span>
+                            <span>{recommendedPack.configurable.storage.max} {recommendedPack.configurable.storage.unit}</span>
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Adresses email : {selectedConfig.emails}
+                          </label>
+                          <input
+                            type="range"
+                            min={recommendedPack.configurable.emails.min}
+                            max={recommendedPack.configurable.emails.max}
+                            step={recommendedPack.configurable.emails.step}
+                            value={selectedConfig.emails}
+                            onChange={(e) => updatePackConfig(recommendedPack.id, 'emails', parseInt(e.target.value))}
+                            className="w-full"
+                          />
+                          <div className="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>{recommendedPack.configurable.emails.min}</span>
+                            <span>{recommendedPack.configurable.emails.max}</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={handleContinue}
+                    className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+                  >
+                    Choisir cette offre
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Autres packs repliés */}
+            {otherPacks.map((pack) => {
               const isExpanded = expandedPack === pack.id;
+              const packConfig = packConfigs[pack.id] || { storage: 0, emails: 0 };
+              
               return (
                 <motion.div
                   key={pack.id}
                   initial={false}
                   animate={{ height: isExpanded ? 'auto' : 80 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-200"
+                  className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-200 cursor-pointer"
+                  onClick={() => {
+                    setExpandedPack(isExpanded ? recommendedPack.id : pack.id);
+                    setSelectedPack(pack.id);
+                  }}
                 >
-                  <div
-                    className={`p-6 cursor-pointer ${
-                      pack.recommended ? 'bg-blue-50 border-l-4 border-primary' : ''
-                    }`}
-                    onClick={() => {
-                      setExpandedPack(pack.id);
-                      setSelectedPack(pack.id);
-                    }}
-                  >
+                  <div className="p-6">
                     <div className="flex justify-between items-start">
                       <div className="flex-1">
-                        {pack.recommended && (
-                          <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-2">
-                            Recommandé pour vous
-                          </span>
-                        )}
-                        <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                        <h3 className="text-xl font-bold text-gray-900 mb-1">
                           {pack.name}
                         </h3>
-                        <p className="text-gray-600 mb-2">{pack.tagline}</p>
+                        <p className="text-gray-600 text-sm">{pack.tagline}</p>
                         {isExpanded && (
                           <div className="mt-4">
-                            <p className="text-3xl font-bold text-gray-900 mb-1">
-                              {pack.price.toFixed(2)} €/mois HT
+                            <p className="text-2xl font-bold text-gray-900 mb-1">
+                              {calculatePackPrice(pack.id).toFixed(2)} €/mois HT
                             </p>
                             <p className="text-sm text-gray-600 mb-4">
-                              soit {(pack.price * 12).toFixed(2)} €/an HT
+                              soit {(calculatePackPrice(pack.id) * 12).toFixed(2)} €/an HT
                             </p>
+                            
                             <ul className="space-y-2 mb-4">
                               {pack.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center text-gray-700">
+                                <li key={idx} className="flex items-center text-gray-700 text-sm">
                                   <span className="text-primary mr-2">✓</span>
                                   {feature}
                                 </li>
                               ))}
                             </ul>
+
+                            {/* Options de configuration */}
+                            {pack.configurable && (
+                              <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
+                                <p className="font-semibold text-gray-900 mb-3 text-sm">Personnaliser les ressources</p>
+                                
+                                <div className="space-y-3">
+                                  <div>
+                                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                                      Stockage : {packConfig.storage} {pack.configurable.storage.unit}
+                                    </label>
+                                    <input
+                                      type="range"
+                                      min={pack.configurable.storage.min}
+                                      max={pack.configurable.storage.max}
+                                      step={pack.configurable.storage.step}
+                                      value={packConfig.storage}
+                                      onChange={(e) => {
+                                        e.stopPropagation();
+                                        updatePackConfig(pack.id, 'storage', parseInt(e.target.value));
+                                      }}
+                                      onClick={(e) => e.stopPropagation()}
+                                      className="w-full"
+                                    />
+                                  </div>
+
+                                  <div>
+                                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                                      Adresses email : {packConfig.emails}
+                                    </label>
+                                    <input
+                                      type="range"
+                                      min={pack.configurable.emails.min}
+                                      max={pack.configurable.emails.max}
+                                      step={pack.configurable.emails.step}
+                                      value={packConfig.emails}
+                                      onChange={(e) => {
+                                        e.stopPropagation();
+                                        updatePackConfig(pack.id, 'emails', parseInt(e.target.value));
+                                      }}
+                                      onClick={(e) => e.stopPropagation()}
+                                      className="w-full"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleContinue();
                               }}
-                              className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+                              className="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors text-sm"
                             >
                               Choisir cette offre
                             </button>
@@ -133,7 +330,12 @@ export default function HostingSelection() {
                         )}
                       </div>
                       {!isExpanded && (
-                        <span className="text-gray-400 text-2xl">▼</span>
+                        <div className="flex items-center gap-4">
+                          <span className="text-gray-700 font-semibold">
+                            {calculatePackPrice(pack.id).toFixed(2)} €/mois
+                          </span>
+                          <span className="text-gray-400 text-xl">▼</span>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -194,19 +396,29 @@ export default function HostingSelection() {
               <h3 className="font-semibold text-gray-900 mb-4">Votre sélection</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Domaine</span>
-                  <span className="font-semibold">{domain || 'Non sélectionné'}</span>
+                  <span className="text-gray-600">Domaines</span>
+                  <span className="font-semibold">{domains?.length || 0} sélectionné(s)</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Hébergement</span>
                   <span className="font-semibold">
-                    {selectedPackData?.name} - {selectedPackData?.price.toFixed(2)} €/mois
+                    {selectedPackData?.name} - {totalPrice.toFixed(2)} €/mois
                   </span>
                 </div>
+                {optionsPrice > 0 && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Options</span>
+                    <span className="font-semibold">{optionsPrice.toFixed(2)} €/mois</span>
+                  </div>
+                )}
                 <div className="border-t pt-3 mt-3">
                   <div className="flex justify-between font-semibold text-lg">
                     <span>Total mensuel HT</span>
-                    <span>{selectedPackData?.price.toFixed(2)} €/mois</span>
+                    <span>{(totalPrice + optionsPrice).toFixed(2)} €/mois</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600 mt-1">
+                    <span>Total annuel HT</span>
+                    <span>{((totalPrice + optionsPrice) * 12).toFixed(2)} €/an</span>
                   </div>
                 </div>
               </div>
@@ -223,4 +435,3 @@ export default function HostingSelection() {
     </div>
   );
 }
-

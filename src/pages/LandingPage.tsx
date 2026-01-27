@@ -17,7 +17,7 @@ export default function LandingPage() {
       <div className="max-w-4xl w-full">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Bienvenue sur OVHcloud Web Cloud
+            Développez votre présence en ligne
           </h1>
           <p className="text-xl text-gray-600">
             Choisissez votre parcours de commande
