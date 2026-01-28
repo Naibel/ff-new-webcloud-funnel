@@ -4,6 +4,30 @@ import { motion } from 'framer-motion';
 import OdsIcon from '../components/OdsIcon';
 import { getRecommendation } from '../utils/getRecommendation';
 
+// Prix des extensions de domaine (doit correspondre à DomainSelection.tsx)
+const domainExtensionPrices: Record<string, number> = {
+  '.fr': 7.79,
+  '.com': 13.49,
+  '.eu': 8.49,
+  '.net': 14.99,
+  '.org': 12.99,
+  '.io': 51.99,
+  '.tech': 45.99,
+  '.store': 25.99,
+  '.shop': 25.99,
+  '.ovh': 8.99,
+};
+
+// Fonction pour obtenir le prix d'un domaine à partir de son nom complet
+const getDomainPrice = (domainFull: string): number => {
+  for (const [ext, price] of Object.entries(domainExtensionPrices)) {
+    if (domainFull.endsWith(ext)) {
+      return price;
+    }
+  }
+  return 0; // Prix par défaut si extension non trouvée
+};
+
 const hostingPacks = [
   {
     id: 'starter',
@@ -66,6 +90,7 @@ export default function HostingSelection() {
       activitySector: questionnaire.activitySector,
     };
     return getRecommendation(answers);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     questionnaire?.organizationSize,
     questionnaire?.siteType,
@@ -239,7 +264,7 @@ export default function HostingSelection() {
   ];
 
   const databaseConfigs = [
-    { id: '512mb-8gb', name: '512MB RAM / 8GB stockage', price: 6.59 },
+    { id: '512mb-8gb', name: '512MB RAM / 8GB stockage', price: 0 },
     { id: '1gb-16gb', name: '1GB RAM / 16GB stockage', price: 10.99 },
     { id: '2gb-32gb', name: '2GB RAM / 32GB stockage', price: 21.99 },
     { id: '4gb-64gb', name: '4GB RAM / 64GB stockage', price: 43.99 },
@@ -834,17 +859,45 @@ export default function HostingSelection() {
             >
               <h3 className="font-bold text-neutral-900 mb-4">Votre sélection</h3>
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-neutral-600">Domaines</span>
-                  <span className="font-semibold">{domains?.length || 0} sélectionné(s)</span>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-neutral-600">Domaines</span>
+                    <span className="font-semibold">{domains?.length || 0} sélectionné(s)</span>
+                  </div>
+                  {domains && Array.isArray(domains) && domains.length > 0 && (
+                    <div className="mt-2 space-y-1">
+                      {(domains as string[]).map((domain, index) => {
+                        const domainPrice = getDomainPrice(domain);
+                        const isFirstDomain = index === 0;
+                        return (
+                          <div key={index} className="text-xs text-neutral-500 pl-2 border-l-2 border-primary-200 flex justify-between items-center">
+                            <div className="flex flex-col">
+                              <span>{domain}</span>
+                              {isFirstDomain && (
+                                <span className="text-primary-600 font-medium text-[10px] mt-0.5">
+                                  Gratuit la première année
+                                </span>
+                              )}
+                            </div>
+                            {domainPrice > 0 && (
+                              <span className={`font-medium ml-2 ${isFirstDomain ? 'text-primary-600 line-through' : 'text-neutral-600'}`}>
+                                {domainPrice.toFixed(2)} €/an
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-neutral-600">Hébergement</span>
-                  <span className="font-semibold">{selectedPackData.name}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-neutral-600">Prix hébergement</span>
-                  <span className="font-semibold">{totalPrice.toFixed(2)} €/mois</span>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-neutral-600">Hébergement</span>
+                    <span className="font-semibold">{totalPrice.toFixed(2)} €/mois</span>
+                  </div>
+                  <div className="text-xs text-neutral-500 pl-2 border-l-2 border-primary-200">
+                    {selectedPackData.name}
+                  </div>
                 </div>
                 {optionsPrice > 0 && (
                   <div className="flex justify-between">

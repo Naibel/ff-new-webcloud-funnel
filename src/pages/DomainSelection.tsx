@@ -35,6 +35,9 @@ export default function DomainSelection() {
   const [showAllSuggestions, setShowAllSuggestions] = useState(false);
   const [selectedDomains, setSelectedDomains] = useState<Set<string>>(new Set());
   const [isSearching, setIsSearching] = useState(false);
+  const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
+  const [clickedAiSuggestion, setClickedAiSuggestion] = useState<string | null>(null);
+  const [lastSearchedTerm, setLastSearchedTerm] = useState<string>('');
 
   const getRecommendedExtensions = () => {
     // Utiliser les recommandations du CSV si disponibles
@@ -82,49 +85,72 @@ export default function DomainSelection() {
     return recommended.filter(Boolean);
   };
 
-  const generateSuggestions = (baseName: string): DomainResult[] => {
-    const recommendedExts = getRecommendedExtensions();
+  // Générer des suggestions IA basées sur le terme de recherche
+  const generateAiSuggestions = (baseName: string): string[] => {
+    const cleanName = baseName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+    if (!cleanName || cleanName.length < 2) return [];
+    
+    const suggestions = [
+      `get${cleanName}`,
+      `my${cleanName}`,
+      `${cleanName}pro`,
+      `${cleanName}hub`,
+      `${cleanName}app`,
+      `${cleanName}plus`,
+      `${cleanName}online`,
+      `${cleanName}web`,
+    ];
+    
+    return suggestions.slice(0, 8); // Limiter à 8 suggestions
+  };
+
+  const generateSuggestions = (baseName: string, existingResults: DomainResult[]): DomainResult[] => {
     const suggestions: DomainResult[] = [];
     
-    // Generate different variations
-    const variations = [
-      `${baseName}-online`,
-      `${baseName}-web`,
-      `${baseName}-pro`,
-      `${baseName}-shop`,
-      `get-${baseName}`,
-      `my-${baseName}`,
-      `${baseName}-france`,
-      `${baseName}-2026`,
-      `${baseName}-digital`,
-      `${baseName}-plus`,
-    ];
-
-    // Create suggestions with different extensions and variations
-    variations.forEach(variation => {
-      recommendedExts.forEach(ext => {
+    // Récupérer les extensions déjà présentes dans les résultats
+    const existingExtensions = new Set(existingResults.map(r => r.extension));
+    
+    // Générer uniquement le même nom de domaine avec des extensions différentes
+    // Utiliser toutes les extensions disponibles, pas seulement les recommandées
+    availableExtensions.forEach(ext => {
+      // Ne pas inclure les extensions déjà présentes dans les résultats principaux
+      if (!existingExtensions.has(ext.ext)) {
         suggestions.push({
-          name: variation,
+          name: baseName,
           extension: ext.ext,
           available: true,
           price: ext.price,
         });
-      });
+      }
     });
 
-    // Shuffle and return suggestions
-    return suggestions.sort(() => Math.random() - 0.5);
+    // Retourner les suggestions (déjà triées par extension)
+    return suggestions;
   };
 
-  const handleSearch = () => {
-    if (!searchTerm.trim()) return;
+  const handleSearch = (searchValue?: string) => {
+    const termToSearch = searchValue || searchTerm;
+    if (!termToSearch.trim()) {
+      setIsSearching(false);
+      return;
+    }
 
     setIsSearching(true);
     setShowAllSuggestions(false);
+    // Stocker le terme de recherche utilisé pour l'affichage des résultats
+    setLastSearchedTerm(termToSearch);
+    
+    const baseName = termToSearch.toLowerCase().replace(/\s+/g, '-');
+    
+    // Générer les suggestions IA seulement si elles n'existent pas encore
+    if (aiSuggestions.length === 0) {
+      const cleanName = termToSearch.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+      const aiSugs = generateAiSuggestions(cleanName);
+      setAiSuggestions(aiSugs);
+    }
     
     setTimeout(() => {
       const recommendedExts = getRecommendedExtensions();
-      const baseName = searchTerm.toLowerCase().replace(/\s+/g, '-');
       const results: DomainResult[] = recommendedExts.map(ext => ({
         name: baseName,
         extension: ext.ext,
@@ -145,10 +171,11 @@ export default function DomainSelection() {
 
       setSearchResults(results);
       
-      // Generate suggestions if there are unavailable domains
-      const hasUnavailableDomains = results.some(r => !r.available);
-      if (hasUnavailableDomains) {
-        const suggestions = generateSuggestions(baseName);
+      // Générer des suggestions avec d'autres extensions pour le même nom de domaine
+      // Afficher cette section si on a des résultats disponibles
+      const availableResults = results.filter(r => r.available);
+      if (availableResults.length > 0) {
+        const suggestions = generateSuggestions(baseName, results);
         setSuggestedDomains(suggestions);
       } else {
         setSuggestedDomains([]);
@@ -225,7 +252,7 @@ export default function DomainSelection() {
               />
             </div>
             <button 
-              onClick={handleSearch}
+              onClick={() => handleSearch()}
               disabled={!searchTerm.trim() || isSearching}
               className="ovh-btn-primary px-8 disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -241,6 +268,57 @@ export default function DomainSelection() {
             </button>
           </div>
 
+          {/* AI Suggestions Section */}
+          <AnimatePresence>
+            {aiSuggestions.length > 0 && searchTerm.trim() && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ delay: 0.15 }}
+                className="mb-6 p-5 rounded-2xl border-2 border-primary-200 bg-primary-50/30"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <OdsIcon name="zap" size="sm" color="var(--ods-color-primary-500)" />
+                    <h3 className="font-bold text-neutral-900">Suggestions IA</h3>
+                  </div>
+                  <span className="text-xs text-neutral-500">Basées sur votre profil</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {aiSuggestions.map((suggestion, idx) => {
+                    const isClicked = clickedAiSuggestion === suggestion;
+                    
+                    return (
+                      <motion.button
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.05 }}
+                        onClick={() => {
+                          // Mettre à jour le terme de recherche et marquer la suggestion comme cliquée
+                          setSearchTerm(suggestion);
+                          setClickedAiSuggestion(suggestion);
+                          // Déclencher automatiquement une nouvelle recherche avec la valeur sélectionnée
+                          handleSearch(suggestion);
+                        }}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${
+                          isClicked
+                            ? 'bg-primary-500 text-white border-primary-500 shadow-md'
+                            : 'bg-white text-neutral-700 border-neutral-200 hover:border-primary-300 hover:bg-primary-50'
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {suggestion}
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Results */}
           <AnimatePresence>
             {searchResults.length > 0 && (
@@ -251,10 +329,10 @@ export default function DomainSelection() {
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-neutral-900">
-                    {searchResults.length} domaines trouvés
+                    Résultats pour '{lastSearchedTerm}'
                   </h3>
                   <span className="text-sm text-neutral-500">
-                    Cliquez pour sélectionner
+                    {searchResults.filter(r => r.available).length} disponible{searchResults.filter(r => r.available).length > 1 ? 's' : ''}
                   </span>
                 </div>
                 
