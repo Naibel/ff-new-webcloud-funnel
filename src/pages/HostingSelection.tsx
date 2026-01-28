@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import OdsIcon from '../components/OdsIcon';
 
 const hostingPacks = [
@@ -56,6 +56,13 @@ export default function HostingSelection() {
   
   const recommendedPack = hostingPacks.find(p => p.recommended) || hostingPacks[2];
   
+  // Trier les packs pour mettre le recommandé en premier
+  const sortedPacks = [...hostingPacks].sort((a, b) => {
+    if (a.recommended && !b.recommended) return -1;
+    if (!a.recommended && b.recommended) return 1;
+    return 0;
+  });
+  
   const [selectedPack, setSelectedPack] = useState(recommendedPack.id);
   const packConfigs: Record<string, { storage: number; emails: number }> = {
     starter: { storage: 10, emails: 2 },
@@ -64,18 +71,44 @@ export default function HostingSelection() {
     performance: { storage: 500, emails: 1000 },
   };
   const [selectedPerformanceLevel, setSelectedPerformanceLevel] = useState(1);
-  const [options, setOptions] = useState({
-    sqlDatabase: false,
-    cdnPremium: false,
-    sslOption: false,
-    visibilityPro: false,
+  const [options, setOptions] = useState<Record<string, {
+    sqlDatabase: boolean;
+    cdnPremium: boolean;
+    sslOption: boolean;
+    visibilityPro: boolean;
+  }>>({
+    starter: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
+    perso: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
+    pro: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
+    performance: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
   });
   const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
-  const [showMoreOptions, setShowMoreOptions] = useState(false);
-  const [databaseSystem, setDatabaseSystem] = useState<string>('mysql');
-  const [databaseConfig, setDatabaseConfig] = useState<string>('512mb-8gb');
-  const [cdnConfig, setCdnConfig] = useState<string>('basique');
-  const [sslConfig, setSslConfig] = useState<string>('letsencrypt');
+  const [databaseSystem, setDatabaseSystem] = useState<Record<string, string>>({
+    starter: 'mysql',
+    perso: 'mysql',
+    pro: 'mysql',
+    performance: 'mysql',
+  });
+  const [databaseConfig, setDatabaseConfig] = useState<Record<string, string>>({
+    starter: '512mb-8gb',
+    perso: '512mb-8gb',
+    pro: '512mb-8gb',
+    performance: '512mb-8gb',
+  });
+  const [cdnConfig, setCdnConfig] = useState<Record<string, string>>({
+    starter: 'basique',
+    perso: 'basique',
+    pro: 'basique',
+    performance: 'basique',
+  });
+  // setSslConfig gardé pour usage futur si les options SSL sont ajoutées aux options recommandées
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [sslConfig, setSslConfig] = useState<Record<string, string>>({
+    starter: 'letsencrypt',
+    perso: 'letsencrypt',
+    pro: 'letsencrypt',
+    performance: 'letsencrypt',
+  });
   const [selectedCms, setSelectedCms] = useState<Record<string, string>>({
     starter: 'none',
     perso: 'none',
@@ -144,37 +177,41 @@ export default function HostingSelection() {
 
   const totalPrice = calculatePackPrice(selectedPack);
   
-  // Calcul du prix de la base de données selon la configuration
-  const getDatabasePrice = () => {
-    if (!options.sqlDatabase) return 0;
-    const config = databaseConfigs.find(c => c.id === databaseConfig);
+  // Calcul du prix de la base de données selon la configuration pour un pack donné
+  const getDatabasePrice = (packId: string) => {
+    const packOptions = options[packId] || { sqlDatabase: false };
+    if (!packOptions.sqlDatabase) return 0;
+    const config = databaseConfigs.find(c => c.id === databaseConfig[packId]);
     return config ? config.price : 0;
   };
 
-  // Calcul du prix CDN selon la configuration
-  const getCdnPrice = () => {
-    if (!options.cdnPremium) return 0;
-    const config = cdnConfigs.find(c => c.id === cdnConfig);
+  // Calcul du prix CDN selon la configuration pour un pack donné
+  const getCdnPrice = (packId: string) => {
+    const packOptions = options[packId] || { cdnPremium: false };
+    if (!packOptions.cdnPremium) return 0;
+    const config = cdnConfigs.find(c => c.id === cdnConfig[packId]);
     return config ? config.price : 0;
   };
 
-  // Calcul du prix SSL selon la configuration
-  const getSslPrice = () => {
-    if (!options.sslOption) return 0;
-    const config = sslConfigs.find(c => c.id === sslConfig);
+  // Calcul du prix SSL selon la configuration pour un pack donné
+  const getSslPrice = (packId: string) => {
+    const packOptions = options[packId] || { sslOption: false };
+    if (!packOptions.sslOption) return 0;
+    const config = sslConfigs.find(c => c.id === sslConfig[packId]);
     return config ? config.price : 0;
   };
 
-  // Calcul du prix Visibilité Pro (16,49€ par mois première année, 21,99€ par mois années suivantes)
-  const getVisibilityProPrice = () => {
-    if (!options.visibilityPro) return 0;
+  // Calcul du prix Visibilité Pro (16,49€ par mois première année, 21,99€ par mois années suivantes) pour un pack donné
+  const getVisibilityProPrice = (packId: string) => {
+    const packOptions = options[packId] || { visibilityPro: false };
+    if (!packOptions.visibilityPro) return 0;
     return 16.49; // Prix mensuel première année
   };
 
-  const optionsPrice = getDatabasePrice() + 
-                      getCdnPrice() + 
-                      getSslPrice() +
-                      getVisibilityProPrice();
+  const optionsPrice = getDatabasePrice(selectedPack) + 
+                      getCdnPrice(selectedPack) + 
+                      getSslPrice(selectedPack) +
+                      getVisibilityProPrice(selectedPack);
 
   const handleContinue = () => {
     const packData = hostingPacks.find(p => p.id === selectedPack);
@@ -194,6 +231,8 @@ export default function HostingSelection() {
       }
     }
     
+    const packOptions = options[selectedPack] || { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false };
+    
     navigate('/summary', {
       state: {
         questionnaire,
@@ -201,25 +240,25 @@ export default function HostingSelection() {
         hosting: selectedPack,
         hostingConfig,
         hostingPrice: totalPrice,
-        options,
+        options: packOptions,
         optionsPrice,
-        databaseConfig: options.sqlDatabase ? {
-          system: databaseSystem,
-          config: databaseConfig,
-          price: getDatabasePrice(),
+        databaseConfig: packOptions.sqlDatabase ? {
+          system: databaseSystem[selectedPack],
+          config: databaseConfig[selectedPack],
+          price: getDatabasePrice(selectedPack),
         } : null,
-        cdnConfig: options.cdnPremium ? {
-          level: cdnConfig,
-          price: getCdnPrice(),
+        cdnConfig: packOptions.cdnPremium ? {
+          level: cdnConfig[selectedPack],
+          price: getCdnPrice(selectedPack),
         } : null,
-        sslConfig: options.sslOption ? {
-          type: sslConfig,
-          price: getSslPrice(),
+        sslConfig: packOptions.sslOption ? {
+          type: sslConfig[selectedPack],
+          price: getSslPrice(selectedPack),
         } : null,
-        visibilityProConfig: options.visibilityPro ? {
+        visibilityProConfig: packOptions.visibilityPro ? {
           firstYearPrice: 16.49,
           followingYearsPrice: 21.99,
-          monthlyPrice: getVisibilityProPrice(),
+          monthlyPrice: getVisibilityProPrice(selectedPack),
         } : null,
         cmsConfig: {
           pack: selectedPack,
@@ -264,24 +303,29 @@ export default function HostingSelection() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Packs Column */}
-          <div className="lg:col-span-2 space-y-4">
-            {hostingPacks.map((pack, idx) => {
+          <div className="lg:col-span-2">
+            {sortedPacks.map((pack, idx) => {
               const isSelected = selectedPack === pack.id;
               const packPrice = calculatePackPrice(pack.id);
+              const isRecommended = pack.recommended;
               
               return (
-                <motion.div
-                  key={pack.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  onClick={() => setSelectedPack(pack.id)}
-                  className={`ovh-card cursor-pointer transition-all overflow-hidden ${
-                    isSelected
-                      ? 'ring-2 ring-primary-500 shadow-lg'
-                      : 'hover:shadow-md'
-                  } ${pack.recommended ? 'border-l-4 border-l-primary-500' : ''}`}
-                >
+                <div key={pack.id} className={isRecommended ? 'mb-8' : 'mb-4'}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    onClick={() => setSelectedPack(pack.id)}
+                    className={`ovh-card cursor-pointer transition-all overflow-hidden ${
+                      isSelected
+                        ? 'ring-2 ring-primary-500 shadow-lg'
+                        : 'hover:shadow-md'
+                    } ${
+                      isRecommended 
+                        ? 'border-l-4 border-l-primary-500 bg-gradient-to-r from-primary-50/50 to-white' 
+                        : ''
+                    }`}
+                  >
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
                     {/* Icon & Info */}
                     <div className="flex items-start gap-4 flex-1">
@@ -457,214 +501,30 @@ export default function HostingSelection() {
                       </div>
                     </motion.div>
                   )}
-                </motion.div>
-              );
-            })}
-          </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Options */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="ovh-card"
-            >
-              <h3 className="font-bold text-neutral-900 mb-4">Options recommandées</h3>
-              <div className="space-y-4">
-                {([
-                  { id: 'sqlDatabase', name: 'Base de données', price: null as number | null },
-                  { id: 'cdnPremium', name: 'Optimisation du trafic', price: null as number | null },
-                ] as const)
-                .filter((option) => {
-                  // Ne pas afficher l'option Base de données si Starter est sélectionné
-                  if (option.id === 'sqlDatabase' && selectedPack === 'starter') {
-                    return false;
-                  }
-                  return true;
-                })
-                .map((option) => (
-                  <div key={option.id} className="relative">
-                    <label className="flex items-center justify-between cursor-pointer group">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-medium text-neutral-800 group-hover:text-primary-600 transition-colors">
-                            {option.name}
-                          </span>
-                          <div
-                            className="relative"
-                            onMouseEnter={() => setHoveredInfo(option.id)}
-                            onMouseLeave={() => setHoveredInfo(null)}
-                          >
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                setHoveredInfo(hoveredInfo === option.id ? null : option.id);
-                              }}
-                              className="w-5 h-5 rounded-full bg-neutral-200 hover:bg-primary-100 text-neutral-600 hover:text-primary-600 flex items-center justify-center transition-colors group/info"
-                              aria-label="Plus d'informations"
-                            >
-                              <svg
-                                className="w-3 h-3"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </button>
-                            {hoveredInfo === option.id && (
-                              <motion.div
-                                initial={{ opacity: 0, y: 5 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 5 }}
-                                className="absolute left-0 bottom-full mb-2 w-72 p-4 bg-neutral-900 text-white text-xs rounded-lg shadow-2xl z-50"
-                              >
-                                <p className="leading-relaxed">
-                                  {optionDescriptions[option.id as keyof typeof optionDescriptions]}
-                                </p>
-                                <div className="absolute left-6 top-full w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-neutral-900"></div>
-                              </motion.div>
-                            )}
-                          </div>
-                        </div>
-                        {option.price !== null && option.price !== undefined && (
-                          <span className="block text-sm text-neutral-500">+{option.price.toFixed(2)} €/mois</span>
-                        )}
-                        {option.id === 'sqlDatabase' && options.sqlDatabase && (
-                          <span className="block text-sm text-primary-600 font-medium mt-1">
-                            +{getDatabasePrice().toFixed(2)} €/mois
-                          </span>
-                        )}
-                        {option.id === 'cdnPremium' && options.cdnPremium && (
-                          <span className="block text-sm text-primary-600 font-medium mt-1">
-                            +{getCdnPrice().toFixed(2)} €/mois
-                          </span>
-                        )}
-                      </div>
-                      <input
-                        type="checkbox"
-                        checked={options[option.id as keyof typeof options]}
-                        onChange={(e) => setOptions({ ...options, [option.id]: e.target.checked })}
-                        className="ovh-checkbox"
-                      />
-                    </label>
-                    
-                    {/* Configuration de la base de données */}
-                    {option.id === 'sqlDatabase' && options.sqlDatabase && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="mt-4 pt-4 border-t border-neutral-200 space-y-4"
-                      >
-                        {/* Sélecteur système de gestion */}
-                        <div>
-                          <label className="block text-sm font-medium text-neutral-700 mb-2">
-                            Système de gestion de base de données
-                          </label>
-                          <select
-                            value={databaseSystem}
-                            onChange={(e) => setDatabaseSystem(e.target.value)}
-                            className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-neutral-900"
-                          >
-                            {databaseSystems.map((system) => (
-                              <option key={system.id} value={system.id}>
-                                {system.name}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-
-                        {/* Sélecteur configuration mémoire */}
-                        <div>
-                          <label className="block text-sm font-medium text-neutral-700 mb-2">
-                            Configuration mémoire et stockage
-                          </label>
-                          <select
-                            value={databaseConfig}
-                            onChange={(e) => setDatabaseConfig(e.target.value)}
-                            className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-neutral-900"
-                          >
-                            {databaseConfigs.map((config) => (
-                              <option key={config.id} value={config.id}>
-                                {config.name} - {config.price.toFixed(2)} €/mois
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* Configuration CDN */}
-                    {option.id === 'cdnPremium' && options.cdnPremium && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="mt-4 pt-4 border-t border-neutral-200"
-                      >
-                        <div>
-                          <label className="block text-sm font-medium text-neutral-700 mb-2">
-                            Niveau d'optimisation
-                          </label>
-                          <select
-                            value={cdnConfig}
-                            onChange={(e) => setCdnConfig(e.target.value)}
-                            className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-neutral-900"
-                          >
-                            {cdnConfigs.map((config) => (
-                              <option key={config.id} value={config.id}>
-                                {config.name} - {config.price.toFixed(2)} €/mois
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </motion.div>
-                    )}
-
-                  </div>
-                ))}
-
-                {/* Lien "Voir plus" */}
-                <button
-                  onClick={() => setShowMoreOptions(!showMoreOptions)}
-                  className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium text-sm transition-colors w-full"
-                >
-                  <span>{showMoreOptions ? 'Voir moins' : 'Voir plus'}</span>
-                  <svg
-                    className={`w-4 h-4 transition-transform ${showMoreOptions ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {/* Options supplémentaires */}
-                <AnimatePresence>
-                  {showMoreOptions && (
+                  {/* Options recommandées */}
+                  {isSelected && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
+                      className="mt-6 pt-6 border-t border-neutral-200"
                     >
-                      <div className="space-y-4 pt-2 border-t border-neutral-200">
-                        {[
-                          { id: 'sslOption', name: 'Option SSL', price: null },
-                          { id: 'visibilityPro', name: 'Visibilité pro', price: null },
-                        ].map((option) => (
+                      <h4 className="font-semibold text-neutral-900 mb-4">Options recommandées</h4>
+                      <div className="space-y-4">
+                        {([
+                          { id: 'sqlDatabase', name: 'Base de données', price: null as number | null },
+                          { id: 'cdnPremium', name: 'Optimisation du trafic', price: null as number | null },
+                        ] as const)
+                        .filter((option) => {
+                          // Ne pas afficher l'option Base de données si Starter est sélectionné
+                          if (option.id === 'sqlDatabase' && pack.id === 'starter') {
+                            return false;
+                          }
+                          return true;
+                        })
+                        .map((option) => (
                           <div key={option.id} className="relative">
-                            <label className="flex items-center justify-between cursor-pointer group">
+                            <label className="flex items-center justify-between cursor-pointer group" onClick={(e) => e.stopPropagation()}>
                               <div className="flex-1">
                                 <div className="flex items-center gap-2">
                                   <span className="font-medium text-neutral-800 group-hover:text-primary-600 transition-colors">
@@ -713,51 +573,127 @@ export default function HostingSelection() {
                                     )}
                                   </div>
                                 </div>
-                                {option.id === 'sslOption' && options.sslOption && (
+                                {option.price !== null && option.price !== undefined && (
+                                  <span className="block text-sm text-neutral-500">+{option.price.toFixed(2)} €/mois</span>
+                                )}
+                                {option.id === 'sqlDatabase' && options[pack.id]?.sqlDatabase && (
                                   <span className="block text-sm text-primary-600 font-medium mt-1">
-                                    {getSslPrice() === 0 ? 'Inclus' : `+${getSslPrice().toFixed(2)} €/mois`}
+                                    +{getDatabasePrice(pack.id).toFixed(2)} €/mois
                                   </span>
                                 )}
-                                {option.id === 'visibilityPro' && options.visibilityPro && (
+                                {option.id === 'cdnPremium' && options[pack.id]?.cdnPremium && (
                                   <span className="block text-sm text-primary-600 font-medium mt-1">
-                                    +{getVisibilityProPrice().toFixed(2)} €/mois
+                                    +{getCdnPrice(pack.id).toFixed(2)} €/mois
                                   </span>
-                                )}
-                                {option.id === 'sslOption' && !options.sslOption && (
-                                  <span className="block text-sm text-neutral-500">Sélectionnez pour voir les options</span>
-                                )}
-                                {option.id === 'visibilityPro' && !options.visibilityPro && (
-                                  <span className="block text-sm text-neutral-500">16,49 €/mois (1ère année)</span>
                                 )}
                               </div>
                               <input
                                 type="checkbox"
-                                checked={options[option.id as keyof typeof options]}
-                                onChange={(e) => setOptions({ ...options, [option.id]: e.target.checked })}
+                                checked={options[pack.id]?.[option.id as keyof typeof options[string]] || false}
+                                onChange={(e) => {
+                                  e.stopPropagation();
+                                  setOptions({
+                                    ...options,
+                                    [pack.id]: {
+                                      ...options[pack.id],
+                                      [option.id]: e.target.checked,
+                                    },
+                                  });
+                                }}
                                 className="ovh-checkbox"
+                                onClick={(e) => e.stopPropagation()}
                               />
                             </label>
+                            
+                            {/* Configuration de la base de données */}
+                            {option.id === 'sqlDatabase' && options[pack.id]?.sqlDatabase && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className="mt-4 pt-4 border-t border-neutral-200 space-y-4"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                {/* Sélecteur système de gestion */}
+                                <div>
+                                  <label className="block text-sm font-medium text-neutral-700 mb-2">
+                                    Système de gestion de base de données
+                                  </label>
+                                  <select
+                                    value={databaseSystem[pack.id] || 'mysql'}
+                                    onChange={(e) => {
+                                      e.stopPropagation();
+                                      setDatabaseSystem({
+                                        ...databaseSystem,
+                                        [pack.id]: e.target.value,
+                                      });
+                                    }}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-neutral-900"
+                                  >
+                                    {databaseSystems.map((system) => (
+                                      <option key={system.id} value={system.id}>
+                                        {system.name}
+                                      </option>
+                                    ))}
+                                  </select>
+                                </div>
 
-                            {/* Configuration SSL */}
-                            {option.id === 'sslOption' && options.sslOption && (
+                                {/* Sélecteur configuration mémoire */}
+                                <div>
+                                  <label className="block text-sm font-medium text-neutral-700 mb-2">
+                                    Configuration mémoire et stockage
+                                  </label>
+                                  <select
+                                    value={databaseConfig[pack.id] || '512mb-8gb'}
+                                    onChange={(e) => {
+                                      e.stopPropagation();
+                                      setDatabaseConfig({
+                                        ...databaseConfig,
+                                        [pack.id]: e.target.value,
+                                      });
+                                    }}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-neutral-900"
+                                  >
+                                    {databaseConfigs.map((config) => (
+                                      <option key={config.id} value={config.id}>
+                                        {config.name} - {config.price.toFixed(2)} €/mois
+                                      </option>
+                                    ))}
+                                  </select>
+                                </div>
+                              </motion.div>
+                            )}
+
+                            {/* Configuration CDN */}
+                            {option.id === 'cdnPremium' && options[pack.id]?.cdnPremium && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 exit={{ opacity: 0, height: 0 }}
                                 className="mt-4 pt-4 border-t border-neutral-200"
+                                onClick={(e) => e.stopPropagation()}
                               >
                                 <div>
                                   <label className="block text-sm font-medium text-neutral-700 mb-2">
-                                    Type de certificat SSL
+                                    Niveau d'optimisation
                                   </label>
                                   <select
-                                    value={sslConfig}
-                                    onChange={(e) => setSslConfig(e.target.value)}
+                                    value={cdnConfig[pack.id] ?? 'basique'}
+                                    onChange={(e) => {
+                                      e.stopPropagation();
+                                      setCdnConfig({
+                                        ...cdnConfig,
+                                        [pack.id]: e.target.value,
+                                      });
+                                    }}
+                                    onClick={(e) => e.stopPropagation()}
                                     className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-neutral-900"
                                   >
-                                    {sslConfigs.map((config) => (
+                                    {cdnConfigs.map((config) => (
                                       <option key={config.id} value={config.id}>
-                                        {config.name} {config.price === 0 ? '(Inclus)' : `- ${config.price.toFixed(2)} €/mois`}
+                                        {config.name} - {config.price.toFixed(2)} €/mois
                                       </option>
                                     ))}
                                   </select>
@@ -769,10 +705,21 @@ export default function HostingSelection() {
                       </div>
                     </motion.div>
                   )}
-                </AnimatePresence>
+                </motion.div>
+                {isRecommended && (
+                  <div className="mt-6 mb-2 flex items-center gap-4">
+                    <div className="flex-1 h-px bg-gradient-to-r from-primary-200 to-transparent"></div>
+                    <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Autres offres</span>
+                    <div className="flex-1 h-px bg-gradient-to-l from-primary-200 to-transparent"></div>
+                  </div>
+                )}
               </div>
-            </motion.div>
+              );
+            })}
+          </div>
 
+          {/* Sidebar */}
+          <div className="space-y-6">
             {/* Summary */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
