@@ -26,6 +26,8 @@ export default function DomainSelection() {
   
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<DomainResult[]>([]);
+  const [suggestedDomains, setSuggestedDomains] = useState<DomainResult[]>([]);
+  const [showAllSuggestions, setShowAllSuggestions] = useState(false);
   const [selectedDomains, setSelectedDomains] = useState<Set<string>>(new Set());
   const [isSearching, setIsSearching] = useState(false);
 
@@ -54,15 +56,51 @@ export default function DomainSelection() {
     return recommended.filter(Boolean);
   };
 
+  const generateSuggestions = (baseName: string): DomainResult[] => {
+    const recommendedExts = getRecommendedExtensions();
+    const suggestions: DomainResult[] = [];
+    
+    // Generate different variations
+    const variations = [
+      `${baseName}-online`,
+      `${baseName}-web`,
+      `${baseName}-pro`,
+      `${baseName}-shop`,
+      `get-${baseName}`,
+      `my-${baseName}`,
+      `${baseName}-france`,
+      `${baseName}-2026`,
+      `${baseName}-digital`,
+      `${baseName}-plus`,
+    ];
+
+    // Create suggestions with different extensions and variations
+    variations.forEach(variation => {
+      recommendedExts.forEach(ext => {
+        suggestions.push({
+          name: variation,
+          extension: ext.ext,
+          available: true,
+          price: ext.price,
+        });
+      });
+    });
+
+    // Shuffle and return suggestions
+    return suggestions.sort(() => Math.random() - 0.5);
+  };
+
   const handleSearch = () => {
     if (!searchTerm.trim()) return;
 
     setIsSearching(true);
+    setShowAllSuggestions(false);
     
     setTimeout(() => {
       const recommendedExts = getRecommendedExtensions();
+      const baseName = searchTerm.toLowerCase().replace(/\s+/g, '-');
       const results: DomainResult[] = recommendedExts.map(ext => ({
-        name: searchTerm.toLowerCase().replace(/\s+/g, '-'),
+        name: baseName,
         extension: ext.ext,
         available: Math.random() > 0.3,
         price: ext.price,
@@ -71,7 +109,7 @@ export default function DomainSelection() {
       recommendedExts.forEach(ext => {
         if (Math.random() > 0.7) {
           results.push({
-            name: `${searchTerm.toLowerCase().replace(/\s+/g, '-')}-pro`,
+            name: `${baseName}-pro`,
             extension: ext.ext,
             available: true,
             price: ext.price,
@@ -80,6 +118,16 @@ export default function DomainSelection() {
       });
 
       setSearchResults(results);
+      
+      // Generate suggestions if there are unavailable domains
+      const hasUnavailableDomains = results.some(r => !r.available);
+      if (hasUnavailableDomains) {
+        const suggestions = generateSuggestions(baseName);
+        setSuggestedDomains(suggestions);
+      } else {
+        setSuggestedDomains([]);
+      }
+      
       setIsSearching(false);
     }, 800);
   };
@@ -210,7 +258,9 @@ export default function DomainSelection() {
                             <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${
                               isSelected
                                 ? 'bg-primary-500 border-primary-500'
-                                : 'border-neutral-300 bg-white'
+                                : result.available
+                                ? 'border-neutral-300 bg-white'
+                                : 'border-neutral-300 bg-neutral-100 opacity-50'
                             }`}>
                               {isSelected && (
                                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -226,18 +276,13 @@ export default function DomainSelection() {
                                 <span className="font-bold text-primary-600">{result.extension}</span>
                               </div>
                               <div className="flex items-center gap-2 mt-1">
-                                {result.available ? (
-                                  <span className="ovh-badge-success flex items-center gap-1">
-                                    <OdsIcon name="check-circle" size="xs" />
-                                    Disponible
-                                  </span>
-                                ) : (
+                                {!result.available && (
                                   <span className="ovh-badge-critical flex items-center gap-1">
                                     <OdsIcon name="x-circle" size="xs" />
                                     Indisponible
                                   </span>
                                 )}
-                                {availableExtensions.find(e => e.ext === result.extension)?.popular && (
+                                {result.available && availableExtensions.find(e => e.ext === result.extension)?.popular && (
                                   <span className="ovh-badge-warning flex items-center gap-1">
                                     <OdsIcon name="star" size="xs" />
                                     Populaire
@@ -249,16 +294,115 @@ export default function DomainSelection() {
                           
                           {/* Price */}
                           <div className="text-right">
-                            <span className="text-xl font-bold text-neutral-900">
+                            <span 
+                              className="text-xl font-bold" 
+                              style={{ color: result.available ? 'var(--ods-color-primary-500)' : 'var(--ods-color-neutral-400)' }}
+                            >
                               {result.price.toFixed(2)} €
                             </span>
-                            <span className="text-neutral-500 text-sm block">/an HT</span>
+                            <span className={`text-sm block ${result.available ? 'text-neutral-500' : 'text-neutral-400'}`}>/an HT</span>
                           </div>
                         </div>
                       </motion.div>
                     );
                   })}
                 </div>
+
+                {/* Suggested Domains Section */}
+                {suggestedDomains.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-8 pt-6 border-t border-neutral-200"
+                  >
+                    <div className="flex items-center gap-2 mb-4">
+                      <OdsIcon name="lightbulb" size="sm" color="var(--ods-color-warning-500)" />
+                      <h3 className="font-semibold text-neutral-900">
+                        Autres domaines
+                      </h3>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {(showAllSuggestions ? suggestedDomains : suggestedDomains.slice(0, 3)).map((result, idx) => {
+                        const domainFull = `${result.name}${result.extension}`;
+                        const isSelected = selectedDomains.has(domainFull);
+                        
+                        return (
+                          <motion.div
+                            key={`suggestion-${result.name}-${result.extension}-${idx}`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: showAllSuggestions ? 0 : idx * 0.05 }}
+                            onClick={() => handleDomainToggle(domainFull)}
+                            className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                              isSelected
+                                ? 'border-primary-500 shadow-md ovh-selectable-selected'
+                                : 'border-neutral-200 hover:border-primary-300 ovh-selectable'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-4">
+                                {/* Checkbox */}
+                                <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${
+                                  isSelected
+                                    ? 'bg-primary-500 border-primary-500'
+                                    : 'border-neutral-300 bg-white'
+                                }`}>
+                                  {isSelected && (
+                                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                  )}
+                                </div>
+                                
+                                {/* Domain name */}
+                                <div>
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-semibold text-neutral-900">{result.name}</span>
+                                    <span className="font-bold text-primary-600">{result.extension}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              {/* Price */}
+                              <div className="text-right">
+                                <span className="text-xl font-bold" style={{ color: 'var(--ods-color-primary-500)' }}>
+                                  {result.price.toFixed(2)} €
+                                </span>
+                                <span className="text-neutral-500 text-sm block">/an HT</span>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Display more button */}
+                    {suggestedDomains.length > 3 && !showAllSuggestions && (
+                      <button
+                        onClick={() => setShowAllSuggestions(true)}
+                        className="mt-4 w-full py-3 px-4 rounded-lg border-2 border-neutral-200 hover:border-primary-300 hover:bg-primary-50 text-neutral-700 hover:text-primary-700 font-medium transition-all flex items-center justify-center gap-2"
+                      >
+                        Afficher plus de suggestions
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    )}
+                    {showAllSuggestions && (
+                      <button
+                        onClick={() => setShowAllSuggestions(false)}
+                        className="mt-4 w-full py-3 px-4 rounded-lg border-2 border-neutral-200 hover:border-primary-300 hover:bg-primary-50 text-neutral-700 hover:text-primary-700 font-medium transition-all flex items-center justify-center gap-2"
+                      >
+                        Afficher moins
+                        <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    )}
+                  </motion.div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

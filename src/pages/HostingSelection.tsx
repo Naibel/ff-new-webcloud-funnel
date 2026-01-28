@@ -434,7 +434,7 @@ export default function HostingSelection() {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >
-                                <div className="mb-2">
+                                <div className="mb-2 flex items-center justify-center">
                                   <OdsIcon name={cms.icon} size="md" color={isCmsSelected ? 'var(--ods-color-primary-600)' : 'var(--ods-color-neutral-500)'} />
                                 </div>
                                 <div className={`text-xs font-medium ${isCmsSelected ? 'text-primary-700' : 'text-neutral-700'}`}>
