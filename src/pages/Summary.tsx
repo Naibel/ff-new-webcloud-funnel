@@ -11,7 +11,11 @@ export default function Summary() {
     hostingConfig,
     hostingPrice = 0,
     options = {},
-    optionsPrice = 0 
+    optionsPrice = 0,
+    databaseConfig = null,
+    cdnConfig = null,
+    sslConfig = null,
+    visibilityProConfig = null
   } = location.state || {};
 
   const [selectedYears, setSelectedYears] = useState(1);
@@ -41,6 +45,32 @@ export default function Summary() {
     perso: { name: 'Perso', icon: '🚀' },
     pro: { name: 'Pro', icon: '⭐' },
     performance: { name: 'Performance', icon: '💎' },
+  };
+
+  const databaseSystemNames: Record<string, string> = {
+    mysql: 'MySQL',
+    postgresql: 'PostgreSQL',
+    mariadb: 'MariaDB',
+    mongodb: 'MongoDB',
+  };
+
+  const databaseConfigNames: Record<string, string> = {
+    '512mb-8gb': '512MB RAM / 8GB stockage',
+    '1gb-16gb': '1GB RAM / 16GB stockage',
+    '2gb-32gb': '2GB RAM / 32GB stockage',
+    '4gb-64gb': '4GB RAM / 64GB stockage',
+  };
+
+  const cdnLevelNames: Record<string, string> = {
+    basique: 'Basique',
+    securite: 'Sécurité',
+    avance: 'Avancé',
+  };
+
+  const sslTypeNames: Record<string, string> = {
+    letsencrypt: 'SSL Let\'s Encrypt',
+    'sectigo-dv': 'SSL Sectigo DV',
+    'sectigo-ev': 'SSL Sectigo EV',
   };
 
   const selectedPack = hostingPacks[hosting as string] || { name: hosting, icon: '📦' };
@@ -220,7 +250,7 @@ export default function Summary() {
                 </tr>
 
                 {/* Options */}
-                {options.sqlDatabase && (
+                {options.sqlDatabase && databaseConfig && (
                   <tr className="hover:bg-neutral-50">
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
@@ -228,17 +258,24 @@ export default function Summary() {
                           <span>🗄️</span>
                         </div>
                         <div>
-                          <span className="font-semibold text-neutral-900">Base de données SQL Privée</span>
+                          <span className="font-semibold text-neutral-900">Base de données</span>
+                          <p className="text-xs text-neutral-500">
+                            {databaseSystemNames[databaseConfig.system] || databaseConfig.system}
+                            {' • '}
+                            {databaseConfigNames[databaseConfig.config] || databaseConfig.config}
+                          </p>
                           <p className="text-xs text-neutral-500">Option sur {selectedYears} {selectedYears === 1 ? 'an' : 'ans'}</p>
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-2 text-right text-neutral-700">{12 * selectedYears}</td>
-                    <td className="py-4 px-2 text-right text-neutral-700">4,99 €/mois</td>
-                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">{(59.88 * selectedYears).toFixed(2)} €</td>
+                    <td className="py-4 px-2 text-right text-neutral-700">{databaseConfig.price.toFixed(2)} €/mois</td>
+                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">
+                      {(databaseConfig.price * 12 * selectedYears).toFixed(2)} €
+                    </td>
                   </tr>
                 )}
-                {options.cdnPremium && (
+                {options.cdnPremium && cdnConfig && (
                   <tr className="hover:bg-neutral-50">
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
@@ -246,32 +283,75 @@ export default function Summary() {
                           <span>⚡</span>
                         </div>
                         <div>
-                          <span className="font-semibold text-neutral-900">CDN Premium</span>
+                          <span className="font-semibold text-neutral-900">Optimisation du trafic</span>
+                          <p className="text-xs text-neutral-500">
+                            {cdnLevelNames[cdnConfig.level] || cdnConfig.level}
+                          </p>
                           <p className="text-xs text-neutral-500">Option sur {selectedYears} {selectedYears === 1 ? 'an' : 'ans'}</p>
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-2 text-right text-neutral-700">{12 * selectedYears}</td>
-                    <td className="py-4 px-2 text-right text-neutral-700">9,99 €/mois</td>
-                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">{(119.88 * selectedYears).toFixed(2)} €</td>
+                    <td className="py-4 px-2 text-right text-neutral-700">{cdnConfig.price.toFixed(2)} €/mois</td>
+                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">
+                      {(cdnConfig.price * 12 * selectedYears).toFixed(2)} €
+                    </td>
                   </tr>
                 )}
-                {options.extraBackup && (
+                {options.sslOption && sslConfig && (
                   <tr className="hover:bg-neutral-50">
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                          <span>💾</span>
+                        <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+                          <span>🔒</span>
                         </div>
                         <div>
-                          <span className="font-semibold text-neutral-900">Sauvegarde Cloud</span>
+                          <span className="font-semibold text-neutral-900">Option SSL</span>
+                          <p className="text-xs text-neutral-500">
+                            {sslTypeNames[sslConfig.type] || sslConfig.type}
+                          </p>
                           <p className="text-xs text-neutral-500">Option sur {selectedYears} {selectedYears === 1 ? 'an' : 'ans'}</p>
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-2 text-right text-neutral-700">{12 * selectedYears}</td>
-                    <td className="py-4 px-2 text-right text-neutral-700">2,99 €/mois</td>
-                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">{(35.88 * selectedYears).toFixed(2)} €</td>
+                    <td className="py-4 px-2 text-right text-neutral-700">
+                      {sslConfig.price === 0 ? 'Inclus' : `${sslConfig.price.toFixed(2)} €/mois`}
+                    </td>
+                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">
+                      {sslConfig.price === 0 ? 'Inclus' : (sslConfig.price * 12 * selectedYears).toFixed(2) + ' €'}
+                    </td>
+                  </tr>
+                )}
+                {options.visibilityPro && visibilityProConfig && (
+                  <tr className="hover:bg-neutral-50">
+                    <td className="py-4 px-2">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
+                          <span>📈</span>
+                        </div>
+                        <div>
+                          <span className="font-semibold text-neutral-900">Visibilité pro</span>
+                          <p className="text-xs text-neutral-500">
+                            {selectedYears === 1 ? '16,49 €/mois (1ère année)' : '21,99 €/mois (années suivantes)'}
+                          </p>
+                          <p className="text-xs text-neutral-500">Option sur {selectedYears} {selectedYears === 1 ? 'an' : 'ans'}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-4 px-2 text-right text-neutral-700">{12 * selectedYears}</td>
+                    <td className="py-4 px-2 text-right text-neutral-700">
+                      {selectedYears === 1 
+                        ? `${visibilityProConfig.firstYearPrice.toFixed(2)} €/mois`
+                        : `${visibilityProConfig.followingYearsPrice.toFixed(2)} €/mois`
+                      }
+                    </td>
+                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">
+                      {selectedYears === 1
+                        ? (visibilityProConfig.firstYearPrice * 12).toFixed(2) + ' €'
+                        : (visibilityProConfig.followingYearsPrice * 12 * selectedYears).toFixed(2) + ' €'
+                      }
+                    </td>
                   </tr>
                 )}
               </tbody>
