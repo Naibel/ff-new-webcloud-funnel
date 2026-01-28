@@ -95,7 +95,7 @@ export default function DomainSelection() {
 
   const handleContinue = () => {
     if (selectedDomains.size > 0) {
-      navigate('/funnel/hosting', { 
+      navigate('/hosting', { 
         state: { questionnaire, domains: Array.from(selectedDomains) } 
       });
     }
@@ -197,9 +197,9 @@ export default function DomainSelection() {
                         onClick={() => result.available && handleDomainToggle(domainFull)}
                         className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
                           isSelected
-                            ? 'border-primary-500 bg-primary-50 shadow-md'
+                            ? 'border-primary-500 shadow-md ovh-selectable-selected'
                             : result.available
-                            ? 'border-neutral-200 bg-white hover:border-primary-300'
+                            ? 'border-neutral-200 hover:border-primary-300 ovh-selectable'
                             : 'border-neutral-200 bg-neutral-50 opacity-60 cursor-not-allowed'
                         }`}
                       >

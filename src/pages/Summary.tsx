@@ -430,7 +430,7 @@ export default function Summary() {
           className="flex gap-4 mt-8"
         >
           <button
-            onClick={() => navigate('/funnel/hosting')}
+            onClick={() => navigate('/hosting')}
             className="ovh-btn-secondary flex-1"
           >
             ← Retour

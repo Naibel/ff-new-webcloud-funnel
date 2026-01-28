@@ -5,11 +5,11 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   const handleGuidedMode = () => {
-    navigate('/funnel/questionnaire');
+    navigate('/questionnaire');
   };
 
   const handleDirectAccess = () => {
-    navigate('/funnel/domain');
+    navigate('/domain');
   };
 
   return (
@@ -34,7 +34,7 @@ export default function LandingPage() {
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid mt-16 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Option A - Mode Guidé */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
