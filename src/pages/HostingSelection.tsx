@@ -203,7 +203,7 @@ export default function HostingSelection() {
       }
     }
     
-    navigate('/funnel/summary', {
+    navigate('/summary', {
       state: {
         questionnaire,
         domains,
@@ -245,7 +245,7 @@ export default function HostingSelection() {
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          onClick={() => navigate('/funnel/domain', { state: { questionnaire, domains } })}
+          onClick={() => navigate('/domain', { state: { questionnaire, domains } })}
           className="mb-6 flex items-center gap-2 text-neutral-600 hover:text-primary-600 transition-colors"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -285,7 +285,7 @@ export default function HostingSelection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
                   onClick={() => setSelectedPack(pack.id)}
-                  className={`ovh-card cursor-pointer transition-all ${
+                  className={`ovh-card cursor-pointer transition-all overflow-hidden ${
                     isSelected
                       ? 'ring-2 ring-primary-500 shadow-lg'
                       : 'hover:shadow-md'
@@ -363,8 +363,8 @@ export default function HostingSelection() {
                               }}
                               className={`text-center p-3 rounded-lg border-2 transition-all ${
                                 isLevelSelected
-                                  ? 'border-primary-500 bg-primary-50 shadow-md'
-                                  : 'border-neutral-200 bg-white hover:border-primary-300 hover:bg-primary-50/50'
+                                  ? 'border-primary-500 shadow-md ovh-selectable-selected'
+                                  : 'border-neutral-200 hover:border-primary-300 ovh-selectable'
                               }`}
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
@@ -661,7 +661,6 @@ export default function HostingSelection() {
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
                     >
                       <div className="space-y-4 pt-2 border-t border-neutral-200">
                         {[

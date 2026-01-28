@@ -67,7 +67,7 @@ export default function Questionnaire() {
     if (currentQuestion < questions.length - 1) {
       setTimeout(() => setCurrentQuestion(currentQuestion + 1), 300);
     } else {
-      navigate('/funnel/domain', { state: { questionnaire: newAnswers } });
+      navigate('/domain', { state: { questionnaire: newAnswers } });
     }
   };
 
@@ -75,12 +75,12 @@ export default function Questionnaire() {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     } else {
-      navigate('/funnel');
+      navigate('/');
     }
   };
 
   const handleSkip = () => {
-    navigate('/funnel/domain');
+    navigate('/domain');
   };
 
   return (
@@ -203,8 +203,8 @@ export default function Questionnaire() {
                       onClick={() => handleAnswer(option.value)}
                       className={`w-full p-4 rounded-xl border-2 text-left transition-all flex items-center gap-4 ${
                         isSelected
-                          ? 'border-primary-500 bg-primary-50 shadow-md'
-                          : 'border-neutral-200 bg-white hover:border-primary-300 hover:bg-primary-50/50'
+                          ? 'border-primary-500 shadow-md ovh-selectable-selected'
+                          : 'border-neutral-200 hover:border-primary-300 ovh-selectable'
                       }`}
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.99 }}

@@ -7,25 +7,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Couleurs OVHcloud officielles
+        // Couleurs OVHcloud officielles via variables ODS
         ovh: {
-          blue: '#0050FF',
+          blue: 'var(--ods-color-primary-500)',
           'blue-light': '#E6F0FF',
           'blue-dark': '#003DB3',
           cyan: '#00D9FF',
         },
         primary: {
-          50: '#E6F0FF',
-          100: '#CCE0FF',
-          200: '#99C2FF',
-          300: '#66A3FF',
-          400: '#3385FF',
-          500: '#0050FF',
-          600: '#0040CC',
-          700: '#003099',
-          800: '#002066',
-          900: '#001033',
-          DEFAULT: '#0050FF',
+          50: 'var(--ods-color-primary-050)',
+          100: 'var(--ods-color-primary-100)',
+          200: 'var(--ods-color-primary-200)',
+          300: 'var(--ods-color-primary-300)',
+          400: 'var(--ods-color-primary-400)',
+          500: 'var(--ods-color-primary-500)',
+          600: 'var(--ods-color-primary-600)',
+          700: 'var(--ods-color-primary-700)',
+          800: 'var(--ods-color-primary-800)',
+          900: 'var(--ods-color-primary-900)',
+          DEFAULT: 'var(--ods-color-primary-500)',
         },
         success: {
           50: '#E6F9EF',
@@ -59,9 +59,9 @@ export default {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {
-        'card': '0 2px 8px rgba(0, 0, 0, 0.08)',
-        'card-hover': '0 8px 24px rgba(0, 80, 255, 0.15)',
-        'button': '0 4px 12px rgba(0, 80, 255, 0.25)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.1)',
+        'card-hover': '0 4px 12px rgba(0, 0, 0, 0.15)',
+        'button': '0 2px 4px rgba(0, 0, 0, 0.1)',
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-out',
