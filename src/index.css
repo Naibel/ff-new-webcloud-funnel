@@ -1,5 +1,6 @@
-/* Import de la police Inter - DOIT être en premier */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Imports ODS - DOIVENT être en premier pour que les composants fonctionnent correctement */
+@import '@ovhcloud/ods-themes/default';
+@import '@ovhcloud/ods-themes/default/fonts';
 
 @tailwind base;
 @tailwind components;
@@ -14,9 +15,7 @@
 
 /* Base styles */
 html {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--ods-font-family-default);
 }
 
 body {
