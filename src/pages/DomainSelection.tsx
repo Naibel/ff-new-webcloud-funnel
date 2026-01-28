@@ -2,6 +2,7 @@ import { useState, type ChangeEvent, type KeyboardEvent } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import OdsIcon from '../components/OdsIcon';
+import { getRecommendation } from '../utils/getRecommendation';
 
 interface DomainResult {
   name: string;
@@ -17,6 +18,10 @@ const availableExtensions = [
   { ext: '.net', price: 14.99, popular: false },
   { ext: '.org', price: 12.99, popular: false },
   { ext: '.io', price: 51.99, popular: false },
+  { ext: '.tech', price: 45.99, popular: false },
+  { ext: '.store', price: 25.99, popular: false },
+  { ext: '.shop', price: 25.99, popular: false },
+  { ext: '.ovh', price: 8.99, popular: false },
 ];
 
 export default function DomainSelection() {
@@ -32,6 +37,27 @@ export default function DomainSelection() {
   const [isSearching, setIsSearching] = useState(false);
 
   const getRecommendedExtensions = () => {
+    // Utiliser les recommandations du CSV si disponibles
+    const recommendation = getRecommendation(questionnaire);
+    
+    if (recommendation && recommendation.domains.length > 0) {
+      // Mapper les extensions recommandées du CSV vers les extensions disponibles
+      const recommended: typeof availableExtensions = [];
+      
+      recommendation.domains.forEach(domainExt => {
+        const ext = availableExtensions.find(e => e.ext === domainExt);
+        if (ext && !recommended.find(e => e.ext === ext.ext)) {
+          recommended.push(ext);
+        }
+      });
+      
+      // Si on a trouvé des extensions recommandées, les retourner
+      if (recommended.length > 0) {
+        return recommended;
+      }
+    }
+    
+    // Fallback vers la logique originale si pas de recommandation
     const recommended: typeof availableExtensions = [];
     
     if (questionnaire.geographicScope === 'regionale' || questionnaire.geographicScope === 'national') {
