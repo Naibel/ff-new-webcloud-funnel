@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type KeyboardEvent } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import OdsIcon from '../components/OdsIcon';
 
 interface DomainResult {
   name: string;
@@ -226,12 +227,21 @@ export default function DomainSelection() {
                               </div>
                               <div className="flex items-center gap-2 mt-1">
                                 {result.available ? (
-                                  <span className="ovh-badge-success">✓ Disponible</span>
+                                  <span className="ovh-badge-success flex items-center gap-1">
+                                    <OdsIcon name="check-circle" size="xs" />
+                                    Disponible
+                                  </span>
                                 ) : (
-                                  <span className="ovh-badge-critical">✗ Indisponible</span>
+                                  <span className="ovh-badge-critical flex items-center gap-1">
+                                    <OdsIcon name="x-circle" size="xs" />
+                                    Indisponible
+                                  </span>
                                 )}
                                 {availableExtensions.find(e => e.ext === result.extension)?.popular && (
-                                  <span className="ovh-badge-warning">⭐ Populaire</span>
+                                  <span className="ovh-badge-warning flex items-center gap-1">
+                                    <OdsIcon name="star" size="xs" />
+                                    Populaire
+                                  </span>
                                 )}
                               </div>
                             </div>
@@ -257,7 +267,7 @@ export default function DomainSelection() {
           {searchResults.length === 0 && !isSearching && (
             <div className="text-center py-12">
               <div className="w-20 h-20 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-4xl">🔍</span>
+                <OdsIcon name="search" size="lg" color="var(--ods-color-neutral-400)" />
               </div>
               <p className="text-neutral-600">
                 Entrez un nom de domaine et cliquez sur "Rechercher"

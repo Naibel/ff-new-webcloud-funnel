@@ -1,52 +1,53 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import OdsIcon from '../components/OdsIcon';
 
 const questions = [
   {
     id: 'organizationSize',
     question: 'Combien de personnes composent votre équipe ?',
-    icon: '🏢',
+    icon: 'building',
     options: [
-      { value: 'freelance', label: 'Une seule', icon: '👤' },
-      { value: 'tpe', label: 'Entre 2 et 10', icon: '👥' },
-      { value: 'pme', label: 'Entre 11 et 50', icon: '🏛️' },
-      { value: 'large', label: 'Plus de 50', icon: '🏗️' },
+      { value: 'freelance', label: 'Une seule', icon: 'user' },
+      { value: 'tpe', label: 'Entre 2 et 10', icon: 'users' },
+      { value: 'pme', label: 'Entre 11 et 50', icon: 'users' },
+      { value: 'large', label: 'Plus de 50', icon: 'building' },
       // Decide du pack d'hébergement pour le projet
     ],
   },
   {
     id: 'siteType',
     question: 'Quel type de site souhaitez-vous créer ?',
-    icon: '🌐',
+    icon: 'globe',
     options: [
-      { value: 'vitrine', label: 'Site vitrine (blog, média,…)', icon: '📰' },
-      { value: 'commerce', label: 'Boutique E-Commerce', icon: '🛒' },
-      { value: 'application', label: 'Application web (outil interactif)', icon: '⚙️' },
-      { value: 'autre', label: 'Autre', icon: '📦' },
+      { value: 'vitrine', label: 'Site vitrine (blog, média,…)', icon: 'file-text' },
+      { value: 'commerce', label: 'Boutique E-Commerce', icon: 'shopping-cart' },
+      { value: 'application', label: 'Application web (outil interactif)', icon: 'settings' },
+      { value: 'autre', label: 'Autre', icon: 'grid' },
     ],
   },
   {
     id: 'geographicScope',
     question: 'A quelle échelle souhaitez-vous communiquer ?',
-    icon: '🗺️',
+    icon: 'map',
     options: [
-      { value: 'regionale', label: 'Régionale', icon: '📍' },
-      { value: 'national', label: 'Nationale', icon: '🇫🇷' },
-      { value: 'european', label: 'Européenne', icon: '🇪🇺' },
-      { value: 'international', label: 'Internationale', icon: '🌍' },
+      { value: 'regionale', label: 'Régionale', icon: 'map-pin' },
+      { value: 'national', label: 'Nationale', icon: 'flag' },
+      { value: 'european', label: 'Européenne', icon: 'flag' },
+      { value: 'international', label: 'Internationale', icon: 'globe' },
       // Dédicde de la TLD en plus
     ],
   },
   {
     id: 'activitySector',
     question: 'Dans quel secteur d\'activité évoluez-vous ?',
-    icon: '💼',
+    icon: 'briefcase',
     options: [
-      { value: 'startups', label: 'Pour les startups', icon: '🤝' },
-      { value: 'entrepreneurs', label: 'Pour les créateurs d\'entreprise', icon: '⚕️' },
-      { value: 'creatives', label: 'Pour les projets créatifs', icon: '💻' },
-      { value: 'health', label: 'Pour les pros de la santé et du bien-être', icon: '🤲' },
+      { value: 'startups', label: 'Pour les startups', icon: 'zap' },
+      { value: 'entrepreneurs', label: 'Pour les créateurs d\'entreprise', icon: 'briefcase' },
+      { value: 'creatives', label: 'Pour les projets créatifs', icon: 'image' },
+      { value: 'health', label: 'Pour les pros de la santé et du bien-être', icon: 'heart' },
       // health => .doc, startups => .dev, creatives => .io
     ],
   },
@@ -186,7 +187,7 @@ export default function Questionnaire() {
               {/* Question Header */}
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center">
-                  <span className="text-2xl">{currentQ.icon}</span>
+                  <OdsIcon name={currentQ.icon} size="lg" color="var(--ods-color-primary-500)" />
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-neutral-900 flex-1">
                   {currentQ.question}
@@ -212,7 +213,7 @@ export default function Questionnaire() {
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                         isSelected ? 'bg-primary-500' : 'bg-neutral-100'
                       }`}>
-                        <span className={isSelected ? 'grayscale-0' : ''}>{option.icon}</span>
+                        <OdsIcon name={option.icon} size="sm" color={isSelected ? 'white' : 'var(--ods-color-neutral-500)'} />
                       </div>
                       <span className={`font-medium ${isSelected ? 'text-primary-700' : 'text-neutral-700'}`}>
                         {option.label}

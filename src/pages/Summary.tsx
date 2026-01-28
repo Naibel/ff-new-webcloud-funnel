@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import OdsIcon from '../components/OdsIcon';
 
 export default function Summary() {
   const location = useLocation();
@@ -41,10 +42,10 @@ export default function Summary() {
   const totalTTC = totalHT * 1.20;
 
   const hostingPacks: Record<string, { name: string; icon: string }> = {
-    starter: { name: 'Starter', icon: '🌱' },
-    perso: { name: 'Perso', icon: '🚀' },
-    pro: { name: 'Pro', icon: '⭐' },
-    performance: { name: 'Performance', icon: '💎' },
+    starter: { name: 'Starter', icon: 'play' },
+    perso: { name: 'Perso', icon: 'users' },
+    pro: { name: 'Pro', icon: 'award' },
+    performance: { name: 'Performance', icon: 'zap' },
   };
 
   const databaseSystemNames: Record<string, string> = {
@@ -85,7 +86,8 @@ export default function Summary() {
           className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 bg-success-50 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            <span>✓ Étape 3/3 - Récapitulatif</span>
+            <OdsIcon name="check-circle" size="xs" />
+            <span>Étape 3/3 - Récapitulatif</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-3">
             Récapitulatif de votre commande
@@ -108,7 +110,7 @@ export default function Summary() {
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                    <span className="text-xl">☁️</span>
+                    <OdsIcon name="cloud" size="sm" color="white" />
                   </div>
                   <span className="text-2xl font-bold">OVHcloud</span>
                 </div>
@@ -126,7 +128,7 @@ export default function Summary() {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
-                  <span className="text-white text-xl">⏱️</span>
+                  <OdsIcon name="clock" size="sm" color="white" />
                 </div>
                 <div>
                   <h3 className="font-bold text-neutral-900">Durée d'engagement</h3>
@@ -134,8 +136,9 @@ export default function Summary() {
                 </div>
               </div>
               {discount > 0 && (
-                <div className="px-4 py-2 bg-green-500 text-white rounded-full text-sm font-bold shadow-lg">
-                  -{(discount * 100).toFixed(0)}% 🎉
+                <div className="px-4 py-2 bg-green-500 text-white rounded-full text-sm font-bold shadow-lg flex items-center gap-1">
+                  <OdsIcon name="gift" size="xs" color="white" />
+                  -{(discount * 100).toFixed(0)}%
                 </div>
               )}
             </div>
@@ -174,16 +177,28 @@ export default function Summary() {
             {/* Discount Info */}
             <div className="mt-4 text-sm text-neutral-600 text-center">
               {selectedYears === 1 && (
-                <p>💡 Engagez-vous sur 2 ans ou plus pour bénéficier d'une réduction</p>
+                <p className="flex items-center justify-center gap-1">
+                  <OdsIcon name="lightbulb" size="xs" color="var(--ods-color-warning-500)" />
+                  Engagez-vous sur 2 ans ou plus pour bénéficier d'une réduction
+                </p>
               )}
               {selectedYears === 2 && (
-                <p>✨ Vous économisez <strong className="text-green-600">{discountAmount.toFixed(2)} €</strong> avec un engagement 2 ans</p>
+                <p className="flex items-center justify-center gap-1">
+                  <OdsIcon name="gift" size="xs" color="var(--ods-color-success-500)" />
+                  Vous économisez <strong className="text-green-600">{discountAmount.toFixed(2)} €</strong> avec un engagement 2 ans
+                </p>
               )}
               {selectedYears >= 3 && selectedYears < 5 && (
-                <p>🎊 Excellente économie de <strong className="text-green-600">{discountAmount.toFixed(2)} €</strong> sur {selectedYears} ans !</p>
+                <p className="flex items-center justify-center gap-1">
+                  <OdsIcon name="gift" size="xs" color="var(--ods-color-success-500)" />
+                  Excellente économie de <strong className="text-green-600">{discountAmount.toFixed(2)} €</strong> sur {selectedYears} ans !
+                </p>
               )}
               {selectedYears >= 5 && (
-                <p>🌟 Meilleure offre ! Vous économisez <strong className="text-green-600">{discountAmount.toFixed(2)} €</strong> sur {selectedYears} ans</p>
+                <p className="flex items-center justify-center gap-1">
+                  <OdsIcon name="star" size="xs" color="var(--ods-color-warning-500)" />
+                  Meilleure offre ! Vous économisez <strong className="text-green-600">{discountAmount.toFixed(2)} €</strong> sur {selectedYears} ans
+                </p>
               )}
             </div>
           </div>
@@ -206,7 +221,7 @@ export default function Summary() {
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
-                          <span>🌐</span>
+                          <OdsIcon name="globe" size="sm" color="var(--ods-color-primary-500)" />
                         </div>
                         <div>
                           <span className="font-semibold text-neutral-900">{domain}</span>
@@ -225,7 +240,7 @@ export default function Summary() {
                   <td className="py-4 px-2">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
-                        <span>{selectedPack.icon}</span>
+                        <OdsIcon name={selectedPack.icon} size="sm" color="var(--ods-color-primary-500)" />
                       </div>
                       <div>
                         <span className="font-semibold text-neutral-900">
@@ -255,7 +270,7 @@ export default function Summary() {
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
-                          <span>🗄️</span>
+                          <OdsIcon name="database" size="sm" color="var(--ods-color-warning-500)" />
                         </div>
                         <div>
                           <span className="font-semibold text-neutral-900">Base de données</span>
@@ -280,7 +295,7 @@ export default function Summary() {
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-                          <span>⚡</span>
+                          <OdsIcon name="zap" size="sm" color="var(--ods-color-primary-600)" />
                         </div>
                         <div>
                           <span className="font-semibold text-neutral-900">Optimisation du trafic</span>
@@ -303,7 +318,7 @@ export default function Summary() {
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-                          <span>🔒</span>
+                          <OdsIcon name="lock" size="sm" color="var(--ods-color-info-500)" />
                         </div>
                         <div>
                           <span className="font-semibold text-neutral-900">Option SSL</span>
@@ -328,7 +343,7 @@ export default function Summary() {
                     <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
-                          <span>📈</span>
+                          <OdsIcon name="trending-up" size="sm" color="var(--ods-color-primary-600)" />
                         </div>
                         <div>
                           <span className="font-semibold text-neutral-900">Visibilité pro</span>
@@ -367,8 +382,9 @@ export default function Summary() {
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-sm">
-                  <span className="text-green-600 font-semibold">
-                    🎉 Réduction engagement {selectedYears} ans (-{(discount * 100).toFixed(0)}%)
+                  <span className="text-green-600 font-semibold flex items-center gap-1">
+                    <OdsIcon name="gift" size="xs" color="var(--ods-color-success-500)" />
+                    Réduction engagement {selectedYears} ans (-{(discount * 100).toFixed(0)}%)
                   </span>
                   <span className="font-semibold text-green-600">-{discountAmount.toFixed(2)} €</span>
                 </div>
@@ -408,7 +424,7 @@ export default function Summary() {
         >
           <div className="flex gap-3">
             <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-              <span>ℹ️</span>
+              <OdsIcon name="info" size="sm" color="var(--ods-color-primary-600)" />
             </div>
             <div>
               <h3 className="font-semibold text-primary-900 mb-1">Informations importantes</h3>

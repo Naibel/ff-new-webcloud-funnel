@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import OdsIcon from '../components/OdsIcon';
 
 const hostingPacks = [
   {
@@ -8,8 +9,8 @@ const hostingPacks = [
     name: 'Starter',
     price: 1.59,
     tagline: 'Parfait pour démarrer',
-    icon: '🌱',
-    color: 'from-green-400 to-emerald-500',
+    icon: 'play',
+    color: 'from-primary-400 to-primary-500',
     features: ['10 Go d\'espace SSD', '2 adresses email', 'Trafic illimité', 'SSL Let\'s Encrypt inclus par défaut'],
   },
   {
@@ -17,8 +18,8 @@ const hostingPacks = [
     name: 'Perso',
     price: 3.29,
     tagline: 'Pour les équipes en croissance',
-    icon: '🚀',
-    color: 'from-blue-400 to-indigo-500',
+    icon: 'users',
+    color: 'from-primary-500 to-primary-600',
     features: ['100 Go d\'espace SSD', '10 adresses email', 'Trafic illimité', 'SSL Let\'s Encrypt inclus par défaut'],
   },
   {
@@ -26,7 +27,7 @@ const hostingPacks = [
     name: 'Pro',
     price: 6.59,
     tagline: 'Pour les professionnels exigeants',
-    icon: '⭐',
+    icon: 'award',
     color: 'from-primary-500 to-primary-600',
     features: ['250 Go d\'espace SSD', '100 adresses email', 'Trafic illimité', 'SSL Let\'s Encrypt inclus par défaut', 'Support prioritaire'],
     recommended: true,
@@ -36,8 +37,8 @@ const hostingPacks = [
     name: 'Performance',
     price: 10.99,
     tagline: 'Haute performance garantie',
-    icon: '💎',
-    color: 'from-purple-500 to-pink-500',
+    icon: 'zap',
+    color: 'from-primary-600 to-primary-700',
     features: ['500 Go d\'espace SSD', 'Emails illimités', '99,99% disponibilité', 'SSL Let\'s Encrypt inclus par défaut', 'Support 24/7'],
     performanceLevels: [
       { id: 1, name: 'Performance 1', cores: 2, ram: 4, price: 10.99, pricePerYear: 131.88 },
@@ -56,12 +57,12 @@ export default function HostingSelection() {
   const recommendedPack = hostingPacks.find(p => p.recommended) || hostingPacks[2];
   
   const [selectedPack, setSelectedPack] = useState(recommendedPack.id);
-  const [packConfigs, setPackConfigs] = useState<Record<string, { storage: number; emails: number }>>({
+  const packConfigs: Record<string, { storage: number; emails: number }> = {
     starter: { storage: 10, emails: 2 },
     perso: { storage: 100, emails: 10 },
     pro: { storage: 250, emails: 100 },
     performance: { storage: 500, emails: 1000 },
-  });
+  };
   const [selectedPerformanceLevel, setSelectedPerformanceLevel] = useState(1);
   const [options, setOptions] = useState({
     sqlDatabase: false,
@@ -83,24 +84,14 @@ export default function HostingSelection() {
   });
 
   const cmsOptions = [
-    { id: 'none', name: 'Sans module pré-installé', icon: '⚪' },
-    { id: 'wordpress', name: 'WordPress', icon: '📝' },
-    { id: 'drupal', name: 'Drupal', icon: '🌐' },
-    { id: 'joomla', name: 'Joomla!', icon: '🎨' },
-    { id: 'prestashop', name: 'PrestaShop', icon: '🛒' },
+    { id: 'none', name: 'Sans module pré-installé', icon: 'minus-circle' },
+    { id: 'wordpress', name: 'WordPress', icon: 'edit' },
+    { id: 'drupal', name: 'Drupal', icon: 'globe' },
+    { id: 'joomla', name: 'Joomla!', icon: 'layout' },
+    { id: 'prestashop', name: 'PrestaShop', icon: 'shopping-cart' },
   ];
 
-  // Réinitialiser le CMS si un CMS non autorisé est sélectionné
-  useEffect(() => {
-    // Pour Starter, seulement 'none' et 'wordpress' sont autorisés
-    if (selectedPack === 'starter' && selectedCms.starter !== 'none' && selectedCms.starter !== 'wordpress') {
-      setSelectedCms((prev) => ({ ...prev, starter: 'none' }));
-    }
-    // Pour Perso, PrestaShop n'est pas autorisé
-    if (selectedPack === 'perso' && selectedCms.perso === 'prestashop') {
-      setSelectedCms((prev) => ({ ...prev, perso: 'none' }));
-    }
-  }, [selectedPack]);
+  // Note: CMS validation is handled in the UI by filtering available options
 
   const databaseSystems = [
     { id: 'mysql', name: 'MySQL' },
@@ -194,11 +185,11 @@ export default function HostingSelection() {
       const level = packData.performanceLevels.find(l => l.id === selectedPerformanceLevel);
       if (level) {
         hostingConfig = {
-          storage: 500, // Stockage de base pour Performance
-          emails: 1000, // Emails de base pour Performance
-          cores: level.cores,
-          ram: level.ram,
-          performanceLevel: level.name,
+          storage: 500,
+          emails: 1000,
+          ...(level.cores && { cores: level.cores }),
+          ...(level.ram && { ram: level.ram }),
+          ...(level.name && { performanceLevel: level.name }),
         };
       }
     }
@@ -295,13 +286,16 @@ export default function HostingSelection() {
                     {/* Icon & Info */}
                     <div className="flex items-start gap-4 flex-1">
                       <div className={`w-14 h-14 bg-gradient-to-br ${pack.color} rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0`}>
-                        <span className="text-2xl">{pack.icon}</span>
+                        <OdsIcon name={pack.icon} size="lg" color="white" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="text-xl font-bold text-neutral-900">{pack.name}</h3>
                           {pack.recommended && (
-                            <span className="ovh-badge-primary">⭐ Recommandé</span>
+                            <span className="ovh-badge-primary flex items-center gap-1">
+                              <OdsIcon name="star" size="xs" />
+                              Recommandé
+                            </span>
                           )}
                         </div>
                         <p className="text-neutral-600 text-sm mb-3">{pack.tagline}</p>
@@ -440,7 +434,9 @@ export default function HostingSelection() {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >
-                                <div className="text-3xl mb-2">{cms.icon}</div>
+                                <div className="mb-2">
+                                  <OdsIcon name={cms.icon} size="md" color={isCmsSelected ? 'var(--ods-color-primary-600)' : 'var(--ods-color-neutral-500)'} />
+                                </div>
                                 <div className={`text-xs font-medium ${isCmsSelected ? 'text-primary-700' : 'text-neutral-700'}`}>
                                   {cms.name}
                                 </div>
@@ -477,10 +473,10 @@ export default function HostingSelection() {
             >
               <h3 className="font-bold text-neutral-900 mb-4">Options recommandées</h3>
               <div className="space-y-4">
-                {[
-                  { id: 'sqlDatabase', name: 'Base de données', price: null },
-                  { id: 'cdnPremium', name: 'Optimisation du trafic', price: null },
-                ]
+                {([
+                  { id: 'sqlDatabase', name: 'Base de données', price: null as number | null },
+                  { id: 'cdnPremium', name: 'Optimisation du trafic', price: null as number | null },
+                ] as const)
                 .filter((option) => {
                   // Ne pas afficher l'option Base de données si Starter est sélectionné
                   if (option.id === 'sqlDatabase' && selectedPack === 'starter') {
@@ -539,7 +535,7 @@ export default function HostingSelection() {
                             )}
                           </div>
                         </div>
-                        {option.price !== null && (
+                        {option.price !== null && option.price !== undefined && (
                           <span className="block text-sm text-neutral-500">+{option.price.toFixed(2)} €/mois</span>
                         )}
                         {option.id === 'sqlDatabase' && options.sqlDatabase && (

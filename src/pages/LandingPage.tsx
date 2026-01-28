@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import OdsIcon from '../components/OdsIcon';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -47,8 +48,9 @@ export default function LandingPage() {
             >
               {/* Badge Recommandé */}
               <div className="absolute top-4 right-4">
-                <span className="ovh-badge-primary">
-                  ⭐ Recommandé
+                <span className="ovh-badge-primary flex items-center gap-1">
+                  <OdsIcon name="star" size="xs" />
+                  Recommandé
                 </span>
               </div>
 
@@ -58,7 +60,7 @@ export default function LandingPage() {
               <div className="relative">
                 {/* Icon */}
                 <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                  <span className="text-3xl">🧭</span>
+                  <OdsIcon name="compass" size="lg" color="white" />
                 </div>
 
                 {/* Content */}
@@ -111,7 +113,7 @@ export default function LandingPage() {
             >
               {/* Icon */}
               <div className="w-16 h-16 bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-primary-100 group-hover:to-primary-200 transition-all">
-                <span className="text-3xl">📋</span>
+                <OdsIcon name="list" size="lg" />
               </div>
 
               {/* Content */}
@@ -158,7 +160,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6">
               <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <span className="text-2xl">🌍</span>
+                <OdsIcon name="globe" size="md" color="var(--ods-color-primary-500)" />
               </div>
               <h3 className="font-bold text-neutral-900 mb-2">Leader européen</h3>
               <p className="text-neutral-600 text-sm">
@@ -167,7 +169,7 @@ export default function LandingPage() {
             </div>
             <div className="text-center p-6">
               <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <span className="text-2xl">🔒</span>
+                <OdsIcon name="lock" size="md" color="var(--ods-color-primary-500)" />
               </div>
               <h3 className="font-bold text-neutral-900 mb-2">Sécurité garantie</h3>
               <p className="text-neutral-600 text-sm">
@@ -176,7 +178,7 @@ export default function LandingPage() {
             </div>
             <div className="text-center p-6">
               <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <span className="text-2xl">💰</span>
+                <OdsIcon name="euro" size="md" color="var(--ods-color-primary-500)" />
               </div>
               <h3 className="font-bold text-neutral-900 mb-2">Prix compétitifs</h3>
               <p className="text-neutral-600 text-sm">
