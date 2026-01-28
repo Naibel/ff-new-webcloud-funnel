@@ -30,13 +30,21 @@ export default function Summary() {
   };
 
   const discount = getDiscount(selectedYears);
-  const domainPrice = Array.isArray(domains) ? domains.length * 10 : 0;
+  // Calcul du prix des domaines : le premier est gratuit la première année
+  // Premier domaine : gratuit la première année, donc prix = 10€ * (selectedYears - 1) si selectedYears > 1, sinon 0
+  // Autres domaines : prix = 10€ * selectedYears
+  const firstDomainPrice = Array.isArray(domains) && domains.length > 0 && selectedYears > 1
+    ? 10 * (selectedYears - 1) // Gratuit la première année
+    : 0;
+  const otherDomainsPrice = Array.isArray(domains) && domains.length > 1
+    ? (domains.length - 1) * 10 * selectedYears
+    : 0;
+  const domainPriceTotal = firstDomainPrice + otherDomainsPrice;
   const hostingAnnual = hostingPrice * 12;
   const optionsAnnual = optionsPrice * 12;
   
   // Calcul avec remise et durée
-  const subtotalPerYear = domainPrice + hostingAnnual + optionsAnnual;
-  const totalBeforeDiscount = subtotalPerYear * selectedYears;
+  const totalBeforeDiscount = domainPriceTotal + (hostingAnnual * selectedYears) + (optionsAnnual * selectedYears);
   const discountAmount = totalBeforeDiscount * discount;
   const totalHT = totalBeforeDiscount - discountAmount;
   const totalTTC = totalHT * 1.20;
@@ -216,24 +224,55 @@ export default function Summary() {
               </thead>
               <tbody className="divide-y divide-neutral-100">
                 {/* Domains */}
-                {Array.isArray(domains) && domains.map((domain: string, idx: number) => (
-                  <tr key={idx} className="hover:bg-neutral-50">
-                    <td className="py-4 px-2">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
-                          <OdsIcon name="globe" size="sm" color="var(--ods-color-primary-500)" />
+                {Array.isArray(domains) && domains.map((domain: string, idx: number) => {
+                  const isFirstDomain = idx === 0;
+                  const domainPrice = 10; // Prix par défaut
+                  const totalPrice = isFirstDomain 
+                    ? (selectedYears > 1 ? domainPrice * (selectedYears - 1) : 0) // Gratuit la première année
+                    : domainPrice * selectedYears;
+                  
+                  return (
+                    <tr key={idx} className="hover:bg-neutral-50">
+                      <td className="py-4 px-2">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
+                            <OdsIcon name="globe" size="sm" color="var(--ods-color-primary-500)" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-neutral-900">{domain}</span>
+                            {isFirstDomain && (
+                              <p className="text-xs text-primary-600 font-medium mt-0.5">
+                                Gratuit la première année
+                              </p>
+                            )}
+                            <p className="text-xs text-neutral-500">Enregistrement {selectedYears} {selectedYears === 1 ? 'an' : 'ans'}</p>
+                          </div>
                         </div>
-                        <div>
-                          <span className="font-semibold text-neutral-900">{domain}</span>
-                          <p className="text-xs text-neutral-500">Enregistrement {selectedYears} {selectedYears === 1 ? 'an' : 'ans'}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="py-4 px-2 text-right text-neutral-700">{selectedYears}</td>
-                    <td className="py-4 px-2 text-right text-neutral-700">10,00 €/an</td>
-                    <td className="py-4 px-2 text-right font-semibold text-neutral-900">{(10 * selectedYears).toFixed(2)} €</td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="py-4 px-2 text-right text-neutral-700">{selectedYears}</td>
+                      <td className="py-4 px-2 text-right text-neutral-700">
+                        {isFirstDomain ? (
+                          <div>
+                            <div className="text-primary-600 font-medium">0,00 €/an</div>
+                            <div className="text-xs text-neutral-400 line-through">{domainPrice.toFixed(2)} €/an</div>
+                          </div>
+                        ) : (
+                          `${domainPrice.toFixed(2)} €/an`
+                        )}
+                      </td>
+                      <td className="py-4 px-2 text-right font-semibold text-neutral-900">
+                        {isFirstDomain && selectedYears === 1 ? (
+                          <div>
+                            <div className="text-primary-600">0,00 €</div>
+                            <div className="text-xs text-neutral-400 line-through font-normal">{domainPrice.toFixed(2)} €</div>
+                          </div>
+                        ) : (
+                          totalPrice.toFixed(2) + ' €'
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
 
                 {/* Hosting */}
                 <tr className="hover:bg-neutral-50">

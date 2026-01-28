@@ -1,7 +1,32 @@
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import OdsIcon from '../components/OdsIcon';
+import { getRecommendation } from '../utils/getRecommendation';
+
+// Prix des extensions de domaine (doit correspondre à DomainSelection.tsx)
+const domainExtensionPrices: Record<string, number> = {
+  '.fr': 7.79,
+  '.com': 13.49,
+  '.eu': 8.49,
+  '.net': 14.99,
+  '.org': 12.99,
+  '.io': 51.99,
+  '.tech': 45.99,
+  '.store': 25.99,
+  '.shop': 25.99,
+  '.ovh': 8.99,
+};
+
+// Fonction pour obtenir le prix d'un domaine à partir de son nom complet
+const getDomainPrice = (domainFull: string): number => {
+  for (const [ext, price] of Object.entries(domainExtensionPrices)) {
+    if (domainFull.endsWith(ext)) {
+      return price;
+    }
+  }
+  return 0; // Prix par défaut si extension non trouvée
+};
 
 const hostingPacks = [
   {
@@ -54,16 +79,113 @@ export default function HostingSelection() {
   const location = useLocation();
   const { questionnaire, domains } = location.state || {};
   
-  const recommendedPack = hostingPacks.find(p => p.recommended) || hostingPacks[2];
+  // Obtenir la recommandation basée sur le questionnaire
+  const recommendation = useMemo(() => {
+    if (!questionnaire) return null;
+    // Créer une copie stable des réponses pour éviter les problèmes de mutation
+    const answers = {
+      organizationSize: questionnaire.organizationSize,
+      siteType: questionnaire.siteType,
+      geographicScope: questionnaire.geographicScope,
+      activitySector: questionnaire.activitySector,
+    };
+    return getRecommendation(answers);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    questionnaire?.organizationSize,
+    questionnaire?.siteType,
+    questionnaire?.geographicScope,
+    questionnaire?.activitySector,
+  ]);
+  
+  // Déterminer le pack recommandé basé sur la recommandation CSV
+  const recommendedPackId = useMemo(() => {
+    if (recommendation && recommendation.pack) {
+      return recommendation.pack;
+    }
+    // Fallback vers le pack Pro par défaut
+    return hostingPacks.find(p => p.recommended)?.id || 'pro';
+  }, [recommendation]);
+  
+  // Créer une copie des packs avec le pack recommandé marqué dynamiquement
+  const packsWithRecommendation = useMemo(() => {
+    return hostingPacks.map(pack => ({
+      ...pack,
+      recommended: pack.id === recommendedPackId,
+    }));
+  }, [recommendedPackId]);
   
   // Trier les packs pour mettre le recommandé en premier
-  const sortedPacks = [...hostingPacks].sort((a, b) => {
-    if (a.recommended && !b.recommended) return -1;
-    if (!a.recommended && b.recommended) return 1;
-    return 0;
+  const sortedPacks = useMemo(() => {
+    return [...packsWithRecommendation].sort((a, b) => {
+      if (a.recommended && !b.recommended) return -1;
+      if (!a.recommended && b.recommended) return 1;
+      return 0;
+    });
+  }, [packsWithRecommendation]);
+  
+  // Initialiser les options recommandées basées sur le CSV
+  const initialOptions = useMemo(() => {
+    const defaultOptions: Record<string, {
+      sqlDatabase: boolean;
+      cdnPremium: boolean;
+      sslOption: boolean;
+      visibilityPro: boolean;
+    }> = {
+      starter: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
+      perso: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
+      pro: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
+      performance: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
+    };
+    
+    if (recommendation && recommendation.options.length > 0) {
+      const packId = recommendation.pack;
+      const packOptions = { ...defaultOptions[packId] };
+      
+      recommendation.options.forEach(option => {
+        if (option.includes('Web Cloud Databases')) {
+          packOptions.sqlDatabase = true;
+        }
+        if (option.includes('CDN')) {
+          packOptions.cdnPremium = true;
+        }
+        if (option.includes('SSL Sectigo EV')) {
+          packOptions.sslOption = true;
+        }
+      });
+      
+      defaultOptions[packId] = packOptions;
+    }
+    
+    return defaultOptions;
+  }, [recommendation]);
+  
+  // Initialiser le pack sélectionné avec le pack recommandé
+  // Utiliser une fonction d'initialisation lazy pour éviter les problèmes de dépendances
+  const [selectedPack, setSelectedPack] = useState(() => {
+    // Calculer la valeur initiale directement
+    if (questionnaire) {
+      const rec = getRecommendation({
+        organizationSize: questionnaire.organizationSize,
+        siteType: questionnaire.siteType,
+        geographicScope: questionnaire.geographicScope,
+        activitySector: questionnaire.activitySector,
+      });
+      if (rec && rec.pack) {
+        return rec.pack;
+      }
+    }
+    return hostingPacks.find(p => p.recommended)?.id || 'pro';
   });
   
-  const [selectedPack, setSelectedPack] = useState(recommendedPack.id);
+  // Mettre à jour le pack sélectionné quand la recommandation change (seulement au montage initial)
+  useEffect(() => {
+    if (recommendedPackId) {
+      setSelectedPack(recommendedPackId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Exécuter seulement au montage
+  
   const packConfigs: Record<string, { storage: number; emails: number }> = {
     starter: { storage: 10, emails: 2 },
     perso: { storage: 100, emails: 10 },
@@ -76,12 +198,7 @@ export default function HostingSelection() {
     cdnPremium: boolean;
     sslOption: boolean;
     visibilityPro: boolean;
-  }>>({
-    starter: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
-    perso: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
-    pro: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
-    performance: { sqlDatabase: false, cdnPremium: false, sslOption: false, visibilityPro: false },
-  });
+  }>>(initialOptions);
   const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
   const [databaseSystem, setDatabaseSystem] = useState<Record<string, string>>({
     starter: 'mysql',
@@ -101,14 +218,27 @@ export default function HostingSelection() {
     pro: 'basique',
     performance: 'basique',
   });
-  // setSslConfig gardé pour usage futur si les options SSL sont ajoutées aux options recommandées
+  // Initialiser la configuration SSL avec Sectigo EV si recommandé
+  const initialSslConfig = useMemo(() => {
+    const defaultConfig: Record<string, string> = {
+      starter: 'letsencrypt',
+      perso: 'letsencrypt',
+      pro: 'letsencrypt',
+      performance: 'letsencrypt',
+    };
+    
+    if (recommendation && recommendation.options.some(opt => opt.includes('SSL Sectigo EV'))) {
+      const packId = recommendation.pack;
+      defaultConfig[packId] = 'sectigo-ev';
+    }
+    
+    return defaultConfig;
+  }, [recommendation]);
+  
+  // sslConfig utilisé dans handleContinue pour passer la configuration SSL
+  // setSslConfig peut être utilisé plus tard si on veut permettre à l'utilisateur de modifier la config SSL
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [sslConfig, setSslConfig] = useState<Record<string, string>>({
-    starter: 'letsencrypt',
-    perso: 'letsencrypt',
-    pro: 'letsencrypt',
-    performance: 'letsencrypt',
-  });
+  const [sslConfig, setSslConfig] = useState<Record<string, string>>(initialSslConfig);
   const [selectedCms, setSelectedCms] = useState<Record<string, string>>({
     starter: 'none',
     perso: 'none',
@@ -134,7 +264,7 @@ export default function HostingSelection() {
   ];
 
   const databaseConfigs = [
-    { id: '512mb-8gb', name: '512MB RAM / 8GB stockage', price: 6.59 },
+    { id: '512mb-8gb', name: '512MB RAM / 8GB stockage', price: 0 },
     { id: '1gb-16gb', name: '1GB RAM / 16GB stockage', price: 10.99 },
     { id: '2gb-32gb', name: '2GB RAM / 32GB stockage', price: 21.99 },
     { id: '4gb-64gb', name: '4GB RAM / 64GB stockage', price: 43.99 },
@@ -159,7 +289,7 @@ export default function HostingSelection() {
     visibilityPro: 'Service de référencement professionnel pour améliorer votre visibilité sur les moteurs de recherche. Optimisation SEO, soumission dans les annuaires et suivi des performances. Tarif année supplémentaire : 21,99€/mois.',
   };
 
-  const selectedPackData = hostingPacks.find(p => p.id === selectedPack)!;
+  const selectedPackData = packsWithRecommendation.find(p => p.id === selectedPack)!;
   const selectedConfig = packConfigs[selectedPack];
 
   const calculatePackPrice = (packId: string) => {
@@ -729,17 +859,45 @@ export default function HostingSelection() {
             >
               <h3 className="font-bold text-neutral-900 mb-4">Votre sélection</h3>
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-neutral-600">Domaines</span>
-                  <span className="font-semibold">{domains?.length || 0} sélectionné(s)</span>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-neutral-600">Domaines</span>
+                    <span className="font-semibold">{domains?.length || 0} sélectionné(s)</span>
+                  </div>
+                  {domains && Array.isArray(domains) && domains.length > 0 && (
+                    <div className="mt-2 space-y-1">
+                      {(domains as string[]).map((domain, index) => {
+                        const domainPrice = getDomainPrice(domain);
+                        const isFirstDomain = index === 0;
+                        return (
+                          <div key={index} className="text-xs text-neutral-500 pl-2 border-l-2 border-primary-200 flex justify-between items-center">
+                            <div className="flex flex-col">
+                              <span>{domain}</span>
+                              {isFirstDomain && (
+                                <span className="text-primary-600 font-medium text-[10px] mt-0.5">
+                                  Gratuit la première année
+                                </span>
+                              )}
+                            </div>
+                            {domainPrice > 0 && (
+                              <span className={`font-medium ml-2 ${isFirstDomain ? 'text-primary-600 line-through' : 'text-neutral-600'}`}>
+                                {domainPrice.toFixed(2)} €/an
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-neutral-600">Hébergement</span>
-                  <span className="font-semibold">{selectedPackData.name}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-neutral-600">Prix hébergement</span>
-                  <span className="font-semibold">{totalPrice.toFixed(2)} €/mois</span>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-neutral-600">Hébergement</span>
+                    <span className="font-semibold">{totalPrice.toFixed(2)} €/mois</span>
+                  </div>
+                  <div className="text-xs text-neutral-500 pl-2 border-l-2 border-primary-200">
+                    {selectedPackData.name}
+                  </div>
                 </div>
                 {optionsPrice > 0 && (
                   <div className="flex justify-between">
