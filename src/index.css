@@ -1,68 +1,225 @@
+/* Imports ODS - DOIVENT être en premier pour que les composants fonctionnent correctement */
+@import '@ovhcloud/ods-themes/default';
+@import '@ovhcloud/ods-themes/default/fonts';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS globales - Utilisation des variables ODS */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --ovh-blue: var(--ods-color-primary-500);
+  --ovh-blue-light: #E6F0FF;
+  --ovh-cyan: #00D9FF;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Base styles */
+html {
+  font-family: var(--ods-font-family-default);
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  background-color: var(--ods-color-neutral-000);
   min-height: 100vh;
+  color: var(--ods-color-neutral-900);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Focus styles pour accessibilité */
+:focus-visible {
+  outline: 2px solid var(--ods-color-primary-500);
+  outline-offset: 2px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Composants personnalisés */
+@layer components {
+  /* Cards OVHcloud style */
+  .ovh-card {
+    @apply bg-white rounded-lg shadow-sm p-6 transition-all duration-200;
+    border: 1px solid var(--ods-color-neutral-200);
   }
-  a:hover {
-    color: #747bff;
+  
+  .ovh-card:hover {
+    @apply shadow-md;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  .ovh-card-interactive {
+    @apply ovh-card cursor-pointer hover:-translate-y-0.5;
   }
+  
+  .ovh-card-primary {
+    @apply ovh-card;
+    border-color: var(--ods-color-primary-500);
+    background-color: var(--ods-color-primary-050);
+  }
+  
+  /* Boutons OVHcloud style */
+  .ovh-btn {
+    @apply px-6 py-3 rounded-lg font-medium text-base transition-all duration-200;
+  }
+  
+  .ovh-btn-primary {
+    @apply ovh-btn;
+    background-color: var(--ods-color-primary-500);
+    color: white;
+  }
+  
+  .ovh-btn-primary:hover {
+    background-color: var(--ods-color-primary-600);
+  }
+  
+  .ovh-btn-secondary {
+    @apply ovh-btn;
+    background-color: white;
+    color: var(--ods-color-primary-500);
+    border: 1px solid var(--ods-color-primary-500);
+  }
+  
+  .ovh-btn-secondary:hover {
+    background-color: var(--ods-color-primary-050);
+  }
+  
+  .ovh-btn-ghost {
+    @apply ovh-btn bg-transparent text-neutral-600 hover:bg-neutral-100;
+  }
+  
+  /* Badges */
+  .ovh-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  
+  .ovh-badge-primary {
+    @apply ovh-badge bg-primary-100 text-primary-700;
+  }
+  
+  .ovh-badge-success {
+    @apply ovh-badge bg-success-50 text-green-700;
+  }
+  
+  .ovh-badge-warning {
+    @apply ovh-badge bg-warning-50 text-amber-700;
+  }
+  
+  .ovh-badge-critical {
+    @apply ovh-badge bg-critical-50 text-red-700;
+  }
+  
+  /* Inputs */
+  .ovh-input {
+    @apply w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-900 
+           placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 
+           transition-all duration-200 outline-none;
+  }
+  
+  /* Progress bar */
+  .ovh-progress {
+    @apply h-1.5 rounded-full overflow-hidden;
+    background-color: var(--ods-color-neutral-200);
+  }
+  
+  .ovh-progress-bar {
+    @apply h-full rounded-full transition-all duration-500;
+    background-color: var(--ods-color-primary-500);
+  }
+  
+  /* Page layout */
+  .ovh-page {
+    @apply min-h-screen py-8 px-4 md:py-12 md:px-6;
+    background-color: var(--ods-color-neutral-000);
+  }
+  
+  .ovh-container {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  /* Hero section */
+  .ovh-hero {
+    @apply text-center;
+  }
+  
+  .ovh-hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 tracking-tight;
+    line-height: 1.1;
+  }
+  
+  .ovh-hero-subtitle {
+    @apply text-lg md:text-xl text-neutral-600;
+    line-height: 1.6;
+  }
+  
+  /* Feature list item */
+  .ovh-feature-item {
+    @apply flex items-center gap-3 text-neutral-700;
+  }
+  
+  .ovh-feature-icon {
+    @apply w-5 h-5 text-primary-500 flex-shrink-0;
+  }
+  
+  /* Checkbox custom */
+  .ovh-checkbox {
+    @apply w-5 h-5 rounded border-2 border-neutral-300 bg-white 
+           checked:bg-primary-500 checked:border-primary-500 
+           focus:ring-2 focus:ring-primary-200 transition-all cursor-pointer;
+  }
+  
+  /* Range slider */
+  .ovh-range {
+    @apply w-full h-2 bg-neutral-200 rounded-full appearance-none cursor-pointer;
+  }
+  
+  .ovh-range::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 bg-primary-500 rounded-full cursor-pointer 
+           shadow-md hover:bg-primary-600 transition-all;
+  }
+
+  /* Selection states - utilisant les variables ODS */
+  .ovh-selectable {
+    background-color: white;
+  }
+
+  .ovh-selectable:hover {
+    background-color: var(--ods-color-primary-050);
+  }
+
+  .ovh-selectable-selected {
+    background-color: var(--ods-color-primary-050);
+  }
+
+  .ovh-selectable-selected:hover {
+    background-color: var(--ods-color-primary-050);
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }

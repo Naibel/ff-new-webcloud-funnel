@@ -476,9 +476,80 @@ Chaque résultat de domaine affiche :
 
 **Objectif** : Recommander l'offre d'hébergement optimale via un système de scoring et permettre la personnalisation
 
-#### A. SYSTÈME DE RECOMMANDATION PAR POINTS
+#### A. SYSTÈME DE RECOMMANDATION BASÉ SUR LES DONNÉES DE PACKAGES
 
-**Matrice de calcul des scores :**
+**⚠️ IMPORTANT : Utilisation des données réelles de packages OVH**
+
+Le système de recommandation doit utiliser les données réelles de packages disponibles dans le fichier `data/packages-ovh-funnel.csv`. Ce fichier contient 193 combinaisons validées de :
+- Taille d'organisation (Freelance, 2-10, 11-50, +50)
+- Zone géographique (Local, National, International)
+- Secteur d'activité (8 secteurs)
+- Type de site (Vitrine, Vente)
+
+**Pour chaque combinaison, les données incluent :**
+- Pack d'hébergement recommandé (Starter, Perso, Pro, Performance)
+- Domaines recommandés (.fr, .com, .eu, .io, etc.)
+- CMS recommandé (WordPress, PrestaShop)
+- SSL recommandé (Let's Encrypt gratuit, Sectigo DV, Sectigo EV)
+- CDN recommandé (Non nécessaire, CDN Basic, CDN Security, CDN Security RGPD)
+- Options recommandées (Sauvegardes, Email Pro, Database Essential, Visibilité Pro, etc.)
+- Prix détaillés (Domaines, Hébergement, SSL, CDN, Options, Total HT/TTC, Prix/mois)
+
+**Logique de recommandation :**
+
+1. **Matching exact** : Rechercher dans le CSV la ligne correspondant exactement aux réponses du questionnaire
+   - Salariés (Q1) → Colonne "Salariés"
+   - Zone (Q2) → Colonne "Zone"
+   - Secteur (Q3) → Colonne "Secteur"
+   - Type Site (Q4) → Colonne "Type Site"
+
+2. **Si match exact trouvé** : Utiliser directement les recommandations de cette ligne
+   - Pack d'hébergement
+   - Domaines recommandés
+   - CMS suggéré
+   - SSL recommandé
+   - CDN recommandé
+   - Options pré-sélectionnées
+
+3. **Si pas de match exact** : Utiliser le système de scoring par points (fallback)
+
+**Exemples de recommandations basées sur les données :**
+
+| Profil | Pack Recommandé | Domaines | CMS | SSL | CDN | Options |
+|--------|----------------|----------|-----|-----|-----|---------|
+| Freelance, Local, Commerce, Vitrine | Starter | .fr | WordPress | Let's Encrypt (Gratuit) | Non nécessaire | Aucune |
+| Freelance, Local, Commerce, Vente | Perso | .fr | PrestaShop | Sectigo DV | CDN Basic | Sauvegardes automatiques |
+| Freelance, Local, Santé, Vitrine | Starter | .fr | WordPress | Sectigo DV | CDN Security (RGPD) | Aucune |
+| 2-10, Local, Commerce, Vitrine | Perso | .fr | WordPress | Let's Encrypt (Gratuit) | Non nécessaire | Aucune |
+| 2-10, Local, Commerce, Vente | Pro | .fr | PrestaShop | Sectigo DV | CDN Basic | Sauvegardes automatiques |
+| 11-50, Local, Commerce, Vitrine | Pro | .fr | WordPress | Let's Encrypt (Gratuit) | Non nécessaire | Email Pro: 10 comptes |
+| 11-50, Local, Commerce, Vente | Pro | .fr | PrestaShop | Sectigo EV | CDN Basic | Email Pro: 10 comptes + Sauvegardes |
+| +50, Local, Commerce, Vitrine | Performance | .fr | WordPress | Let's Encrypt (Gratuit) | CDN Basic | Email Pro: 20 comptes + Database Essential |
+| +50, Local, Commerce, Vente | Performance | .fr | PrestaShop | Sectigo EV | CDN Security | Email Pro: 20 comptes + Database Essential + Sauvegardes |
+
+**Mapping des secteurs du questionnaire vers le CSV :**
+
+| Réponse Q3 (Questionnaire) | Secteur CSV |
+|---------------------------|-------------|
+| Services / Conseil | Services & Conseil |
+| E-commerce / Vente en ligne | Commerce & Retail |
+| Artisanat / Production | Industrie & BTP |
+| Association / ONG | (Utiliser Services & Conseil comme fallback) |
+| Autre (champ libre) | Analyser le texte pour détecter le secteur le plus proche |
+
+**Mapping des types de site :**
+
+| Réponse Q4 (Questionnaire) | Type Site CSV |
+|---------------------------|---------------|
+| Site vitrine / Portfolio | Vitrine |
+| Blog / Média | Vitrine |
+| Boutique en ligne | Vente |
+| Application web / SaaS | Vitrine (ou Vente selon contexte) |
+| Site institutionnel | Vitrine |
+
+#### B. SYSTÈME DE RECOMMANDATION PAR POINTS (FALLBACK)
+
+**Matrice de calcul des scores (utilisée si pas de match exact dans le CSV) :**
 
 Chaque réponse au questionnaire attribue des points aux 4 packs disponibles. Le pack avec le score le plus élevé est recommandé.
 
@@ -613,6 +684,10 @@ Titre : "Options recommandées pour vous"
 
 Liste d'options contextuelles (affichées selon le profil) :
 
+**⚠️ PRIORITÉ : Utiliser les options du CSV si un match exact est trouvé**
+
+Si une correspondance exacte est trouvée dans `data/packages-ovh-funnel.csv`, utiliser les options recommandées de cette ligne. Sinon, utiliser les règles ci-dessous :
+
 | Condition (Profil) | Option Affichée | Prix | Message Personnalisé |
 |-------------------|----------------|------|----------------------|
 | E-commerce (Q4) | Base de données SQL Privée | +4,99 €/mois | "Pour gérer vos produits et clients" |
@@ -621,6 +696,35 @@ Liste d'options contextuelles (affichées selon le profil) :
 | Grande entreprise (+50) | Protection Anti-DDoS Avancée | +14,99 €/mois | "Protection contre les attaques" |
 | E-commerce ou Grande entreprise | Sauvegarde Cloud supplémentaire | +2,99 €/mois | "Sécurité renforcée de vos données" |
 | Tous profils | Sauvegarde Cloud supplémentaire | +2,99 €/mois | "Protégez vos données" |
+
+**Options spécifiques du CSV à prendre en compte :**
+
+D'après les données CSV, les options suivantes sont recommandées selon les profils :
+
+| Profil | Options Recommandées (CSV) |
+|--------|---------------------------|
+| **Freelance, Local, Vitrine** | Aucune (sauf Restauration : Visibilité Pro Google Maps) |
+| **Freelance, Local, Vente** | Sauvegardes automatiques |
+| **Freelance, Local, Santé** | CDN Security (RGPD) |
+| **2-10, Local, Vitrine** | Aucune (sauf Restauration : Visibilité Pro) |
+| **2-10, Local, Vente** | Sauvegardes automatiques |
+| **11-50, Local, Vitrine** | Email Pro: 10 comptes |
+| **11-50, Local, Vente** | Email Pro: 10 comptes + Sauvegardes automatiques |
+| **11-50, Local, Santé** | Email Pro: 10 comptes + CDN Security (RGPD) |
+| **+50, Local, Vitrine** | Email Pro: 20 comptes + Database Essential |
+| **+50, Local, Vente** | Email Pro: 20 comptes + Database Essential + Sauvegardes automatiques |
+| **International** | CDN Basic ou CDN Security (selon secteur) |
+| **Restauration & Hôtellerie, Vitrine** | Visibilité Pro (Google Maps) - 588€/an |
+
+**Parsing des options depuis le CSV :**
+
+Les options dans le CSV sont séparées par " + ". Le système doit parser ces options et les pré-sélectionner automatiquement :
+
+- "Sauvegardes automatiques" → Activer l'option "Sauvegarde Cloud supplémentaire"
+- "Email Pro: X comptes" → Activer l'option "Email Pro" avec le nombre de comptes
+- "Database Essential" → Activer l'option "Base de données SQL Privée"
+- "Visibilité Pro (Google Maps)" → Option spécifique Restauration/Hôtellerie
+- "CDN Security (RGPD)" → Activer "CDN Premium" avec mention RGPD
 
 Chaque option affiche :
 * Nom de l'option
@@ -639,6 +743,20 @@ Affiché en bas de la sidebar :
 * Total mensuel HT : XX,XX €/mois
 * Total annuel HT : XXX,XX €/an
 * Mention : "Prix TTC calculés à l'étape suivante"
+
+**⚠️ PRIORITÉ : Utiliser les prix du CSV si un match exact est trouvé**
+
+Si une correspondance exacte est trouvée dans `data/packages-ovh-funnel.csv`, utiliser les prix de cette ligne :
+- Prix Domaines (€ HT)
+- Prix Hébergement (€ HT)
+- Prix SSL (€ HT)
+- Prix CDN (€ HT)
+- Prix Options (€ HT)
+- TOTAL (€ HT)
+- TOTAL (€ TTC)
+- Prix/mois (€ TTC)
+
+Ces prix sont déjà calculés et validés, garantissant la cohérence tarifaire.
 
 Bouton d'action principal : "Continuer vers le paiement"
 
@@ -733,13 +851,151 @@ interface FunnelState {
 
 ### 4.3 Logique de Calcul des Recommandations
 
-**Fonction de calcul des scores :**
+**⚠️ PRIORITÉ : Utilisation des données CSV de packages**
+
+Le système doit **en priorité** utiliser les données du fichier `data/packages-ovh-funnel.csv` pour les recommandations. Le système de scoring par points n'est utilisé qu'en fallback si aucune correspondance exacte n'est trouvée dans le CSV.
+
+**Fonction de recommandation basée sur le CSV :**
+
+```typescript
+// services/recommendations/packages.ts
+
+interface PackageData {
+  salariés: string;
+  zone: string;
+  secteur: string;
+  typeSite: string;
+  packHébergement: string;
+  domaines: string;
+  cms: string;
+  ssl: string;
+  cdn: string;
+  options: string;
+  prixDomaines: number;
+  prixHébergement: number;
+  prixSSL: number;
+  prixCDN: number;
+  prixOptions: number;
+  totalHT: number;
+  totalTTC: number;
+  prixMois: number;
+}
+
+// Charger les données CSV au démarrage
+let packagesData: PackageData[] = [];
+
+async function loadPackagesData() {
+  const response = await fetch('/data/packages-ovh-funnel.csv');
+  const csvText = await response.text();
+  packagesData = parseCSV(csvText);
+}
+
+// Fonction de matching
+function findMatchingPackage(questionnaire: QuestionnaireData): PackageData | null {
+  // Mapping des réponses du questionnaire vers les colonnes CSV
+  const salariés = mapOrganizationSize(questionnaire.organizationSize);
+  const zone = mapGeographicScope(questionnaire.geographicScope);
+  const secteur = mapActivitySector(questionnaire.activitySector);
+  const typeSite = mapSiteType(questionnaire.siteType);
+  
+  // Recherche exacte
+  const match = packagesData.find(pkg => 
+    pkg.salariés === salariés &&
+    pkg.zone === zone &&
+    pkg.secteur === secteur &&
+    pkg.typeSite === typeSite
+  );
+  
+  return match || null;
+}
+
+// Fonctions de mapping
+function mapOrganizationSize(size: string): string {
+  const mapping = {
+    'freelance': 'Freelance',
+    'tpe': '2-10',
+    'pme': '11-50',
+    'large': '+50'
+  };
+  return mapping[size] || 'Freelance';
+}
+
+function mapGeographicScope(scope: string): string {
+  const mapping = {
+    'local': 'Local',
+    'european': 'National',
+    'international': 'International'
+  };
+  return mapping[scope] || 'Local';
+}
+
+function mapActivitySector(sector: string): string {
+  const mapping = {
+    'services': 'Services & Conseil',
+    'ecommerce': 'Commerce & Retail',
+    'artisanat': 'Industrie & BTP',
+    'sante': 'Santé & Médical',
+    'tech': 'Tech & Digital',
+    'creatif': 'Créatif & Arts',
+    'finance': 'Finance & Assurance',
+    'restauration': 'Restauration & Hôtellerie'
+  };
+  return mapping[sector] || 'Services & Conseil';
+}
+
+function mapSiteType(type: string): string {
+  const mapping = {
+    'vitrine': 'Vitrine',
+    'blog': 'Vitrine',
+    'ecommerce': 'Vente',
+    'saas': 'Vitrine',
+    'institutionnel': 'Vitrine'
+  };
+  return mapping[type] || 'Vitrine';
+}
+
+// Fonction principale de recommandation
+export function getRecommendation(questionnaire: QuestionnaireData) {
+  // 1. Essayer de trouver un match exact dans le CSV
+  const csvMatch = findMatchingPackage(questionnaire);
+  
+  if (csvMatch) {
+    return {
+      source: 'csv',
+      pack: csvMatch.packHébergement.toLowerCase(),
+      domaines: csvMatch.domaines.split(' + '),
+      cms: csvMatch.cms,
+      ssl: csvMatch.ssl,
+      cdn: csvMatch.cdn,
+      options: parseOptions(csvMatch.options),
+      prix: {
+        domaines: csvMatch.prixDomaines,
+        hébergement: csvMatch.prixHébergement,
+        ssl: csvMatch.prixSSL,
+        cdn: csvMatch.prixCDN,
+        options: csvMatch.prixOptions,
+        totalHT: csvMatch.totalHT,
+        totalTTC: csvMatch.totalTTC,
+        prixMois: csvMatch.prixMois
+      }
+    };
+  }
+  
+  // 2. Fallback : utiliser le système de scoring par points
+  return {
+    source: 'scoring',
+    ...calculateHostingScores(questionnaire)
+  };
+}
+```
+
+**Fonction de calcul des scores (FALLBACK uniquement) :**
 
 ```typescript
 function calculateHostingScores(questionnaire) {
   const scores = { starter: 0, perso: 0, pro: 0, performance: 0 };
   
-  // Appliquer la matrice de points (cf. section 2.5.A)
+  // Appliquer la matrice de points (cf. section 3.5.B)
   // Exemple pour Q1 - Taille organisation
   switch(questionnaire.organizationSize) {
     case 'freelance':

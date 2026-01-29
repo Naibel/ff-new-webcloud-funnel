@@ -1,0 +1,106 @@
+@tailwind components;
+
+/* Header OVHcloud style */
+@layer components {
+  .ovh-header {
+    background-color: var(--ods-color-primary-500);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+
+  .ovh-header-container {
+    @apply max-w-7xl mx-auto px-4 md:px-6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .ovh-header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .ovh-header-logo:hover {
+    opacity: 0.9;
+  }
+
+  .ovh-logo-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .ovh-logo-text {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-family: var(--ods-font-family-default);
+  }
+
+  .ovh-header-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex: 1;
+    justify-content: center;
+    margin: 0 2rem;
+  }
+
+  .ovh-header-nav-link {
+    @apply px-4 py-2 text-white font-medium text-sm transition-all rounded-lg;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    position: relative;
+  }
+
+  .ovh-header-nav-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .ovh-header-nav-link.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .ovh-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ovh-header-action-btn {
+    @apply flex items-center px-3 py-2 text-white font-medium text-sm transition-all rounded-lg;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .ovh-header-action-btn:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .ovh-header-nav {
+      display: none;
+    }
+    
+    .ovh-header-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}

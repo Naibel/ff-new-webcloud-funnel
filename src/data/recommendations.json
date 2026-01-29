@@ -1,0 +1,4798 @@
+[
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Perso",
+    "diskSpace": "100",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site Vitrine (blog, media...)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Site de e-commerce (boutique en ligne)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".store",
+      ".shop",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "SSL Sectigo EV",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "pro",
+    "packName": "Pro",
+    "diskSpace": "250",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 100,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Application Web (outil Tech)",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "performance",
+    "packName": "Performance",
+    "diskSpace": "500",
+    "domains": [
+      ".tech",
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 1000,
+    "options": [
+      "CDN",
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Locale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Nationale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".fr"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Européenne",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".eu"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "1 personne",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 2,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "2-10 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 10,
+    "emailsIncluded": 10,
+    "options": []
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "10-50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 50,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Startups",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com",
+      ".tech"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Créateurs d'entreprises",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Projets créatifs",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  },
+  {
+    "siteType": "Autre",
+    "scope": "Mondiale",
+    "teamSize": "Plus de 50 personnes",
+    "sector": "Professionnels de la santé et du bien-être",
+    "pack": "perso",
+    "packName": "Pack Perso (personnalisable)",
+    "diskSpace": "100",
+    "domains": [
+      ".ovh",
+      ".com"
+    ],
+    "emailsNeeded": 100,
+    "emailsIncluded": 10,
+    "options": [
+      "Web Cloud Databases"
+    ]
+  }
+]
